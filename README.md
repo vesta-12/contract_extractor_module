@@ -4,51 +4,6 @@
 
 Алгоритмы OCR, восстановления layout, извлечения сущностей, linking и визуализации не переписаны. Новый слой отвечает только за orchestration, хранение, фоновые статусы, HTTP API и пользовательский интерфейс.
 
-## Быстрый запуск
-
-Требования:
-
-- Python 3.12+;
-- Tesseract OCR 5 с языками `rus` и `eng`;
-- системная команда `tesseract` в `PATH` либо `TESSERACT_CMD` в окружении.
-
-Установка и запуск в PowerShell:
-
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install -r requirements.txt
-Copy-Item .env.example .env
-$env:PYTHONPATH = "src"
-python -m server
-```
-
-Откройте [http://127.0.0.1:8000](http://127.0.0.1:8000). Статический frontend обслуживается тем же FastAPI-сервером, поэтому отдельный frontend-процесс не нужен.
-
-Вариант с Docker, уже включающий Tesseract `rus+eng`:
-
-```powershell
-docker build -t contract-extractor-app .
-docker run --rm --name contract-extractor -p 8000:8000 contract-extractor-app
-```
-
-Не запускайте одновременно локальный `python -m server` и Docker-контейнер
-на порту `8000`. На Windows локальный процесс, слушающий
-`127.0.0.1:8000`, может перехватить запросы браузера, даже если Docker
-публикует `0.0.0.0:8000`. После запуска проверьте
-`http://127.0.0.1:8000/api/health`: статус должен быть `ready`, а в
-`components.ocr.missing_languages` должен быть пустой список. Если нужны оба
-сервера, опубликуйте контейнер на другом порту, например
-`docker run --rm --name contract-extractor -p 8001:8000 contract-extractor-app`,
-и откройте `http://127.0.0.1:8001`.
-
-Docker-образ уже содержит всё приложение: frontend, FastAPI, OCR и Tesseract.
-Локальный `python -m server` для Docker-варианта запускать не требуется.
-Серверы на разных портах остаются двумя независимыми приложениями: frontend
-использует относительные пути `/api/...` и всегда обращается к тому же порту,
-с которого была открыта страница. Поэтому страница на `8090` использует
-локальный OCR, а не Tesseract из контейнера на `8000`.
-
 ## Пайплайн
 
 ```text
