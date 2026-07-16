@@ -1,24 +1,62 @@
 # Contract Extractor
 
-Модуль принимает готовый OCR JSON, извлекает сущности из договоров, связывает их со сторонами и сохраняет координаты для подсветки на исходном PDF.
+Модуль принимает готовый OCR JSON, находит юридические и банковские сущности, связывает их со сторонами договора и сохраняет координаты для подсветки на исходном PDF.
 
-OCR внутри модуля не запускается.
+OCR выполняется вне этого модуля.
 
-## Общий процесс
+## 1. Общая логика
 
 ```text
-PDF
-→ OCR
-→ OCR JSON со словами и координатами
-→ contract_extractor
-→ debug JSON
-→ production JSON
-→ PDF с подсветкой
+Исходный PDF
+    ↓
+OCR-пайплайн
+    ↓
+OCR JSON: страницы, слова, bbox, confidence
+    ↓
+OCRDocumentLoader
+    ↓
+OCRDocument / OCRPage / OCRWord
+    ↓
+LayoutLineBuilder + SpatialSearch
+    ↓
+RuleEngine + ExtractionRule
+    ↓
+EntityCandidate[]
+    ↓
+EntityResolver
+    ↓
+чистый список сущностей
+    ↓
+PartyLinker
+    ↓
+ContractParty[]
+    ↓
+ContractExtractionResult
+    ↓
+debug JSON / production JSON
+    ↓
+ContractResultVisualizer
+    ↓
+clean PDF / review PDF
 ```
 
-## Требования к OCR JSON
+Главный принцип архитектуры: каждый слой отвечает только за одну задачу.
 
-Для каждого слова нужны:
+- OCR распознаёт текст.
+- `input` приводит OCR JSON к внутреннему формату.
+- `layout` восстанавливает структуру страницы.
+- `rules` ищут возможные сущности.
+- `resolution` удаляет дубли и конфликты.
+- `linking` связывает сущности со сторонами.
+- `visualization` отображает найденное на PDF.
+
+---
+
+## 2. Требования к OCR JSON
+
+Extractor не зависит от конкретной OCR-модели, но зависит от входного контракта.
+
+Минимально для каждого слова нужны:
 
 ```json
 {
@@ -28,25 +66,34 @@ PDF
 }
 ```
 
-Обязательно должны сохраняться:
+Нужно сохранять:
 
 - номер страницы;
-- текст на уровне отдельных слов;
+- текст каждого отдельного слова;
 - координаты каждого слова;
-- порядок слов;
+- правильный порядок слов;
 - желательно OCR confidence.
 
-Координаты используются в формате:
+Формат bbox:
 
 ```text
 [x1, y1, x2, y2]
 ```
 
-Рекомендуемый диапазон — `0.0–1.0`.
+Рекомендуется использовать нормализованные координаты `0.0–1.0`.
 
-Если OCR будет заменён, extractor продолжит работать без изменений, пока сохраняется этот контракт. Если формат изменится, достаточно добавить адаптер в слое `input`.
+Если OCR будет заменён, остальные слои менять не нужно, пока новый результат преобразуется в этот формат.
 
-## Структура проекта
+```text
+Новый OCR JSON
+→ adapter/input
+→ OCRDocument
+→ существующий extractor
+```
+
+---
+
+## 3. Структура проекта
 
 ```text
 src/contract_extractor/
@@ -64,106 +111,726 @@ main.py
 visualize_result.py
 ```
 
-### `input/`
+---
 
-Загрузка и проверка OCR JSON.
+# 4. Слой `models`
 
-Основные элементы:
+Этот слой содержит общие структуры данных. Он ничего не извлекает и не принимает решений.
 
-```text
-OCRDocumentLoader
-load_ocr_document()
-validate_ocr_payload()
+## `BoundingBox`
+
+Представляет прямоугольник на странице:
+
+```python
+BoundingBox(
+    x1=0.10,
+    y1=0.20,
+    x2=0.30,
+    y2=0.24,
+)
 ```
 
-### `models/`
+Используется для:
 
-Внутренние модели:
+- хранения координат слова;
+- объединения нескольких слов;
+- расчёта центра;
+- определения пересечения;
+- расчёта IoU;
+- пространственного сравнения;
+- визуализации.
 
-```text
-BoundingBox
-OCRDocument
-OCRPage
-OCRWord
-LayoutLine
-EntityCandidate
-ContractParty
-PartyRepresentative
-PartyBankDetails
-ContractExtractionResult
-```
+Все правила и последующие слои работают через `BoundingBox`, а не через необработанные списки координат.
 
-`EntityCandidate` хранит тип, значение, исходный OCR-текст, страницу, bbox, confidence, validation, evidence и metadata.
+## `OCRWord`
 
-### `layout/`
+Представляет одно слово из OCR.
 
-Восстанавливает строки и структуру страницы.
+Обычно содержит:
 
 ```text
-LayoutLineBuilder
-SpatialSearch
+id
+text
+normalized_text
+page
+bbox
+confidence
+index
 ```
 
-Используется для поиска текста справа, ниже, в той же строке или колонке.
-
-### `rules/`
-
-Правила извлечения.
+Пример ID:
 
 ```text
-tax_ids.py
-    BINRule
-    IINRule
-    INNRule
-
-bank_details.py
-    BIKRule
-    BICSWIFTRule
-    KZIBANRule
-    BankAccountRule
-
-document_values.py
-    DateRule
-    MoneyAmountRule
-    PercentageRule
-
-legal_parties.py
-    OrganizationRule
-    BankNameRule
-    PersonNameRule
-    PositionRule
-
-addresses.py
-    AddressRule
+p2-w188
 ```
 
-Все правила наследуются от `ExtractionRule` и возвращают `EntityCandidate`.
+Это слово №188 на странице 2.
 
-### `rules/engine.py`
+`OCRWord` является основной единицей поиска. Точные координаты итоговой сущности строятся из координат входящих в неё слов.
 
-`RuleEngine` запускает правила, собирает кандидатов и сохраняет ошибки отдельных правил.
+## `OCRPage`
 
-### `resolution/`
+Представляет одну страницу документа.
 
-`EntityResolver`:
+Содержит:
 
-- удаляет дубли;
-- проверяет пересечения bbox и word IDs;
-- разрешает конфликты типов;
-- переносит проигравшие варианты в `rejected_candidates`.
+- номер страницы;
+- список слов;
+- при наличии регионы, строки или дополнительные OCR-данные;
+- размеры или метаданные страницы.
 
-### `linking/`
+## `OCRDocument`
 
-`PartyLinker`:
+Представляет весь распознанный документ.
 
-- группирует повторные упоминания организаций;
-- определяет роли сторон;
-- связывает БИН, ИНН, адреса, представителей и банковские реквизиты;
-- разделяет основной и корреспондентский банк.
+Содержит страницы и общие метаданные. Именно этот объект передаётся в layout-слой и правила.
 
-### `pipeline.py`
+## `LayoutLine`
 
-Главная точка обработки.
+Представляет восстановленную строку документа.
+
+Содержит:
+
+```text
+id
+page
+words
+bbox
+text
+region
+```
+
+Строка нужна, потому что большинство значений определяются не по одному слову, а по контексту:
+
+```text
+БИН: 123456789012
+```
+
+или:
+
+```text
+в лице генерального директора Иванова Ивана Ивановича
+```
+
+## `EntityCandidate`
+
+Главный объект результата отдельного правила.
+
+Пример:
+
+```python
+EntityCandidate(
+    id="candidate-bin-p2-w188",
+    entity_type="bin",
+    value="123456789012",
+    raw_value="123456789012,",
+    page=2,
+    bbox=...,
+    word_ids=("p2-w188",),
+    confidence=1.0,
+    rule_id="bin_rule",
+)
+```
+
+Основные поля:
+
+```text
+id
+entity_type
+value
+raw_value
+page
+bbox
+word_ids
+confidence
+rule_id
+region
+line_id
+anchor_word_ids
+validation
+evidence
+metadata
+```
+
+### `value`
+
+Нормализованное значение, которое используется сервисом.
+
+### `raw_value`
+
+Первоначальный OCR-текст. Нужен для диагностики и проверки OCR-коррекций.
+
+### `word_ids`
+
+Список OCR-слов, из которых была собрана сущность.
+
+### `confidence`
+
+Эвристическая уверенность правила. Это не математически откалиброванная вероятность.
+
+### `validation`
+
+Результат формальной проверки:
+
+```text
+длина БИН;
+формат IBAN;
+MOD 97;
+формат SWIFT;
+количество цифр.
+```
+
+### `evidence`
+
+Объяснение, почему кандидат был принят:
+
+```text
+найден якорь;
+значение справа от якоря;
+совпала длина;
+подходит контекст;
+совпала колонка.
+```
+
+---
+
+# 5. Слой `input`
+
+Слой преобразует внешний OCR JSON во внутренние модели.
+
+## `OCRDocumentLoader`
+
+Главный класс загрузки.
+
+Отвечает за:
+
+1. чтение JSON;
+2. проверку структуры;
+3. нормализацию координат;
+4. создание `OCRWord`;
+5. создание `OCRPage`;
+6. создание `OCRDocument`;
+7. генерацию стабильных ID.
+
+Остальные слои не должны знать, как именно выглядел исходный JSON.
+
+## `validate_ocr_payload`
+
+Проверяет вход до запуска правил:
+
+- существуют ли страницы;
+- присутствуют ли слова;
+- корректен ли bbox;
+- является ли номер страницы допустимым;
+- является ли текст строкой;
+- находится ли confidence в допустимом диапазоне.
+
+Если коллега изменит формат OCR JSON, адаптация должна происходить здесь, а не внутри правил.
+
+---
+
+# 6. Слой `layout`
+
+Layout-слой восстанавливает структуру документа из отдельных OCR-слов.
+
+## `LayoutLineBuilder`
+
+Группирует слова в строки.
+
+Логика обычно учитывает:
+
+- близкое вертикальное положение;
+- высоту слов;
+- расстояние между словами;
+- порядок слева направо;
+- принадлежность к колонке или региону.
+
+Результат:
+
+```text
+OCRWord[]
+→ LayoutLine[]
+```
+
+Например, отдельные слова:
+
+```text
+БИН
+123456789012
+```
+
+становятся одной строкой:
+
+```text
+БИН 123456789012
+```
+
+## `SpatialSearch`
+
+Предоставляет правилам удобный поиск по расположению.
+
+Через него можно:
+
+- найти строку по слову;
+- найти слова справа от якоря;
+- получить следующую строку;
+- найти ближайший объект;
+- проверить нахождение в одной колонке;
+- получить контекст вокруг кандидата;
+- сравнить вертикальное и горизонтальное расстояние.
+
+Правила не должны вручную перебирать весь документ. Они задают пространственный запрос через `SpatialSearch`.
+
+---
+
+# 7. Слой `rules`
+
+Каждое правило ищет один тип сущности.
+
+## `ExtractionRule`
+
+Базовый класс всех правил.
+
+Общий контракт:
+
+```python
+class ExtractionRule:
+    rule_id: str
+    entity_type: str
+
+    def extract(
+        self,
+        document,
+        spatial,
+    ) -> tuple[EntityCandidate, ...]:
+        ...
+```
+
+Правило:
+
+1. получает документ и пространственный индекс;
+2. ищет якоря, форматы и контекст;
+3. создаёт `EntityCandidate`;
+4. не связывает кандидата со стороной;
+5. не удаляет конфликты других правил.
+
+## `BINRule`, `IINRule`, `INNRule`
+
+Файл: `tax_ids.py`.
+
+Ищут налоговые идентификаторы.
+
+Пример логики `BINRule`:
+
+```text
+найти слово "БИН"
+→ посмотреть значение справа или ниже
+→ убрать разделители
+→ проверить 12 цифр
+→ объединить bbox цифр
+→ создать EntityCandidate(type="bin")
+```
+
+## `BIKRule`, `BICSWIFTRule`, `KZIBANRule`, `BankAccountRule`
+
+Файл: `bank_details.py`.
+
+Ищут банковские реквизиты.
+
+Дополнительно могут выполнять безопасные OCR-коррекции:
+
+```text
+O → 0
+I → 1
+```
+
+Но только там, где формат поля это допускает.
+
+`KZIBANRule` отдельно проверяет:
+
+- начало `KZ`;
+- длину;
+- допустимые символы;
+- MOD 97.
+
+## `DateRule`
+
+Файл: `document_values.py`.
+
+Ищет даты в разных форматах:
+
+```text
+17.06.2026
+17/06/2026
+17 июня 2026 года
+«17» июня 2026 г.
+```
+
+Нормализует:
+
+```text
+2026-06-17
+```
+
+Через контекст может записать назначение даты в `metadata`:
+
+```text
+contract_date
+repayment_due_date
+interest_start_date
+power_of_attorney_date
+```
+
+## `MoneyAmountRule`
+
+Ищет суммы и валюты.
+
+Пример:
+
+```text
+1 000 000,00 долларов США
+```
+
+Результат:
+
+```text
+value = "1000000.00"
+metadata.currency = "USD"
+```
+
+## `PercentageRule`
+
+Ищет проценты:
+
+```text
+4 %
+4%
+четыре процента
+```
+
+Через контекст может определить:
+
+```text
+annual_interest_rate
+penalty_rate
+commission_rate
+```
+
+## `OrganizationRule`
+
+Файл: `legal_parties.py`.
+
+Ищет организации по формам:
+
+```text
+ТОО
+ООО
+АО
+ИП
+LLP
+LLC
+```
+
+Возвращает название организации и возможную подсказку роли.
+
+## `BankNameRule`
+
+Ищет названия банков.
+
+Использует более строгий контекст, чем `OrganizationRule`:
+
+- слово `банк`;
+- банковский блок;
+- реквизиты рядом;
+- метки `Банк`, `Банк-корреспондент`;
+- многострочное название.
+
+Это предотвращает распознавание любой организации как банка.
+
+## `PersonNameRule`
+
+Ищет ФИО:
+
+```text
+Иванов Иван Иванович
+Иванов И.И.
+```
+
+Использует:
+
+- последовательность слов;
+- окончания;
+- слова `в лице`, `директор`, `представитель`;
+- подписи в реквизитах.
+
+## `PositionRule`
+
+Ищет должности:
+
+```text
+генеральный директор
+представитель
+председатель правления
+```
+
+Может нормализовать падеж:
+
+```text
+генерального директора
+→ генеральный директор
+```
+
+## `AddressRule`
+
+Файл: `addresses.py`.
+
+Ищет адрес по комбинации признаков:
+
+```text
+индекс;
+страна;
+город;
+улица;
+проспект;
+дом;
+офис;
+район.
+```
+
+Адрес может состоять из нескольких строк. В таком случае правило объединяет слова и bbox.
+
+---
+
+# 8. `RuleEngine`
+
+`RuleEngine` управляет запуском всех правил.
+
+Он:
+
+1. получает список `ExtractionRule`;
+2. последовательно запускает каждое правило;
+3. собирает все `EntityCandidate`;
+4. проверяет базовую корректность кандидатов;
+5. сохраняет ошибки отдельных правил;
+6. возвращает общий список кандидатов.
+
+При настройке:
+
+```python
+continue_on_error=True
+```
+
+ошибка одного правила не останавливает обработку документа.
+
+Например, если упал `AddressRule`, БИН, IBAN и организации всё равно будут извлечены.
+
+---
+
+# 9. Слой `resolution`
+
+Правила работают независимо, поэтому один участок текста может породить несколько кандидатов.
+
+## `EntityResolver`
+
+Получает:
+
+```text
+EntityCandidate[]
+```
+
+и возвращает:
+
+```text
+accepted_entities
+rejected_candidates
+```
+
+Основные задачи:
+
+### Удаление точных дублей
+
+Сравниваются:
+
+```text
+entity_type
+normalized value
+page
+word_ids
+bbox
+```
+
+### Разрешение конфликтов
+
+Примеры конфликтующих типов:
+
+```text
+bin / iin / inn
+iban / bank_account
+bik / bic_swift
+organization / bank_name
+```
+
+Resolver сравнивает:
+
+- confidence;
+- validation;
+- evidence;
+- количество подтверждающих сигналов;
+- точность формата;
+- пересечение слов и bbox.
+
+Лучший кандидат остаётся в основном результате. Остальные могут быть сохранены в `rejected_candidates` для отладки.
+
+---
+
+# 10. Слой `linking`
+
+До этого этапа сущности являются плоским списком:
+
+```text
+organization
+bin
+address
+person_name
+bank_name
+iban
+swift
+```
+
+`PartyLinker` превращает этот список в стороны договора.
+
+## `ContractParty`
+
+Представляет одну сторону:
+
+```text
+role
+organization
+organization_occurrences
+identifiers
+addresses
+representatives
+bank_details
+```
+
+## `PartyRepresentative`
+
+Представляет человека, подписывающего договор:
+
+```text
+name
+position
+name_occurrence_ids
+position_occurrence_ids
+```
+
+Полное ФИО в тексте и сокращённая подпись могут быть объединены в одного представителя.
+
+## `PartyBankDetails`
+
+Представляет один банковский блок:
+
+```text
+bank_name
+accounts
+iban
+bik
+swift
+is_correspondent
+```
+
+У одной стороны может быть несколько банковских блоков.
+
+## `PartyLinker`
+
+Основная логика:
+
+1. группирует одинаковые организации;
+2. определяет роль организации;
+3. выбирает основное упоминание;
+4. привязывает идентификаторы;
+5. привязывает адреса;
+6. привязывает представителей;
+7. собирает банковские блоки.
+
+Для связи используются:
+
+- одна страница;
+- одна колонка;
+- близкое вертикальное положение;
+- общий регион;
+- заголовок стороны;
+- role hint;
+- контекст реквизитов.
+
+Пример:
+
+```text
+Правая колонка:
+ТОО «Компания»
+Адрес
+БИН
+Банк
+IBAN
+SWIFT
+```
+
+Все эти сущности будут связаны с одной стороной.
+
+---
+
+# 11. `pipeline.py`
+
+## `ContractExtractorConfig`
+
+Настройки обработки.
+
+Обычно включает:
+
+```text
+continue_on_rule_error
+strict_candidate_validation
+include_rejected_candidates
+include_unassigned_entities
+```
+
+В сервисной версии сюда можно добавить:
+
+```text
+enabled_entity_types
+enable_party_linking
+```
+
+## `ContractExtractor`
+
+Главный управляющий класс.
+
+Он создаёт и соединяет:
+
+```text
+loader
+layout builder
+spatial search
+rule engine
+resolver
+party linker
+```
+
+Метод извлечения выполняет этапы:
+
+```text
+1. загрузка OCR JSON
+2. создание внутренних моделей
+3. построение layout
+4. запуск правил
+5. разрешение конфликтов
+6. связывание сторон
+7. создание итогового результата
+```
+
+## `extract_contract_data`
+
+Упрощённая публичная функция:
 
 ```python
 from contract_extractor import extract_contract_data
@@ -173,82 +840,104 @@ result = extract_contract_data(
 )
 ```
 
-Внутри выполняется:
+Она скрывает внутреннюю сборку pipeline и является основной точкой интеграции.
 
-```text
-load
-→ layout
-→ rules
-→ resolution
-→ linking
-→ result
-```
+---
 
-### `visualization/`
+# 12. `ContractExtractionResult`
 
-Рисует найденные сущности поверх исходного PDF.
-
-Создаёт:
-
-```text
-annotated_document.clean.pdf
-annotated_document.review.pdf
-```
-
-`clean` содержит рамки и номера.
-
-`review` содержит страницу и боковую легенду.
-
-## Запуск извлечения
-
-В `main.py` указывается входной OCR JSON.
-
-```bash
-python main.py
-```
-
-Результаты:
-
-```text
-data/output/document_result.debug.json
-data/output/document_result.json
-```
-
-### Debug JSON
+Финальный объект обработки.
 
 Содержит:
 
+```text
+status
+successful
+source
+document
+parties
+entities
+unassigned_entities
+rejected_candidates
+warnings
+issues
+metadata
+timings
+```
+
+## `to_dict()`
+
+Формирует debug JSON.
+
+Включает:
+
+- полные кандидаты;
 - evidence;
-- context;
+- validation;
 - rejected candidates;
 - warnings;
-- полные метаданные.
+- служебную информацию.
 
-### Production JSON
+Используется для разработки и анализа качества.
 
-Компактная версия для сервиса:
+## `to_production_dict()`
 
-- сущности хранятся в `entity_registry`;
-- стороны и поля документа ссылаются на сущности по ID;
-- объекты не дублируются.
+Формирует компактный JSON.
 
-## Запуск визуализации
+Сущности хранятся один раз:
 
-В `visualize_result.py` задаются:
-
-```python
-SOURCE_PDF_PATH
-RESULT_JSON_PATH
-OUTPUT_DIR
+```text
+entity_registry
 ```
 
-Запуск:
+Остальные блоки используют ссылки по ID.
 
-```bash
-python visualize_result.py
+Это уменьшает размер результата и подходит для API или базы данных.
+
+---
+
+# 13. Визуализация
+
+## `VisualizationConfig`
+
+Настраивает:
+
+```text
+dpi
+толщину рамок
+прозрачность
+размер шрифта
+режим подписей
+режим легенды
+создание PNG/PDF
 ```
 
-Результаты:
+## `VisualizationEntity`
+
+Упрощённое представление сущности для renderer:
+
+```text
+id
+entity_type
+value
+page
+bbox
+confidence
+owner_role
+owner_name
+```
+
+## `ContractResultVisualizer`
+
+Принимает:
+
+```text
+исходный PDF
++
+debug или production JSON
+```
+
+Создаёт:
 
 ```text
 page_001.clean.png
@@ -258,9 +947,26 @@ annotated_document.review.pdf
 visualization_summary.json
 ```
 
-Для корректной подсветки должен использоваться тот же PDF, по которому был выполнен OCR.
+### Clean
 
-## Подсветка только выбранных сущностей
+На документе только:
+
+- рамка;
+- прозрачная заливка;
+- номер сущности.
+
+### Review
+
+Слева clean-страница, справа легенда:
+
+```text
+номер
+тип
+значение
+сторона
+```
+
+### Фильтрация типов
 
 Только БИН:
 
@@ -273,92 +979,195 @@ visualizer.render_pdf(
 )
 ```
 
-Несколько типов:
+---
 
-```python
-include_entity_types={
-    "bin",
-    "organization",
-    "iban",
-}
-```
+# 14. Точки запуска
 
-## Получение сущностей из результата
+## `main.py`
 
-```python
-result = extract_contract_data(
-    "data/input/document_ocr.json"
-)
+Локальный запуск extraction pipeline.
 
-bins = result.entities_by_type("bin")
+Обычно:
 
-for item in bins:
-    print(item.value, item.page, item.bbox)
-```
+1. указывает путь к OCR JSON;
+2. вызывает `extract_contract_data`;
+3. сохраняет debug JSON;
+4. сохраняет production JSON;
+5. выводит краткую статистику.
 
-## Поддерживаемые типы
-
-```text
-date
-money_amount
-percentage
-organization
-bank_name
-person_name
-position
-address
-bin
-iin
-inn
-bik
-bic_swift
-iban
-bank_account
-```
-
-## Зависимости
+Запуск:
 
 ```bash
-pip install pymupdf pillow
+python main.py
 ```
 
-Остальные зависимости зависят от окружения проекта и OCR-пайплайна.
+## `visualize_result.py`
 
-## Ограничения
+Локальный запуск визуализации.
 
-- Модуль протестирован на ограниченном количестве документов.
-- Confidence является эвристической оценкой.
-- Внешние реестры организаций и банков не используются.
-- Визуализация зависит от совпадения PDF и OCR-координат.
-- Для документов с новой структурой могут понадобиться дополнительные правила.
-
-## Что остаётся сделать в сервисе
-
-Текущий проект — ядро обработки, а не готовый backend.
-
-Для полноценного сервиса нужно добавить:
+Указывает:
 
 ```text
-API
-загрузку PDF
-запуск OCR
-очередь задач
-хранение результатов
-авторизацию
-логирование
-обработку временных файлов
-мониторинг
-контейнеризацию
+SOURCE_PDF_PATH
+RESULT_JSON_PATH
+OUTPUT_DIR
 ```
 
-Основной вызов для интеграции:
+Запуск:
+
+```bash
+python visualize_result.py
+```
+
+---
+
+# 15. Как добавить новый тип сущности
+
+Например, `contract_number`.
+
+## Шаг 1
+
+Создать правило:
+
+```python
+class ContractNumberRule(ExtractionRule):
+    rule_id = "contract_number_rule"
+    entity_type = "contract_number"
+
+    def extract(self, document, spatial):
+        ...
+```
+
+## Шаг 2
+
+Добавить правило в список `RuleEngine`.
+
+## Шаг 3
+
+При необходимости добавить конфликтующие типы в `EntityResolver`.
+
+## Шаг 4
+
+Если поле относится к стороне, добавить linking-логику в `PartyLinker`.
+
+## Шаг 5
+
+Добавить цвет и название в `ContractResultVisualizer`.
+
+Остальные слои менять не требуется.
+
+---
+
+# 16. Что можно менять в OCR
+
+Можно менять:
+
+```text
+OCR-модель;
+предобработку изображения;
+многопоточность;
+рендер PDF;
+распознавание таблиц;
+порядок OCR-этапов.
+```
+
+Extractor не сломается, если на входе по-прежнему есть:
+
+```text
+pages
+words
+text
+bbox
+page number
+confidence
+```
+
+Если формат изменился, нужно менять только `input` или писать адаптер.
+
+Правила, resolver, linker и visualization должны работать с внутренними моделями, а не с конкретным JSON OCR-провайдера.
+
+---
+
+# 17. Интеграция в сервис
+
+Текущий проект — вычислительное ядро, а не готовый backend.
+
+Типовой сервисный процесс:
+
+```text
+POST /documents
+→ сохранить PDF
+→ запустить OCR
+→ получить OCR JSON
+→ extract_contract_data()
+→ сохранить production JSON
+→ при необходимости создать visualized PDF
+→ вернуть статус и результат
+```
+
+Основной вызов:
 
 ```python
 result = extract_contract_data(
     ocr_json_path
 )
 
-production_json = result.to_production_dict()
+production_data = result.to_production_dict()
 ```
 
-Визуализация подключается отдельно и запускается только при необходимости.
+Визуализация запускается отдельно:
+
+```python
+visualizer.render_pdf(
+    source_pdf_path=pdf_path,
+    result_json_path=result_json_path,
+    output_dir=output_dir,
+    include_entity_types={"bin"},
+)
+```
+
+# 18. Кратко об ответственности классов
+
+```text
+OCRDocumentLoader
+    превращает внешний JSON во внутренние модели
+
+BoundingBox
+    хранит и сравнивает координаты
+
+OCRWord / OCRPage / OCRDocument
+    представляют распознанный документ
+
+LayoutLineBuilder
+    собирает слова в строки
+
+SpatialSearch
+    даёт правилам пространственный поиск
+
+ExtractionRule
+    базовый контракт правила
+
+Конкретные Rule-классы
+    создают EntityCandidate
+
+RuleEngine
+    запускает правила и собирает кандидатов
+
+EntityResolver
+    удаляет дубли и разрешает конфликты
+
+PartyLinker
+    связывает сущности со сторонами
+
+ContractParty / PartyRepresentative / PartyBankDetails
+    представляют структурированный результат
+
+ContractExtractor
+    управляет полным pipeline
+
+ContractExtractionResult
+    хранит итог и формирует JSON
+
+ContractResultVisualizer
+    рисует сущности на PDF
+```
