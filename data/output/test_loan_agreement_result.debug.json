@@ -1,0 +1,4699 @@
+{
+  "summary": {
+    "status": "success_with_warnings",
+    "successful": true,
+    "party_count": 2,
+    "entity_count": 31,
+    "unassigned_entity_count": 0,
+    "rejected_candidate_count": 0,
+    "warning_count": 1,
+    "issue_count": 0
+  },
+  "source": {
+    "path": "data\\input\\test_loan_agreement_ocr.json",
+    "page_count": 2,
+    "word_count": 617,
+    "line_count": 85
+  },
+  "document": {
+    "type": "loan_agreement",
+    "date": {
+      "id": "candidate-date-p1-w4-6",
+      "entity_type": "date",
+      "value": "2026-06-17",
+      "raw_value": "«17» июня 2026",
+      "page": 1,
+      "bbox": [
+        0.717856,
+        0.096921,
+        0.827489,
+        0.105473
+      ],
+      "word_ids": [
+        "p1-w4",
+        "p1-w5",
+        "p1-w6"
+      ],
+      "confidence": 0.996,
+      "rule_id": "document.date.patterns.v1",
+      "region": "body",
+      "line_id": "p1-l1",
+      "anchor_word_ids": [],
+      "validation": {
+        "format": "iso_date",
+        "status": "valid",
+        "calendar_valid": true,
+        "day": 17,
+        "month": 6,
+        "year": 2026,
+        "date_format": "textual"
+      },
+      "evidence": [
+        {
+          "kind": "date_pattern",
+          "description": "Найдена календарная дата по текстовому или числовому шаблону",
+          "score_delta": 0.35,
+          "data": {
+            "date_format": "textual"
+          }
+        },
+        {
+          "kind": "calendar_validation",
+          "description": "День, месяц и год образуют корректную календарную дату",
+          "score_delta": 0.3,
+          "data": {
+            "day": 17,
+            "month": 6,
+            "year": 2026
+          }
+        },
+        {
+          "kind": "semantic_context",
+          "description": "По контексту определена предварительная роль даты",
+          "score_delta": 0.05,
+          "data": {
+            "role_hint": "contract_date"
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.096,
+          "data": {
+            "average_ocr_confidence": 0.96
+          }
+        }
+      ],
+      "metadata": {
+        "role_hint": "contract_date",
+        "context_text": "договор займа\nг. бишкек «17» июня 2026 года\nооо «тестовый завод», именуемое в дальнейшем «займодавец», в лице генерального директора"
+      }
+    },
+    "principal_amount": {
+      "id": "candidate-money-p1-w82-85",
+      "entity_type": "money_amount",
+      "value": "1000000.00",
+      "raw_value": "1 000 000,00 usd",
+      "page": 1,
+      "bbox": [
+        0.317614,
+        0.24886,
+        0.437727,
+        0.258552
+      ],
+      "word_ids": [
+        "p1-w82",
+        "p1-w83",
+        "p1-w84",
+        "p1-w85"
+      ],
+      "confidence": 0.89475,
+      "rule_id": "document.money_amount.currency.v1",
+      "region": "body",
+      "line_id": "p1-l9",
+      "anchor_word_ids": [],
+      "validation": {
+        "format": "decimal_money",
+        "status": "valid",
+        "amount": "1000000.00",
+        "currency": "USD",
+        "decimal_places": 2
+      },
+      "evidence": [
+        {
+          "kind": "amount_format",
+          "description": "Найдена корректная числовая денежная сумма",
+          "score_delta": 0.3,
+          "data": {
+            "amount": "1000000.00",
+            "decimal_places": 2
+          }
+        },
+        {
+          "kind": "currency",
+          "description": "Рядом с суммой найдена поддерживаемая валюта",
+          "score_delta": 0.25,
+          "data": {
+            "currency": "USD"
+          }
+        },
+        {
+          "kind": "semantic_context",
+          "description": "По контексту определено предварительное назначение суммы",
+          "score_delta": 0.05,
+          "data": {
+            "role_hint": "principal_amount"
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.09475,
+          "data": {
+            "average_ocr_confidence": 0.9475
+          }
+        }
+      ],
+      "metadata": {
+        "currency": "USD",
+        "amount_word_ids": [
+          "p1-w82",
+          "p1-w83",
+          "p1-w84"
+        ],
+        "currency_word_ids": [
+          "p1-w85"
+        ],
+        "role_hint": "principal_amount",
+        "context_text": "1.1. займодавец передает на условиях настоящего договора в собственность заемщику денежные\nсредства в размере 1 000 000,00 usd (один миллион долларов сша 00 центов), а заемщик\nобязуется в срок до «17» июня 2027 года вернуть указанную сумму займа и уплатить указанные"
+      }
+    },
+    "annual_interest_rate": {
+      "id": "candidate-percentage-p1-w283-284",
+      "entity_type": "percentage",
+      "value": "4",
+      "raw_value": "4 %",
+      "page": 1,
+      "bbox": [
+        0.379686,
+        0.56984,
+        0.405079,
+        0.577537
+      ],
+      "word_ids": [
+        "p1-w283",
+        "p1-w284"
+      ],
+      "confidence": 0.891,
+      "rule_id": "document.percentage.patterns.v1",
+      "region": "body",
+      "line_id": "p1-l29",
+      "anchor_word_ids": [],
+      "validation": {
+        "format": "percentage",
+        "status": "valid",
+        "percentage": "4",
+        "unit": "percent"
+      },
+      "evidence": [
+        {
+          "kind": "percentage_pattern",
+          "description": "Найдено число с обозначением процента",
+          "score_delta": 0.4,
+          "data": {
+            "percentage": "4"
+          }
+        },
+        {
+          "kind": "semantic_context",
+          "description": "По контексту определён тип процентного значения",
+          "score_delta": 0.15,
+          "data": {
+            "role_hint": "annual_interest_rate"
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.091,
+          "data": {
+            "average_ocr_confidence": 0.91
+          }
+        }
+      ],
+      "metadata": {
+        "role_hint": "annual_interest_rate",
+        "period": "annual",
+        "context_text": "2.3. на сумму займа, указанного в п. 1.1, начисляются проценты с момента получения заемщиком\nтраншей по займу в размере 4 % годовых в долларах сша.\n2.4. сумма займа, проценты и пеня могут выплачиваться в национальной валюте в сумме,"
+      }
+    },
+    "repayment_due_date": {
+      "id": "candidate-date-p1-w98-100",
+      "entity_type": "date",
+      "value": "2027-06-17",
+      "raw_value": "«17» июня 2027",
+      "page": 1,
+      "bbox": [
+        0.321644,
+        0.262828,
+        0.430472,
+        0.271095
+      ],
+      "word_ids": [
+        "p1-w98",
+        "p1-w99",
+        "p1-w100"
+      ],
+      "confidence": 0.994333,
+      "rule_id": "document.date.patterns.v1",
+      "region": "body",
+      "line_id": "p1-l10",
+      "anchor_word_ids": [],
+      "validation": {
+        "format": "iso_date",
+        "status": "valid",
+        "calendar_valid": true,
+        "day": 17,
+        "month": 6,
+        "year": 2027,
+        "date_format": "textual"
+      },
+      "evidence": [
+        {
+          "kind": "date_pattern",
+          "description": "Найдена календарная дата по текстовому или числовому шаблону",
+          "score_delta": 0.35,
+          "data": {
+            "date_format": "textual"
+          }
+        },
+        {
+          "kind": "calendar_validation",
+          "description": "День, месяц и год образуют корректную календарную дату",
+          "score_delta": 0.3,
+          "data": {
+            "day": 17,
+            "month": 6,
+            "year": 2027
+          }
+        },
+        {
+          "kind": "semantic_context",
+          "description": "По контексту определена предварительная роль даты",
+          "score_delta": 0.05,
+          "data": {
+            "role_hint": "repayment_due_date"
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.094333,
+          "data": {
+            "average_ocr_confidence": 0.943333
+          }
+        }
+      ],
+      "metadata": {
+        "role_hint": "repayment_due_date",
+        "context_text": "средства в размере 1 000 000,00 usd (один миллион долларов сша 00 центов), а заемщик\nобязуется в срок до «17» июня 2027 года вернуть указанную сумму займа и уплатить указанные\nв договоре проценты. договор может быть пролонгирован по обоюдному согласию сторон."
+      }
+    },
+    "interest_start_date": {
+      "id": "candidate-date-p1-w150-152",
+      "entity_type": "date",
+      "value": "2026-06-25",
+      "raw_value": "25 июня 2026",
+      "page": 1,
+      "bbox": [
+        0.678759,
+        0.323546,
+        0.771866,
+        0.331813
+      ],
+      "word_ids": [
+        "p1-w150",
+        "p1-w151",
+        "p1-w152"
+      ],
+      "confidence": 0.995667,
+      "rule_id": "document.date.patterns.v1",
+      "region": "body",
+      "line_id": "p1-l14",
+      "anchor_word_ids": [],
+      "validation": {
+        "format": "iso_date",
+        "status": "valid",
+        "calendar_valid": true,
+        "day": 25,
+        "month": 6,
+        "year": 2026,
+        "date_format": "textual"
+      },
+      "evidence": [
+        {
+          "kind": "date_pattern",
+          "description": "Найдена календарная дата по текстовому или числовому шаблону",
+          "score_delta": 0.35,
+          "data": {
+            "date_format": "textual"
+          }
+        },
+        {
+          "kind": "calendar_validation",
+          "description": "День, месяц и год образуют корректную календарную дату",
+          "score_delta": 0.3,
+          "data": {
+            "day": 25,
+            "month": 6,
+            "year": 2026
+          }
+        },
+        {
+          "kind": "semantic_context",
+          "description": "По контексту определена предварительная роль даты",
+          "score_delta": 0.05,
+          "data": {
+            "role_hint": "interest_start_date"
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.095667,
+          "data": {
+            "average_ocr_confidence": 0.956667
+          }
+        }
+      ],
+      "metadata": {
+        "role_hint": "interest_start_date",
+        "context_text": "1.2. проценты за пользование займом начисляются на сумму фактически предоставленного займа\nпо ставке, установленной пунктом 2.3 настоящего договора, начиная с 25 июня 2026 года, и\nподлежат уплате заемщиком один раз в шесть месяцев."
+      }
+    }
+  },
+  "parties": [
+    {
+      "id": "party-lender-candidate-organization-p2-w146-148",
+      "role": "lender",
+      "organization": {
+        "id": "candidate-organization-p2-w146-148",
+        "entity_type": "organization",
+        "value": "ооо «тестовый завод»",
+        "raw_value": "ооо «тестовый завод»",
+        "page": 2,
+        "bbox": [
+          0.166465,
+          0.431585,
+          0.325675,
+          0.440992
+        ],
+        "word_ids": [
+          "p2-w146",
+          "p2-w147",
+          "p2-w148"
+        ],
+        "confidence": 0.995333,
+        "rule_id": "legal.organization.legal_form.v2",
+        "region": "left_column",
+        "line_id": "p2-l20",
+        "anchor_word_ids": [
+          "p2-w146"
+        ],
+        "validation": {
+          "format": "legal_entity_name",
+          "status": "context_match",
+          "legal_form": "ООО",
+          "has_name": true
+        },
+        "evidence": [
+          {
+            "kind": "legal_form",
+            "description": "Найдена организационно-правовая форма юридического лица",
+            "score_delta": 0.4,
+            "data": {
+              "legal_form": "ООО",
+              "legal_form_word_ids": [
+                "p2-w146"
+              ]
+            }
+          },
+          {
+            "kind": "organization_name",
+            "description": "После правовой формы найдено название",
+            "score_delta": 0.2,
+            "data": {
+              "value": "ооо «тестовый завод»"
+            }
+          },
+          {
+            "kind": "party_context",
+            "description": "По ближайшему контексту определена роль стороны",
+            "score_delta": 0.1,
+            "data": {
+              "role_hint": "lender"
+            }
+          },
+          {
+            "kind": "ocr_confidence",
+            "description": "Учтена средняя уверенность OCR",
+            "score_delta": 0.095333,
+            "data": {
+              "average_ocr_confidence": 0.953333
+            }
+          }
+        ],
+        "metadata": {
+          "legal_form": "ООО",
+          "role_hint": "lender",
+          "context_text": "займодавец\nооо «тестовый завод»\n720000, г. бишкек, ул. тестовая, 1\nинн 00000000000000"
+        }
+      },
+      "identifiers": {
+        "inn": [
+          {
+            "id": "candidate-inn-p2-w156-156",
+            "entity_type": "inn",
+            "value": "00000000000000",
+            "raw_value": "00000000000000,",
+            "page": 2,
+            "bbox": [
+              0.202741,
+              0.458666,
+              0.311165,
+              0.466933
+            ],
+            "word_ids": [
+              "p2-w156"
+            ],
+            "confidence": 1.0,
+            "rule_id": "tax_id.inn.anchor_right.v1",
+            "region": "left_column",
+            "line_id": "p2-l24",
+            "anchor_word_ids": [
+              "p2-w155"
+            ],
+            "validation": {
+              "format": "tax_identifier",
+              "status": "shape_valid",
+              "shape": true,
+              "digit_count": 14,
+              "valid_lengths": [
+                10,
+                12,
+                14
+              ]
+            },
+            "evidence": [
+              {
+                "kind": "anchor",
+                "description": "Найден якорь ИНН на той же строке, что и значение",
+                "score_delta": 0.3,
+                "data": {
+                  "anchor_text": "инн",
+                  "anchor_word_id": "p2-w155",
+                  "aliases": [
+                    "инн"
+                  ]
+                }
+              },
+              {
+                "kind": "format",
+                "description": "Числовое значение имеет допустимую длину",
+                "score_delta": 0.25,
+                "data": {
+                  "format": "tax_identifier",
+                  "digit_count": 14,
+                  "valid_lengths": [
+                    10,
+                    12,
+                    14
+                  ]
+                }
+              },
+              {
+                "kind": "distance",
+                "description": "Значение расположено справа от ключевого слова",
+                "score_delta": 0.091132,
+                "data": {
+                  "horizontal_gap": 0.004434,
+                  "max_horizontal_gap": 0.05
+                }
+              },
+              {
+                "kind": "ocr_confidence",
+                "description": "Учтена средняя уверенность OCR для слов значения",
+                "score_delta": 0.091,
+                "data": {
+                  "average_ocr_confidence": 0.91
+                }
+              },
+              {
+                "kind": "compact_value",
+                "description": "ИНН распознан одним OCR-словом",
+                "score_delta": 0.05,
+                "data": {
+                  "word_count": 1
+                }
+              },
+              {
+                "kind": "ocr_value_confirmation",
+                "description": "Значение подтверждено массивом предварительно найденных OCR values",
+                "score_delta": 0.1,
+                "data": {
+                  "ocr_value_ids": [
+                    "ocr-value-0"
+                  ],
+                  "ocr_value_types": [
+                    "inn"
+                  ]
+                }
+              }
+            ],
+            "metadata": {
+              "display_name": "ИНН",
+              "anchor_text": "инн",
+              "anchor_bbox": [
+                0.166868,
+                0.459236,
+                0.198307,
+                0.466363
+              ],
+              "context_text": "ооо «тестовый завод»\n720000, г. бишкек, ул. тестовая, 1\nинн 00000000000000\nокпо 00000000 угнс 999\nбик 000000",
+              "value_word_count": 1,
+              "ocr_value_confirmation": true
+            }
+          }
+        ]
+      },
+      "addresses": [
+        {
+          "id": "candidate-address-p2-w149-154",
+          "entity_type": "address",
+          "value": "720000, г. бишкек, ул. тестовая, 1",
+          "raw_value": "720000, г. бишкек, ул. тестовая, 1",
+          "page": 2,
+          "bbox": [
+            0.166868,
+            0.445553,
+            0.380895,
+            0.45496
+          ],
+          "word_ids": [
+            "p2-w149",
+            "p2-w150",
+            "p2-w151",
+            "p2-w152",
+            "p2-w153",
+            "p2-w154"
+          ],
+          "confidence": 0.535833,
+          "rule_id": "legal.address.context.v1",
+          "region": "left_column",
+          "line_id": "p2-l22",
+          "anchor_word_ids": [],
+          "validation": {
+            "format": "postal_address",
+            "status": "context_match",
+            "postal_code": "720000",
+            "word_count": 6
+          },
+          "evidence": [
+            {
+              "kind": "address_shape",
+              "description": "Фрагмент содержит признаки адреса",
+              "score_delta": 0.24,
+              "data": {
+                "address_score": 4
+              }
+            },
+            {
+              "kind": "ocr_confidence",
+              "description": "Учтена средняя уверенность OCR",
+              "score_delta": 0.095833,
+              "data": {
+                "average_ocr_confidence": 0.958333
+              }
+            }
+          ],
+          "metadata": {
+            "role_hint": "address",
+            "line_ids": [
+              "p2-l22"
+            ],
+            "context_text": "ооо «тестовый завод»\n720000, г. бишкек, ул. тестовая, 1\nинн 00000000000000"
+          }
+        }
+      ],
+      "representatives": [
+        {
+          "name": {
+            "id": "candidate-person_name-p1-w19-21",
+            "entity_type": "person_name",
+            "value": "иванова ивана тестовича",
+            "raw_value": "иванова ивана тестовича,",
+            "page": 1,
+            "bbox": [
+              0.154776,
+              0.13854,
+              0.337364,
+              0.148803
+            ],
+            "word_ids": [
+              "p1-w19",
+              "p1-w20",
+              "p1-w21"
+            ],
+            "confidence": 0.993333,
+            "rule_id": "legal.person_name.context.v2",
+            "region": "body",
+            "line_id": "p1-l3",
+            "anchor_word_ids": [
+              "p1-w16"
+            ],
+            "validation": {
+              "format": "person_name",
+              "status": "context_match",
+              "word_count": 3
+            },
+            "evidence": [
+              {
+                "kind": "person_context",
+                "description": "ФИО найдено после юридического контекста в той же или следующей строке",
+                "score_delta": 0.4,
+                "data": {
+                  "anchor_word_id": "p1-w16"
+                }
+              },
+              {
+                "kind": "person_name_shape",
+                "description": "Последовательность соответствует ФИО или фамилии с инициалами",
+                "score_delta": 0.25,
+                "data": {
+                  "word_count": 3
+                }
+              },
+              {
+                "kind": "party_context",
+                "description": "Определена сторона представителя",
+                "score_delta": 0.05,
+                "data": {
+                  "party_role_hint": "lender"
+                }
+              },
+              {
+                "kind": "ocr_confidence",
+                "description": "Учтена средняя уверенность OCR",
+                "score_delta": 0.093333,
+                "data": {
+                  "average_ocr_confidence": 0.933333
+                }
+              }
+            ],
+            "metadata": {
+              "context_text": "г. бишкек «17» июня 2026 года\nооо «тестовый завод», именуемое в дальнейшем «займодавец», в лице генерального директора\nиванова ивана тестовича, действующего на основании устава предприятия, с одной стороны, и\nтоо «тест холдинг» в лице представителя петровой анны примеровны, действующей на\nосновании доверенности № 1 от 17.06.2026 года, именуемое в дальнейшем «заемщик», с другой",
+              "role_hint": "representative",
+              "party_role_hint": "lender"
+            }
+          },
+          "position": {
+            "id": "candidate-position-p1-w17-18",
+            "entity_type": "position",
+            "value": "генеральный директор",
+            "raw_value": "генерального директора",
+            "page": 1,
+            "bbox": [
+              0.663845,
+              0.125998,
+              0.831923,
+              0.138826
+            ],
+            "word_ids": [
+              "p1-w17",
+              "p1-w18"
+            ],
+            "confidence": 0.846,
+            "rule_id": "legal.position.dictionary.v2",
+            "region": "body",
+            "line_id": "p1-l2",
+            "anchor_word_ids": [],
+            "validation": {
+              "format": "position_title",
+              "status": "dictionary_match",
+              "canonical_value": "генеральный директор"
+            },
+            "evidence": [
+              {
+                "kind": "position_dictionary",
+                "description": "Найдена известная должность",
+                "score_delta": 0.5,
+                "data": {
+                  "canonical_position": "генеральный директор"
+                }
+              },
+              {
+                "kind": "ocr_confidence",
+                "description": "Учтена средняя уверенность OCR",
+                "score_delta": 0.096,
+                "data": {
+                  "average_ocr_confidence": 0.96
+                }
+              }
+            ],
+            "metadata": {
+              "context_text": "договор займа\nг. бишкек «17» июня 2026 года\nооо «тестовый завод», именуемое в дальнейшем «займодавец», в лице генерального директора\nиванова ивана тестовича, действующего на основании устава предприятия, с одной стороны, и\nтоо «тест холдинг» в лице представителя петровой анны примеровны, действующей на",
+              "role_hint": "representative_position",
+              "party_role_hint": "lender"
+            }
+          },
+          "confidence": 0.919667,
+          "candidate_ids": [
+            "candidate-person_name-p1-w19-21",
+            "candidate-position-p1-w17-18",
+            "candidate-person_name-p2-w172-173",
+            "candidate-position-p2-w170-171"
+          ],
+          "name_occurrence_ids": [
+            "candidate-person_name-p1-w19-21",
+            "candidate-person_name-p2-w172-173"
+          ],
+          "position_occurrence_ids": [
+            "candidate-position-p1-w17-18",
+            "candidate-position-p2-w170-171"
+          ]
+        }
+      ],
+      "bank_details": [
+        {
+          "bank_name": {
+            "id": "candidate-bank_name-p2-w167-169",
+            "entity_type": "bank_name",
+            "value": "ао «тест банк»",
+            "raw_value": "ао «тест банк»",
+            "page": 2,
+            "bbox": [
+              0.201935,
+              0.511973,
+              0.304313,
+              0.519099
+            ],
+            "word_ids": [
+              "p2-w167",
+              "p2-w168",
+              "p2-w169"
+            ],
+            "confidence": 0.941667,
+            "rule_id": "legal.bank_name.context.v2",
+            "region": "left_column",
+            "line_id": "p2-l32",
+            "anchor_word_ids": [],
+            "validation": {
+              "format": "bank_name",
+              "status": "context_match",
+              "explicit_anchor": false,
+              "line_count": 1
+            },
+            "evidence": [
+              {
+                "kind": "bank_legal_form",
+                "description": "Название содержит правовую форму и банковский термин",
+                "score_delta": 0.35,
+                "data": {
+                  "bank_role": "bank"
+                }
+              },
+              {
+                "kind": "bank_name_shape",
+                "description": "Фрагмент соответствует форме названия банка",
+                "score_delta": 0.25,
+                "data": {
+                  "value": "ао «тест банк»",
+                  "line_count": 1
+                }
+              },
+              {
+                "kind": "requisites_region",
+                "description": "Название находится в блоке реквизитов",
+                "score_delta": 0.1,
+                "data": {
+                  "region": "left_column"
+                }
+              },
+              {
+                "kind": "ocr_confidence",
+                "description": "Учтена средняя уверенность OCR",
+                "score_delta": 0.091667,
+                "data": {
+                  "average_ocr_confidence": 0.916667
+                }
+              }
+            ],
+            "metadata": {
+              "context_text": "бик 000000\nр/счет № test0000000001\nbu® ао «тест банк»\nгенеральный директор\nиванов и.т.",
+              "role_hint": "bank",
+              "bank_role": "bank",
+              "line_ids": [
+                "p2-l32"
+              ]
+            }
+          },
+          "accounts": [
+            {
+              "id": "candidate-bank_account-p2-w165-165",
+              "entity_type": "bank_account",
+              "value": "TEST0000000001",
+              "raw_value": "те$т0000000001",
+              "page": 2,
+              "bbox": [
+                0.227328,
+                0.498575,
+                0.337767,
+                0.505701
+              ],
+              "word_ids": [
+                "p2-w165"
+              ],
+              "confidence": 1.0,
+              "rule_id": "bank.account.anchor_right.v1",
+              "region": "left_column",
+              "line_id": "p2-l30",
+              "anchor_word_ids": [
+                "p2-w163"
+              ],
+              "validation": {
+                "format": "generic_bank_account",
+                "status": "unverified",
+                "shape": true,
+                "code_length": 14,
+                "digit_count": 10,
+                "letter_count": 4,
+                "strict": false,
+                "checksum_valid": null
+              },
+              "evidence": [
+                {
+                  "kind": "anchor",
+                  "description": "Найден якорь банковский счёт перед значением",
+                  "score_delta": 0.3,
+                  "data": {
+                    "anchor_text": "р/счет",
+                    "anchor_word_ids": [
+                      "p2-w163"
+                    ]
+                  }
+                },
+                {
+                  "kind": "format",
+                  "description": "Значение соответствует формату банковский счёт",
+                  "score_delta": 0.25,
+                  "data": {
+                    "code_length": 14,
+                    "digit_count": 10,
+                    "letter_count": 4,
+                    "strict": false,
+                    "checksum_valid": null
+                  }
+                },
+                {
+                  "kind": "distance",
+                  "description": "Значение расположено справа от ключевого слова",
+                  "score_delta": 0.081862,
+                  "data": {
+                    "horizontal_gap": 0.021766,
+                    "max_horizontal_gap": 0.12
+                  }
+                },
+                {
+                  "kind": "ocr_confidence",
+                  "description": "Учтена средняя уверенность OCR для слов значения",
+                  "score_delta": 0.085,
+                  "data": {
+                    "average_ocr_confidence": 0.85
+                  }
+                },
+                {
+                  "kind": "compact_value",
+                  "description": "Счёт распознан одним OCR-словом",
+                  "score_delta": 0.05,
+                  "data": {
+                    "word_count": 1
+                  }
+                },
+                {
+                  "kind": "ocr_correction",
+                  "description": "При нормализации сохранены исправления OCR",
+                  "score_delta": 0.0,
+                  "data": {
+                    "corrections": [
+                      "p2-w165:0000000001→TEST0000000001"
+                    ]
+                  }
+                },
+                {
+                  "kind": "ocr_value_confirmation",
+                  "description": "Значение подтверждено массивом предварительно найденных OCR values",
+                  "score_delta": 0.1,
+                  "data": {
+                    "ocr_value_ids": [
+                      "ocr-value-3"
+                    ],
+                    "ocr_value_types": [
+                      "account"
+                    ]
+                  }
+                }
+              ],
+              "metadata": {
+                "display_name": "банковский счёт",
+                "anchor_text": "р/счет",
+                "anchor_bbox": [
+                  0.166868,
+                  0.499145,
+                  0.205562,
+                  0.508267
+                ],
+                "context_text": "окпо 00000000 угнс 999\nбик 000000\nр/счет № test0000000001\nbu® ао «тест банк»\nгенеральный директор",
+                "value_word_count": 1,
+                "corrections": [
+                  "p2-w165:0000000001→TEST0000000001"
+                ],
+                "ocr_value_confirmation": true
+              }
+            }
+          ],
+          "bik_codes": [
+            {
+              "id": "candidate-bik-p2-w162-162",
+              "entity_type": "bik",
+              "value": "000000",
+              "raw_value": "000000",
+              "page": 2,
+              "bbox": [
+                0.199919,
+                0.485462,
+                0.244659,
+                0.492588
+              ],
+              "word_ids": [
+                "p2-w162"
+              ],
+              "confidence": 1.0,
+              "rule_id": "bank.bik.anchor_right.v1",
+              "region": "left_column",
+              "line_id": "p2-l28",
+              "anchor_word_ids": [
+                "p2-w161"
+              ],
+              "validation": {
+                "format": "bank_identifier_code",
+                "status": "shape_valid",
+                "shape": true,
+                "code_length": 6,
+                "character_set": "numeric"
+              },
+              "evidence": [
+                {
+                  "kind": "anchor",
+                  "description": "Найден якорь БИК на той же строке, что и значение",
+                  "score_delta": 0.3,
+                  "data": {
+                    "anchor_text": "бик",
+                    "anchor_word_id": "p2-w161",
+                    "aliases": [
+                      "bik",
+                      "бик",
+                      "мфо"
+                    ]
+                  }
+                },
+                {
+                  "kind": "format",
+                  "description": "Значение соответствует формату БИК",
+                  "score_delta": 0.25,
+                  "data": {
+                    "code_length": 6,
+                    "character_set": "numeric"
+                  }
+                },
+                {
+                  "kind": "distance",
+                  "description": "Значение расположено справа от банковского ключа",
+                  "score_delta": 0.092612,
+                  "data": {
+                    "horizontal_gap": 0.004433,
+                    "max_horizontal_gap": 0.06
+                  }
+                },
+                {
+                  "kind": "ocr_confidence",
+                  "description": "Учтена средняя уверенность OCR для слов значения",
+                  "score_delta": 0.096,
+                  "data": {
+                    "average_ocr_confidence": 0.96
+                  }
+                },
+                {
+                  "kind": "compact_value",
+                  "description": "Банковский код распознан одним OCR-словом",
+                  "score_delta": 0.05,
+                  "data": {
+                    "word_count": 1
+                  }
+                },
+                {
+                  "kind": "ocr_value_confirmation",
+                  "description": "Значение подтверждено массивом предварительно найденных OCR values",
+                  "score_delta": 0.1,
+                  "data": {
+                    "ocr_value_ids": [
+                      "ocr-value-2"
+                    ],
+                    "ocr_value_types": [
+                      "bik"
+                    ]
+                  }
+                }
+              ],
+              "metadata": {
+                "display_name": "БИК",
+                "anchor_text": "бик",
+                "anchor_bbox": [
+                  0.166868,
+                  0.485747,
+                  0.195486,
+                  0.492873
+                ],
+                "context_text": "инн 00000000000000\nокпо 00000000 угнс 999\nбик 000000\nр/счет № test0000000001\nbu® ао «тест банк»",
+                "value_word_count": 1,
+                "ocr_value_confirmation": true
+              }
+            }
+          ],
+          "swift_codes": [],
+          "confidence": 0.980556,
+          "candidate_ids": [
+            "candidate-bank_name-p2-w167-169",
+            "candidate-bank_account-p2-w165-165",
+            "candidate-bik-p2-w162-162"
+          ]
+        }
+      ],
+      "confidence": 0.959217,
+      "warnings": [],
+      "candidate_ids": [
+        "candidate-organization-p2-w146-148",
+        "candidate-organization-p1-w8-10",
+        "candidate-position-p1-w17-18",
+        "candidate-person_name-p1-w19-21",
+        "candidate-address-p2-w149-154",
+        "candidate-inn-p2-w156-156",
+        "candidate-bik-p2-w162-162",
+        "candidate-bank_account-p2-w165-165",
+        "candidate-bank_name-p2-w167-169",
+        "candidate-position-p2-w170-171",
+        "candidate-person_name-p2-w172-173"
+      ],
+      "metadata": {
+        "normalized_organization_name": "ооо тестовый завод",
+        "organization_occurrence_ids": [
+          "candidate-organization-p1-w8-10",
+          "candidate-organization-p2-w146-148"
+        ],
+        "assigned_candidate_ids": [
+          "candidate-position-p1-w17-18",
+          "candidate-person_name-p1-w19-21",
+          "candidate-address-p2-w149-154",
+          "candidate-inn-p2-w156-156",
+          "candidate-bik-p2-w162-162",
+          "candidate-bank_account-p2-w165-165",
+          "candidate-bank_name-p2-w167-169",
+          "candidate-position-p2-w170-171",
+          "candidate-person_name-p2-w172-173"
+        ],
+        "primary_region": "left_column",
+        "primary_page": 2
+      }
+    },
+    {
+      "id": "party-borrower-candidate-organization-p2-w175-177",
+      "role": "borrower",
+      "organization": {
+        "id": "candidate-organization-p2-w175-177",
+        "entity_type": "organization",
+        "value": "тоо «тест холдинг»",
+        "raw_value": "тоо «тест холдинг»",
+        "page": 2,
+        "bbox": [
+          0.51189,
+          0.4313,
+          0.655784,
+          0.440137
+        ],
+        "word_ids": [
+          "p2-w175",
+          "p2-w176",
+          "p2-w177"
+        ],
+        "confidence": 0.995667,
+        "rule_id": "legal.organization.legal_form.v2",
+        "region": "right_column",
+        "line_id": "p2-l19",
+        "anchor_word_ids": [
+          "p2-w175"
+        ],
+        "validation": {
+          "format": "legal_entity_name",
+          "status": "context_match",
+          "legal_form": "ТОО",
+          "has_name": true
+        },
+        "evidence": [
+          {
+            "kind": "legal_form",
+            "description": "Найдена организационно-правовая форма юридического лица",
+            "score_delta": 0.4,
+            "data": {
+              "legal_form": "ТОО",
+              "legal_form_word_ids": [
+                "p2-w175"
+              ]
+            }
+          },
+          {
+            "kind": "organization_name",
+            "description": "После правовой формы найдено название",
+            "score_delta": 0.2,
+            "data": {
+              "value": "тоо «тест холдинг»"
+            }
+          },
+          {
+            "kind": "party_context",
+            "description": "По ближайшему контексту определена роль стороны",
+            "score_delta": 0.1,
+            "data": {
+              "role_hint": "borrower"
+            }
+          },
+          {
+            "kind": "ocr_confidence",
+            "description": "Учтена средняя уверенность OCR",
+            "score_delta": 0.095667,
+            "data": {
+              "average_ocr_confidence": 0.956667
+            }
+          }
+        ],
+        "metadata": {
+          "legal_form": "ТОО",
+          "role_hint": "borrower",
+          "context_text": "заемщик\nтоо «тест холдинг»\n010000, республика казахстан,\nг. астана, пр. тестовый 10/1, 1701"
+        }
+      },
+      "identifiers": {
+        "bin": [
+          {
+            "id": "candidate-bin-p2-w188-188",
+            "entity_type": "bin",
+            "value": "000000000000",
+            "raw_value": "000000000000,",
+            "page": 2,
+            "bbox": [
+              0.546957,
+              0.471209,
+              0.640064,
+              0.47919
+            ],
+            "word_ids": [
+              "p2-w188"
+            ],
+            "confidence": 1.0,
+            "rule_id": "tax_id.bin.anchor_right.v2",
+            "region": "right_column",
+            "line_id": "p2-l25",
+            "anchor_word_ids": [
+              "p2-w187"
+            ],
+            "validation": {
+              "format": "kz_bin",
+              "status": "shape_valid",
+              "shape": true,
+              "digit_count": 12,
+              "valid_lengths": [
+                12
+              ]
+            },
+            "evidence": [
+              {
+                "kind": "anchor",
+                "description": "Найден якорь БИН на той же строке, что и значение",
+                "score_delta": 0.3,
+                "data": {
+                  "anchor_text": "бин",
+                  "anchor_word_id": "p2-w187",
+                  "aliases": [
+                    "бин",
+                    "бсн"
+                  ]
+                }
+              },
+              {
+                "kind": "format",
+                "description": "Числовое значение имеет допустимую длину",
+                "score_delta": 0.25,
+                "data": {
+                  "format": "kz_bin",
+                  "digit_count": 12,
+                  "valid_lengths": [
+                    12
+                  ]
+                }
+              },
+              {
+                "kind": "distance",
+                "description": "Значение расположено справа от ключевого слова",
+                "score_delta": 0.08952,
+                "data": {
+                  "horizontal_gap": 0.00524,
+                  "max_horizontal_gap": 0.05
+                }
+              },
+              {
+                "kind": "ocr_confidence",
+                "description": "Учтена средняя уверенность OCR для слов значения",
+                "score_delta": 0.091,
+                "data": {
+                  "average_ocr_confidence": 0.91
+                }
+              },
+              {
+                "kind": "compact_value",
+                "description": "БИН распознан одним OCR-словом",
+                "score_delta": 0.05,
+                "data": {
+                  "word_count": 1
+                }
+              },
+              {
+                "kind": "ocr_value_confirmation",
+                "description": "Значение подтверждено массивом предварительно найденных OCR values",
+                "score_delta": 0.1,
+                "data": {
+                  "ocr_value_ids": [
+                    "ocr-value-4"
+                  ],
+                  "ocr_value_types": [
+                    "bin"
+                  ]
+                }
+              }
+            ],
+            "metadata": {
+              "display_name": "БИН",
+              "anchor_text": "бин",
+              "anchor_bbox": [
+                0.512696,
+                0.471494,
+                0.541717,
+                0.478335
+              ],
+              "context_text": "010000, республика казахстан,\nг. астана, пр. тестовый 10/1, 1701\nбин 000000000000\nбанк: ао «test bank»\nр/с: kz00test000000000000",
+              "value_word_count": 1,
+              "ocr_value_confirmation": true
+            }
+          }
+        ]
+      },
+      "addresses": [
+        {
+          "id": "candidate-address-p2-w178-186",
+          "entity_type": "address",
+          "value": "010000, республика казахстан, г. астана, пр. тестовый 10/1, 1701",
+          "raw_value": "010000, республика казахстан, г. астана, пр. тестовый 10/1, 1701",
+          "page": 2,
+          "bbox": [
+            0.512293,
+            0.443843,
+            0.729141,
+            0.467218
+          ],
+          "word_ids": [
+            "p2-w178",
+            "p2-w179",
+            "p2-w180",
+            "p2-w181",
+            "p2-w182",
+            "p2-w183",
+            "p2-w184",
+            "p2-w185",
+            "p2-w186"
+          ],
+          "confidence": 0.595889,
+          "rule_id": "legal.address.context.v1",
+          "region": "right_column",
+          "line_id": "p2-l21",
+          "anchor_word_ids": [],
+          "validation": {
+            "format": "postal_address",
+            "status": "context_match",
+            "postal_code": "010000",
+            "word_count": 9
+          },
+          "evidence": [
+            {
+              "kind": "address_shape",
+              "description": "Фрагмент содержит признаки адреса",
+              "score_delta": 0.3,
+              "data": {
+                "address_score": 5
+              }
+            },
+            {
+              "kind": "ocr_confidence",
+              "description": "Учтена средняя уверенность OCR",
+              "score_delta": 0.095889,
+              "data": {
+                "average_ocr_confidence": 0.958889
+              }
+            }
+          ],
+          "metadata": {
+            "role_hint": "address",
+            "line_ids": [
+              "p2-l21",
+              "p2-l23"
+            ],
+            "context_text": "тоо «тест холдинг»\n010000, республика казахстан,\nг. астана, пр. тестовый 10/1, 1701"
+          }
+        }
+      ],
+      "representatives": [
+        {
+          "name": {
+            "id": "candidate-person_name-p1-w37-39",
+            "entity_type": "person_name",
+            "value": "петровой анны примеровны",
+            "raw_value": "петровой анны примеровны,",
+            "page": 1,
+            "bbox": [
+              0.460701,
+              0.153934,
+              0.668682,
+              0.165051
+            ],
+            "word_ids": [
+              "p1-w37",
+              "p1-w38",
+              "p1-w39"
+            ],
+            "confidence": 0.993667,
+            "rule_id": "legal.person_name.context.v2",
+            "region": "body",
+            "line_id": "p1-l4",
+            "anchor_word_ids": [
+              "p1-w35"
+            ],
+            "validation": {
+              "format": "person_name",
+              "status": "context_match",
+              "word_count": 3
+            },
+            "evidence": [
+              {
+                "kind": "person_context",
+                "description": "ФИО найдено после юридического контекста в той же или следующей строке",
+                "score_delta": 0.4,
+                "data": {
+                  "anchor_word_id": "p1-w35"
+                }
+              },
+              {
+                "kind": "person_name_shape",
+                "description": "Последовательность соответствует ФИО или фамилии с инициалами",
+                "score_delta": 0.25,
+                "data": {
+                  "word_count": 3
+                }
+              },
+              {
+                "kind": "party_context",
+                "description": "Определена сторона представителя",
+                "score_delta": 0.05,
+                "data": {
+                  "party_role_hint": "borrower"
+                }
+              },
+              {
+                "kind": "ocr_confidence",
+                "description": "Учтена средняя уверенность OCR",
+                "score_delta": 0.093667,
+                "data": {
+                  "average_ocr_confidence": 0.936667
+                }
+              }
+            ],
+            "metadata": {
+              "context_text": "ооо «тестовый завод», именуемое в дальнейшем «займодавец», в лице генерального директора\nиванова ивана тестовича, действующего на основании устава предприятия, с одной стороны, и\nтоо «тест холдинг» в лице представителя петровой анны примеровны, действующей на\nосновании доверенности № 1 от 17.06.2026 года, именуемое в дальнейшем «заемщик», с другой\nстороны, а вместе именуемые «стороны», заключили настоящий договор о нижеследующем.",
+              "role_hint": "representative",
+              "party_role_hint": "borrower"
+            }
+          },
+          "position": {
+            "id": "candidate-position-p1-w36-36",
+            "entity_type": "position",
+            "value": "представитель",
+            "raw_value": "представителя",
+            "page": 1,
+            "bbox": [
+              0.355905,
+              0.155644,
+              0.455462,
+              0.164196
+            ],
+            "word_ids": [
+              "p1-w36"
+            ],
+            "confidence": 0.846,
+            "rule_id": "legal.position.dictionary.v2",
+            "region": "body",
+            "line_id": "p1-l4",
+            "anchor_word_ids": [],
+            "validation": {
+              "format": "position_title",
+              "status": "dictionary_match",
+              "canonical_value": "представитель"
+            },
+            "evidence": [
+              {
+                "kind": "position_dictionary",
+                "description": "Найдена известная должность",
+                "score_delta": 0.5,
+                "data": {
+                  "canonical_position": "представитель"
+                }
+              },
+              {
+                "kind": "ocr_confidence",
+                "description": "Учтена средняя уверенность OCR",
+                "score_delta": 0.096,
+                "data": {
+                  "average_ocr_confidence": 0.96
+                }
+              }
+            ],
+            "metadata": {
+              "context_text": "ооо «тестовый завод», именуемое в дальнейшем «займодавец», в лице генерального директора\nиванова ивана тестовича, действующего на основании устава предприятия, с одной стороны, и\nтоо «тест холдинг» в лице представителя петровой анны примеровны, действующей на\nосновании доверенности № 1 от 17.06.2026 года, именуемое в дальнейшем «заемщик», с другой\nстороны, а вместе именуемые «стороны», заключили настоящий договор о нижеследующем.",
+              "role_hint": "representative_position",
+              "party_role_hint": "borrower"
+            }
+          },
+          "confidence": 0.919833,
+          "candidate_ids": [
+            "candidate-person_name-p1-w37-39",
+            "candidate-position-p1-w36-36",
+            "candidate-person_name-p2-w211-212",
+            "candidate-position-p2-w210-210"
+          ],
+          "name_occurrence_ids": [
+            "candidate-person_name-p1-w37-39",
+            "candidate-person_name-p2-w211-212"
+          ],
+          "position_occurrence_ids": [
+            "candidate-position-p1-w36-36",
+            "candidate-position-p2-w210-210"
+          ]
+        }
+      ],
+      "bank_details": [
+        {
+          "bank_name": {
+            "id": "candidate-bank_name-p2-w190-192",
+            "entity_type": "bank_name",
+            "value": "ао «test bank»",
+            "raw_value": "ао «test bank»",
+            "page": 2,
+            "bbox": [
+              0.551391,
+              0.484322,
+              0.67231,
+              0.491733
+            ],
+            "word_ids": [
+              "p2-w190",
+              "p2-w191",
+              "p2-w192"
+            ],
+            "confidence": 0.994,
+            "rule_id": "legal.bank_name.context.v2",
+            "region": "right_column",
+            "line_id": "p2-l27",
+            "anchor_word_ids": [
+              "p2-w189"
+            ],
+            "validation": {
+              "format": "bank_name",
+              "status": "context_match",
+              "explicit_anchor": true,
+              "line_count": 1
+            },
+            "evidence": [
+              {
+                "kind": "bank_anchor",
+                "description": "Найден явный банковский ключ",
+                "score_delta": 0.4,
+                "data": {
+                  "anchor_word_ids": [
+                    "p2-w189"
+                  ],
+                  "bank_role": "bank"
+                }
+              },
+              {
+                "kind": "bank_name_shape",
+                "description": "Фрагмент соответствует форме названия банка",
+                "score_delta": 0.25,
+                "data": {
+                  "value": "ао «test bank»",
+                  "line_count": 1
+                }
+              },
+              {
+                "kind": "requisites_region",
+                "description": "Название находится в блоке реквизитов",
+                "score_delta": 0.1,
+                "data": {
+                  "region": "right_column"
+                }
+              },
+              {
+                "kind": "ocr_confidence",
+                "description": "Учтена средняя уверенность OCR",
+                "score_delta": 0.094,
+                "data": {
+                  "average_ocr_confidence": 0.94
+                }
+              }
+            ],
+            "metadata": {
+              "context_text": "г. астана, пр. тестовый 10/1, 1701\nбин 000000000000\nбанк: ао «test bank»\nр/с: kz00test000000000000\nбик/swift: testkzkx",
+              "role_hint": "bank",
+              "bank_role": "bank",
+              "line_ids": [
+                "p2-l27"
+              ]
+            }
+          },
+          "accounts": [
+            {
+              "id": "candidate-iban-p2-w194-194",
+              "entity_type": "iban",
+              "value": "KZ00TEST000000000000",
+              "raw_value": "kzootest000000000000",
+              "page": 2,
+              "bbox": [
+                0.543732,
+                0.497434,
+                0.704152,
+                0.504846
+              ],
+              "word_ids": [
+                "p2-w194"
+              ],
+              "confidence": 0.956298,
+              "rule_id": "bank.iban.kz.anchor_right.v1",
+              "region": "right_column",
+              "line_id": "p2-l29",
+              "anchor_word_ids": [
+                "p2-w193"
+              ],
+              "validation": {
+                "format": "kz_iban",
+                "status": "checksum_invalid",
+                "shape": true,
+                "country_code": "KZ",
+                "check_digits": "00",
+                "bban": "TEST000000000000",
+                "code_length": 20,
+                "checksum_valid": false
+              },
+              "evidence": [
+                {
+                  "kind": "anchor",
+                  "description": "Найден якорь IBAN перед значением",
+                  "score_delta": 0.3,
+                  "data": {
+                    "anchor_text": "р/с",
+                    "anchor_word_ids": [
+                      "p2-w193"
+                    ]
+                  }
+                },
+                {
+                  "kind": "format",
+                  "description": "Значение соответствует формату IBAN",
+                  "score_delta": 0.25,
+                  "data": {
+                    "country_code": "KZ",
+                    "check_digits": "00",
+                    "bban": "TEST000000000000",
+                    "code_length": 20,
+                    "checksum_valid": false
+                  }
+                },
+                {
+                  "kind": "distance",
+                  "description": "Значение расположено справа от ключевого слова",
+                  "score_delta": 0.095298,
+                  "data": {
+                    "horizontal_gap": 0.005643,
+                    "max_horizontal_gap": 0.12
+                  }
+                },
+                {
+                  "kind": "ocr_confidence",
+                  "description": "Учтена средняя уверенность OCR для слов значения",
+                  "score_delta": 0.091,
+                  "data": {
+                    "average_ocr_confidence": 0.91
+                  }
+                },
+                {
+                  "kind": "compact_value",
+                  "description": "Счёт распознан одним OCR-словом",
+                  "score_delta": 0.05,
+                  "data": {
+                    "word_count": 1
+                  }
+                },
+                {
+                  "kind": "ocr_correction",
+                  "description": "При нормализации сохранены исправления OCR",
+                  "score_delta": 0.0,
+                  "data": {
+                    "corrections": [
+                      "p2-w194:KZOOTEST000000000000→KZ00TEST000000000000"
+                    ]
+                  }
+                },
+                {
+                  "kind": "ocr_value_confirmation",
+                  "description": "Значение подтверждено массивом предварительно найденных OCR values",
+                  "score_delta": 0.1,
+                  "data": {
+                    "ocr_value_ids": [
+                      "ocr-value-5"
+                    ],
+                    "ocr_value_types": [
+                      "account"
+                    ]
+                  }
+                },
+                {
+                  "kind": "checksum",
+                  "description": "Форма IBAN корректна, но контрольная сумма не прошла проверку",
+                  "score_delta": -0.08,
+                  "data": {
+                    "checksum_valid": false
+                  }
+                }
+              ],
+              "metadata": {
+                "display_name": "IBAN",
+                "anchor_text": "р/с",
+                "anchor_bbox": [
+                  0.512696,
+                  0.498005,
+                  0.538089,
+                  0.504846
+                ],
+                "context_text": "бин 000000000000\nбанк: ао «test bank»\nр/с: kz00test000000000000\nбик/swift: testkzkx\nбанк корреспондент: the bank of",
+                "value_word_count": 1,
+                "corrections": [
+                  "p2-w194:KZOOTEST000000000000→KZ00TEST000000000000"
+                ],
+                "ocr_value_confirmation": true
+              }
+            }
+          ],
+          "bik_codes": [],
+          "swift_codes": [
+            {
+              "id": "candidate-bic_swift-p2-w196-196",
+              "entity_type": "bic_swift",
+              "value": "TESTKZKX",
+              "raw_value": "testkzkx",
+              "page": 2,
+              "bbox": [
+                0.598549,
+                0.510832,
+                0.67634,
+                0.517959
+              ],
+              "word_ids": [
+                "p2-w196"
+              ],
+              "confidence": 1.0,
+              "rule_id": "bank.bic_swift.anchor_right.v1",
+              "region": "right_column",
+              "line_id": "p2-l31",
+              "anchor_word_ids": [
+                "p2-w195"
+              ],
+              "validation": {
+                "format": "swift_bic",
+                "status": "shape_valid",
+                "shape": true,
+                "code_length": 8,
+                "bank_code": "TEST",
+                "country_code": "KZ",
+                "location_code": "KX",
+                "branch_code": null
+              },
+              "evidence": [
+                {
+                  "kind": "anchor",
+                  "description": "Найден якорь SWIFT/BIC на той же строке, что и значение",
+                  "score_delta": 0.3,
+                  "data": {
+                    "anchor_text": "бик/swift:",
+                    "anchor_word_id": "p2-w195",
+                    "aliases": [
+                      "bic",
+                      "bic/swift",
+                      "bik/swift",
+                      "swift",
+                      "swift/bic",
+                      "swift/bik",
+                      "swift/бик",
+                      "бик/swift"
+                    ]
+                  }
+                },
+                {
+                  "kind": "format",
+                  "description": "Значение соответствует формату SWIFT/BIC",
+                  "score_delta": 0.25,
+                  "data": {
+                    "code_length": 8,
+                    "bank_code": "TEST",
+                    "country_code": "KZ",
+                    "location_code": "KX",
+                    "branch_code": null
+                  }
+                },
+                {
+                  "kind": "distance",
+                  "description": "Значение расположено справа от банковского ключа",
+                  "score_delta": 0.091938,
+                  "data": {
+                    "horizontal_gap": 0.004837,
+                    "max_horizontal_gap": 0.06
+                  }
+                },
+                {
+                  "kind": "ocr_confidence",
+                  "description": "Учтена средняя уверенность OCR для слов значения",
+                  "score_delta": 0.091,
+                  "data": {
+                    "average_ocr_confidence": 0.91
+                  }
+                },
+                {
+                  "kind": "compact_value",
+                  "description": "Банковский код распознан одним OCR-словом",
+                  "score_delta": 0.05,
+                  "data": {
+                    "word_count": 1
+                  }
+                },
+                {
+                  "kind": "ocr_value_confirmation",
+                  "description": "Значение подтверждено массивом предварительно найденных OCR values",
+                  "score_delta": 0.1,
+                  "data": {
+                    "ocr_value_ids": [
+                      "ocr-value-6"
+                    ],
+                    "ocr_value_types": [
+                      "bic_swift"
+                    ]
+                  }
+                }
+              ],
+              "metadata": {
+                "display_name": "SWIFT/BIC",
+                "anchor_text": "бик/swift:",
+                "anchor_bbox": [
+                  0.512696,
+                  0.510832,
+                  0.593712,
+                  0.518244
+                ],
+                "context_text": "банк: ао «test bank»\nр/с: kz00test000000000000\nбик/swift: testkzkx\nбанк корреспондент: the bank of\nnew york test mellon",
+                "value_word_count": 1,
+                "ocr_value_confirmation": true
+              }
+            }
+          ],
+          "confidence": 0.983433,
+          "candidate_ids": [
+            "candidate-bank_name-p2-w190-192",
+            "candidate-iban-p2-w194-194",
+            "candidate-bic_swift-p2-w196-196"
+          ]
+        },
+        {
+          "bank_name": {
+            "id": "candidate-bank_name-p2-w199-205",
+            "entity_type": "bank_name",
+            "value": "the bank of new york test mellon",
+            "raw_value": "the bank of new york test mellon",
+            "page": 2,
+            "bbox": [
+              0.512696,
+              0.52366,
+              0.749295,
+              0.544755
+            ],
+            "word_ids": [
+              "p2-w199",
+              "p2-w200",
+              "p2-w201",
+              "p2-w202",
+              "p2-w203",
+              "p2-w204",
+              "p2-w205"
+            ],
+            "confidence": 0.995571,
+            "rule_id": "legal.bank_name.context.v2",
+            "region": "right_column",
+            "line_id": "p2-l33",
+            "anchor_word_ids": [
+              "p2-w197",
+              "p2-w198"
+            ],
+            "validation": {
+              "format": "bank_name",
+              "status": "context_match",
+              "explicit_anchor": true,
+              "line_count": 2
+            },
+            "evidence": [
+              {
+                "kind": "bank_anchor",
+                "description": "Найден явный банковский ключ",
+                "score_delta": 0.4,
+                "data": {
+                  "anchor_word_ids": [
+                    "p2-w197",
+                    "p2-w198"
+                  ],
+                  "bank_role": "correspondent_bank"
+                }
+              },
+              {
+                "kind": "bank_name_shape",
+                "description": "Фрагмент соответствует форме названия банка",
+                "score_delta": 0.25,
+                "data": {
+                  "value": "the bank of new york test mellon",
+                  "line_count": 2
+                }
+              },
+              {
+                "kind": "requisites_region",
+                "description": "Название находится в блоке реквизитов",
+                "score_delta": 0.1,
+                "data": {
+                  "region": "right_column"
+                }
+              },
+              {
+                "kind": "ocr_confidence",
+                "description": "Учтена средняя уверенность OCR",
+                "score_delta": 0.095571,
+                "data": {
+                  "average_ocr_confidence": 0.955714
+                }
+              }
+            ],
+            "metadata": {
+              "context_text": "р/с: kz00test000000000000\nбик/swift: testkzkx\nбанк корреспондент: the bank of\nnew york test mellon\nswift: testus33",
+              "role_hint": "bank",
+              "bank_role": "correspondent_bank",
+              "line_ids": [
+                "p2-l33",
+                "p2-l34"
+              ]
+            }
+          },
+          "accounts": [
+            {
+              "id": "candidate-bank_account-p2-w209-209",
+              "entity_type": "bank_account",
+              "value": "0000000000",
+              "raw_value": "0000000000",
+              "page": 2,
+              "bbox": [
+                0.57235,
+                0.563854,
+                0.646514,
+                0.570981
+              ],
+              "word_ids": [
+                "p2-w209"
+              ],
+              "confidence": 1.0,
+              "rule_id": "bank.account.anchor_right.v1",
+              "region": "right_column",
+              "line_id": "p2-l36",
+              "anchor_word_ids": [
+                "p2-w208"
+              ],
+              "validation": {
+                "format": "generic_bank_account",
+                "status": "unverified",
+                "shape": true,
+                "code_length": 10,
+                "digit_count": 10,
+                "letter_count": 0,
+                "strict": false,
+                "checksum_valid": null
+              },
+              "evidence": [
+                {
+                  "kind": "anchor",
+                  "description": "Найден якорь банковский счёт перед значением",
+                  "score_delta": 0.3,
+                  "data": {
+                    "anchor_text": "account",
+                    "anchor_word_ids": [
+                      "p2-w208"
+                    ]
+                  }
+                },
+                {
+                  "kind": "format",
+                  "description": "Значение соответствует формату банковский счёт",
+                  "score_delta": 0.25,
+                  "data": {
+                    "code_length": 10,
+                    "digit_count": 10,
+                    "letter_count": 0,
+                    "strict": false,
+                    "checksum_valid": null
+                  }
+                },
+                {
+                  "kind": "distance",
+                  "description": "Значение расположено справа от ключевого слова",
+                  "score_delta": 0.095633,
+                  "data": {
+                    "horizontal_gap": 0.00524,
+                    "max_horizontal_gap": 0.12
+                  }
+                },
+                {
+                  "kind": "ocr_confidence",
+                  "description": "Учтена средняя уверенность OCR для слов значения",
+                  "score_delta": 0.096,
+                  "data": {
+                    "average_ocr_confidence": 0.96
+                  }
+                },
+                {
+                  "kind": "compact_value",
+                  "description": "Счёт распознан одним OCR-словом",
+                  "score_delta": 0.05,
+                  "data": {
+                    "word_count": 1
+                  }
+                },
+                {
+                  "kind": "ocr_value_confirmation",
+                  "description": "Значение подтверждено массивом предварительно найденных OCR values",
+                  "score_delta": 0.1,
+                  "data": {
+                    "ocr_value_ids": [
+                      "ocr-value-8"
+                    ],
+                    "ocr_value_types": [
+                      "account"
+                    ]
+                  }
+                }
+              ],
+              "metadata": {
+                "display_name": "банковский счёт",
+                "anchor_text": "account",
+                "anchor_bbox": [
+                  0.5131,
+                  0.564139,
+                  0.56711,
+                  0.571266
+                ],
+                "context_text": "new york test mellon\nswift: testus33\naccount: 0000000000\nпредставитель\nпетрова а.п.",
+                "value_word_count": 1,
+                "corrections": [],
+                "ocr_value_confirmation": true
+              }
+            }
+          ],
+          "bik_codes": [],
+          "swift_codes": [
+            {
+              "id": "candidate-bic_swift-p2-w207-207",
+              "entity_type": "bic_swift",
+              "value": "TESTUS33",
+              "raw_value": "testus33",
+              "page": 2,
+              "bbox": [
+                0.565095,
+                0.550741,
+                0.634825,
+                0.557868
+              ],
+              "word_ids": [
+                "p2-w207"
+              ],
+              "confidence": 1.0,
+              "rule_id": "bank.bic_swift.anchor_right.v1",
+              "region": "right_column",
+              "line_id": "p2-l35",
+              "anchor_word_ids": [
+                "p2-w206"
+              ],
+              "validation": {
+                "format": "swift_bic",
+                "status": "shape_valid",
+                "shape": true,
+                "code_length": 8,
+                "bank_code": "TEST",
+                "country_code": "US",
+                "location_code": "33",
+                "branch_code": null
+              },
+              "evidence": [
+                {
+                  "kind": "anchor",
+                  "description": "Найден якорь SWIFT/BIC на той же строке, что и значение",
+                  "score_delta": 0.3,
+                  "data": {
+                    "anchor_text": "swift:",
+                    "anchor_word_id": "p2-w206",
+                    "aliases": [
+                      "bic",
+                      "bic/swift",
+                      "bik/swift",
+                      "swift",
+                      "swift/bic",
+                      "swift/bik",
+                      "swift/бик",
+                      "бик/swift"
+                    ]
+                  }
+                },
+                {
+                  "kind": "format",
+                  "description": "Значение соответствует формату SWIFT/BIC",
+                  "score_delta": 0.25,
+                  "data": {
+                    "code_length": 8,
+                    "bank_code": "TEST",
+                    "country_code": "US",
+                    "location_code": "33",
+                    "branch_code": null
+                  }
+                },
+                {
+                  "kind": "distance",
+                  "description": "Значение расположено справа от банковского ключа",
+                  "score_delta": 0.091938,
+                  "data": {
+                    "horizontal_gap": 0.004837,
+                    "max_horizontal_gap": 0.06
+                  }
+                },
+                {
+                  "kind": "ocr_confidence",
+                  "description": "Учтена средняя уверенность OCR для слов значения",
+                  "score_delta": 0.091,
+                  "data": {
+                    "average_ocr_confidence": 0.91
+                  }
+                },
+                {
+                  "kind": "compact_value",
+                  "description": "Банковский код распознан одним OCR-словом",
+                  "score_delta": 0.05,
+                  "data": {
+                    "word_count": 1
+                  }
+                },
+                {
+                  "kind": "ocr_value_confirmation",
+                  "description": "Значение подтверждено массивом предварительно найденных OCR values",
+                  "score_delta": 0.1,
+                  "data": {
+                    "ocr_value_ids": [
+                      "ocr-value-7"
+                    ],
+                    "ocr_value_types": [
+                      "bic_swift"
+                    ]
+                  }
+                }
+              ],
+              "metadata": {
+                "display_name": "SWIFT/BIC",
+                "anchor_text": "swift:",
+                "anchor_bbox": [
+                  0.513503,
+                  0.550741,
+                  0.560258,
+                  0.557868
+                ],
+                "context_text": "банк корреспондент: the bank of\nnew york test mellon\nswift: testus33\naccount: 0000000000\nпредставитель",
+                "value_word_count": 1,
+                "ocr_value_confirmation": true
+              }
+            }
+          ],
+          "confidence": 0.998524,
+          "candidate_ids": [
+            "candidate-bank_name-p2-w199-205",
+            "candidate-bank_account-p2-w209-209",
+            "candidate-bic_swift-p2-w207-207"
+          ]
+        }
+      ],
+      "confidence": 0.985776,
+      "warnings": [],
+      "candidate_ids": [
+        "candidate-organization-p2-w175-177",
+        "candidate-organization-p1-w31-33",
+        "candidate-person_name-p1-w37-39",
+        "candidate-position-p1-w36-36",
+        "candidate-address-p2-w178-186",
+        "candidate-bin-p2-w188-188",
+        "candidate-bank_name-p2-w190-192",
+        "candidate-iban-p2-w194-194",
+        "candidate-bic_swift-p2-w196-196",
+        "candidate-bank_name-p2-w199-205",
+        "candidate-bic_swift-p2-w207-207",
+        "candidate-bank_account-p2-w209-209",
+        "candidate-position-p2-w210-210",
+        "candidate-person_name-p2-w211-212"
+      ],
+      "metadata": {
+        "normalized_organization_name": "тоо тест холдинг",
+        "organization_occurrence_ids": [
+          "candidate-organization-p1-w31-33",
+          "candidate-organization-p2-w175-177"
+        ],
+        "assigned_candidate_ids": [
+          "candidate-person_name-p1-w37-39",
+          "candidate-position-p1-w36-36",
+          "candidate-address-p2-w178-186",
+          "candidate-bin-p2-w188-188",
+          "candidate-bank_name-p2-w190-192",
+          "candidate-iban-p2-w194-194",
+          "candidate-bic_swift-p2-w196-196",
+          "candidate-bank_name-p2-w199-205",
+          "candidate-bic_swift-p2-w207-207",
+          "candidate-bank_account-p2-w209-209",
+          "candidate-position-p2-w210-210",
+          "candidate-person_name-p2-w211-212"
+        ],
+        "primary_region": "right_column",
+        "primary_page": 2
+      }
+    }
+  ],
+  "entities": [
+    {
+      "id": "candidate-date-p1-w4-6",
+      "entity_type": "date",
+      "value": "2026-06-17",
+      "raw_value": "«17» июня 2026",
+      "page": 1,
+      "bbox": [
+        0.717856,
+        0.096921,
+        0.827489,
+        0.105473
+      ],
+      "word_ids": [
+        "p1-w4",
+        "p1-w5",
+        "p1-w6"
+      ],
+      "confidence": 0.996,
+      "rule_id": "document.date.patterns.v1",
+      "region": "body",
+      "line_id": "p1-l1",
+      "anchor_word_ids": [],
+      "validation": {
+        "format": "iso_date",
+        "status": "valid",
+        "calendar_valid": true,
+        "day": 17,
+        "month": 6,
+        "year": 2026,
+        "date_format": "textual"
+      },
+      "evidence": [
+        {
+          "kind": "date_pattern",
+          "description": "Найдена календарная дата по текстовому или числовому шаблону",
+          "score_delta": 0.35,
+          "data": {
+            "date_format": "textual"
+          }
+        },
+        {
+          "kind": "calendar_validation",
+          "description": "День, месяц и год образуют корректную календарную дату",
+          "score_delta": 0.3,
+          "data": {
+            "day": 17,
+            "month": 6,
+            "year": 2026
+          }
+        },
+        {
+          "kind": "semantic_context",
+          "description": "По контексту определена предварительная роль даты",
+          "score_delta": 0.05,
+          "data": {
+            "role_hint": "contract_date"
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.096,
+          "data": {
+            "average_ocr_confidence": 0.96
+          }
+        }
+      ],
+      "metadata": {
+        "role_hint": "contract_date",
+        "context_text": "договор займа\nг. бишкек «17» июня 2026 года\nооо «тестовый завод», именуемое в дальнейшем «займодавец», в лице генерального директора"
+      }
+    },
+    {
+      "id": "candidate-organization-p1-w8-10",
+      "entity_type": "organization",
+      "value": "ооо «тестовый завод»",
+      "raw_value": "ооо «тестовый завод»,",
+      "page": 1,
+      "bbox": [
+        0.154776,
+        0.124572,
+        0.321241,
+        0.13512
+      ],
+      "word_ids": [
+        "p1-w8",
+        "p1-w9",
+        "p1-w10"
+      ],
+      "confidence": 0.995,
+      "rule_id": "legal.organization.legal_form.v2",
+      "region": "body",
+      "line_id": "p1-l2",
+      "anchor_word_ids": [
+        "p1-w8"
+      ],
+      "validation": {
+        "format": "legal_entity_name",
+        "status": "context_match",
+        "legal_form": "ООО",
+        "has_name": true
+      },
+      "evidence": [
+        {
+          "kind": "legal_form",
+          "description": "Найдена организационно-правовая форма юридического лица",
+          "score_delta": 0.4,
+          "data": {
+            "legal_form": "ООО",
+            "legal_form_word_ids": [
+              "p1-w8"
+            ]
+          }
+        },
+        {
+          "kind": "organization_name",
+          "description": "После правовой формы найдено название",
+          "score_delta": 0.2,
+          "data": {
+            "value": "ооо «тестовый завод»"
+          }
+        },
+        {
+          "kind": "party_context",
+          "description": "По ближайшему контексту определена роль стороны",
+          "score_delta": 0.1,
+          "data": {
+            "role_hint": "lender"
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.095,
+          "data": {
+            "average_ocr_confidence": 0.95
+          }
+        }
+      ],
+      "metadata": {
+        "legal_form": "ООО",
+        "role_hint": "lender",
+        "context_text": "договор займа\nг. бишкек «17» июня 2026 года\nооо «тестовый завод», именуемое в дальнейшем «займодавец», в лице генерального директора\nиванова ивана тестовича, действующего на основании устава предприятия, с одной стороны, и\nтоо «тест холдинг» в лице представителя петровой анны примеровны, действующей на"
+      }
+    },
+    {
+      "id": "candidate-position-p1-w17-18",
+      "entity_type": "position",
+      "value": "генеральный директор",
+      "raw_value": "генерального директора",
+      "page": 1,
+      "bbox": [
+        0.663845,
+        0.125998,
+        0.831923,
+        0.138826
+      ],
+      "word_ids": [
+        "p1-w17",
+        "p1-w18"
+      ],
+      "confidence": 0.846,
+      "rule_id": "legal.position.dictionary.v2",
+      "region": "body",
+      "line_id": "p1-l2",
+      "anchor_word_ids": [],
+      "validation": {
+        "format": "position_title",
+        "status": "dictionary_match",
+        "canonical_value": "генеральный директор"
+      },
+      "evidence": [
+        {
+          "kind": "position_dictionary",
+          "description": "Найдена известная должность",
+          "score_delta": 0.5,
+          "data": {
+            "canonical_position": "генеральный директор"
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.096,
+          "data": {
+            "average_ocr_confidence": 0.96
+          }
+        }
+      ],
+      "metadata": {
+        "context_text": "договор займа\nг. бишкек «17» июня 2026 года\nооо «тестовый завод», именуемое в дальнейшем «займодавец», в лице генерального директора\nиванова ивана тестовича, действующего на основании устава предприятия, с одной стороны, и\nтоо «тест холдинг» в лице представителя петровой анны примеровны, действующей на",
+        "role_hint": "representative_position",
+        "party_role_hint": "lender"
+      }
+    },
+    {
+      "id": "candidate-person_name-p1-w19-21",
+      "entity_type": "person_name",
+      "value": "иванова ивана тестовича",
+      "raw_value": "иванова ивана тестовича,",
+      "page": 1,
+      "bbox": [
+        0.154776,
+        0.13854,
+        0.337364,
+        0.148803
+      ],
+      "word_ids": [
+        "p1-w19",
+        "p1-w20",
+        "p1-w21"
+      ],
+      "confidence": 0.993333,
+      "rule_id": "legal.person_name.context.v2",
+      "region": "body",
+      "line_id": "p1-l3",
+      "anchor_word_ids": [
+        "p1-w16"
+      ],
+      "validation": {
+        "format": "person_name",
+        "status": "context_match",
+        "word_count": 3
+      },
+      "evidence": [
+        {
+          "kind": "person_context",
+          "description": "ФИО найдено после юридического контекста в той же или следующей строке",
+          "score_delta": 0.4,
+          "data": {
+            "anchor_word_id": "p1-w16"
+          }
+        },
+        {
+          "kind": "person_name_shape",
+          "description": "Последовательность соответствует ФИО или фамилии с инициалами",
+          "score_delta": 0.25,
+          "data": {
+            "word_count": 3
+          }
+        },
+        {
+          "kind": "party_context",
+          "description": "Определена сторона представителя",
+          "score_delta": 0.05,
+          "data": {
+            "party_role_hint": "lender"
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.093333,
+          "data": {
+            "average_ocr_confidence": 0.933333
+          }
+        }
+      ],
+      "metadata": {
+        "context_text": "г. бишкек «17» июня 2026 года\nооо «тестовый завод», именуемое в дальнейшем «займодавец», в лице генерального директора\nиванова ивана тестовича, действующего на основании устава предприятия, с одной стороны, и\nтоо «тест холдинг» в лице представителя петровой анны примеровны, действующей на\nосновании доверенности № 1 от 17.06.2026 года, именуемое в дальнейшем «заемщик», с другой",
+        "role_hint": "representative",
+        "party_role_hint": "lender"
+      }
+    },
+    {
+      "id": "candidate-organization-p1-w31-33",
+      "entity_type": "organization",
+      "value": "тоо «тест холдинг»",
+      "raw_value": "тоо «тест холдинг»",
+      "page": 1,
+      "bbox": [
+        0.154373,
+        0.152794,
+        0.301491,
+        0.163056
+      ],
+      "word_ids": [
+        "p1-w31",
+        "p1-w32",
+        "p1-w33"
+      ],
+      "confidence": 0.995667,
+      "rule_id": "legal.organization.legal_form.v2",
+      "region": "body",
+      "line_id": "p1-l4",
+      "anchor_word_ids": [
+        "p1-w31"
+      ],
+      "validation": {
+        "format": "legal_entity_name",
+        "status": "context_match",
+        "legal_form": "ТОО",
+        "has_name": true
+      },
+      "evidence": [
+        {
+          "kind": "legal_form",
+          "description": "Найдена организационно-правовая форма юридического лица",
+          "score_delta": 0.4,
+          "data": {
+            "legal_form": "ТОО",
+            "legal_form_word_ids": [
+              "p1-w31"
+            ]
+          }
+        },
+        {
+          "kind": "organization_name",
+          "description": "После правовой формы найдено название",
+          "score_delta": 0.2,
+          "data": {
+            "value": "тоо «тест холдинг»"
+          }
+        },
+        {
+          "kind": "party_context",
+          "description": "По ближайшему контексту определена роль стороны",
+          "score_delta": 0.1,
+          "data": {
+            "role_hint": "borrower"
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.095667,
+          "data": {
+            "average_ocr_confidence": 0.956667
+          }
+        }
+      ],
+      "metadata": {
+        "legal_form": "ТОО",
+        "role_hint": "borrower",
+        "context_text": "ооо «тестовый завод», именуемое в дальнейшем «займодавец», в лице генерального директора\nиванова ивана тестовича, действующего на основании устава предприятия, с одной стороны, и\nтоо «тест холдинг» в лице представителя петровой анны примеровны, действующей на\nосновании доверенности № 1 от 17.06.2026 года, именуемое в дальнейшем «заемщик», с другой\nстороны, а вместе именуемые «стороны», заключили настоящий договор о нижеследующем."
+      }
+    },
+    {
+      "id": "candidate-person_name-p1-w37-39",
+      "entity_type": "person_name",
+      "value": "петровой анны примеровны",
+      "raw_value": "петровой анны примеровны,",
+      "page": 1,
+      "bbox": [
+        0.460701,
+        0.153934,
+        0.668682,
+        0.165051
+      ],
+      "word_ids": [
+        "p1-w37",
+        "p1-w38",
+        "p1-w39"
+      ],
+      "confidence": 0.993667,
+      "rule_id": "legal.person_name.context.v2",
+      "region": "body",
+      "line_id": "p1-l4",
+      "anchor_word_ids": [
+        "p1-w35"
+      ],
+      "validation": {
+        "format": "person_name",
+        "status": "context_match",
+        "word_count": 3
+      },
+      "evidence": [
+        {
+          "kind": "person_context",
+          "description": "ФИО найдено после юридического контекста в той же или следующей строке",
+          "score_delta": 0.4,
+          "data": {
+            "anchor_word_id": "p1-w35"
+          }
+        },
+        {
+          "kind": "person_name_shape",
+          "description": "Последовательность соответствует ФИО или фамилии с инициалами",
+          "score_delta": 0.25,
+          "data": {
+            "word_count": 3
+          }
+        },
+        {
+          "kind": "party_context",
+          "description": "Определена сторона представителя",
+          "score_delta": 0.05,
+          "data": {
+            "party_role_hint": "borrower"
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.093667,
+          "data": {
+            "average_ocr_confidence": 0.936667
+          }
+        }
+      ],
+      "metadata": {
+        "context_text": "ооо «тестовый завод», именуемое в дальнейшем «займодавец», в лице генерального директора\nиванова ивана тестовича, действующего на основании устава предприятия, с одной стороны, и\nтоо «тест холдинг» в лице представителя петровой анны примеровны, действующей на\nосновании доверенности № 1 от 17.06.2026 года, именуемое в дальнейшем «заемщик», с другой\nстороны, а вместе именуемые «стороны», заключили настоящий договор о нижеследующем.",
+        "role_hint": "representative",
+        "party_role_hint": "borrower"
+      }
+    },
+    {
+      "id": "candidate-position-p1-w36-36",
+      "entity_type": "position",
+      "value": "представитель",
+      "raw_value": "представителя",
+      "page": 1,
+      "bbox": [
+        0.355905,
+        0.155644,
+        0.455462,
+        0.164196
+      ],
+      "word_ids": [
+        "p1-w36"
+      ],
+      "confidence": 0.846,
+      "rule_id": "legal.position.dictionary.v2",
+      "region": "body",
+      "line_id": "p1-l4",
+      "anchor_word_ids": [],
+      "validation": {
+        "format": "position_title",
+        "status": "dictionary_match",
+        "canonical_value": "представитель"
+      },
+      "evidence": [
+        {
+          "kind": "position_dictionary",
+          "description": "Найдена известная должность",
+          "score_delta": 0.5,
+          "data": {
+            "canonical_position": "представитель"
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.096,
+          "data": {
+            "average_ocr_confidence": 0.96
+          }
+        }
+      ],
+      "metadata": {
+        "context_text": "ооо «тестовый завод», именуемое в дальнейшем «займодавец», в лице генерального директора\nиванова ивана тестовича, действующего на основании устава предприятия, с одной стороны, и\nтоо «тест холдинг» в лице представителя петровой анны примеровны, действующей на\nосновании доверенности № 1 от 17.06.2026 года, именуемое в дальнейшем «заемщик», с другой\nстороны, а вместе именуемые «стороны», заключили настоящий договор о нижеследующем.",
+        "role_hint": "representative_position",
+        "party_role_hint": "borrower"
+      }
+    },
+    {
+      "id": "candidate-date-p1-w47-47",
+      "entity_type": "date",
+      "value": "2026-06-17",
+      "raw_value": "17.06.2026",
+      "page": 1,
+      "bbox": [
+        0.386941,
+        0.167902,
+        0.458686,
+        0.176169
+      ],
+      "word_ids": [
+        "p1-w47"
+      ],
+      "confidence": 0.996,
+      "rule_id": "document.date.patterns.v1",
+      "region": "body",
+      "line_id": "p1-l5",
+      "anchor_word_ids": [],
+      "validation": {
+        "format": "iso_date",
+        "status": "valid",
+        "calendar_valid": true,
+        "day": 17,
+        "month": 6,
+        "year": 2026,
+        "date_format": "numeric"
+      },
+      "evidence": [
+        {
+          "kind": "date_pattern",
+          "description": "Найдена календарная дата по текстовому или числовому шаблону",
+          "score_delta": 0.35,
+          "data": {
+            "date_format": "numeric"
+          }
+        },
+        {
+          "kind": "calendar_validation",
+          "description": "День, месяц и год образуют корректную календарную дату",
+          "score_delta": 0.3,
+          "data": {
+            "day": 17,
+            "month": 6,
+            "year": 2026
+          }
+        },
+        {
+          "kind": "semantic_context",
+          "description": "По контексту определена предварительная роль даты",
+          "score_delta": 0.05,
+          "data": {
+            "role_hint": "power_of_attorney_date"
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.096,
+          "data": {
+            "average_ocr_confidence": 0.96
+          }
+        }
+      ],
+      "metadata": {
+        "role_hint": "power_of_attorney_date",
+        "context_text": "тоо «тест холдинг» в лице представителя петровой анны примеровны, действующей на\nосновании доверенности № 1 от 17.06.2026 года, именуемое в дальнейшем «заемщик», с другой\nстороны, а вместе именуемые «стороны», заключили настоящий договор о нижеследующем."
+      }
+    },
+    {
+      "id": "candidate-money-p1-w82-85",
+      "entity_type": "money_amount",
+      "value": "1000000.00",
+      "raw_value": "1 000 000,00 usd",
+      "page": 1,
+      "bbox": [
+        0.317614,
+        0.24886,
+        0.437727,
+        0.258552
+      ],
+      "word_ids": [
+        "p1-w82",
+        "p1-w83",
+        "p1-w84",
+        "p1-w85"
+      ],
+      "confidence": 0.89475,
+      "rule_id": "document.money_amount.currency.v1",
+      "region": "body",
+      "line_id": "p1-l9",
+      "anchor_word_ids": [],
+      "validation": {
+        "format": "decimal_money",
+        "status": "valid",
+        "amount": "1000000.00",
+        "currency": "USD",
+        "decimal_places": 2
+      },
+      "evidence": [
+        {
+          "kind": "amount_format",
+          "description": "Найдена корректная числовая денежная сумма",
+          "score_delta": 0.3,
+          "data": {
+            "amount": "1000000.00",
+            "decimal_places": 2
+          }
+        },
+        {
+          "kind": "currency",
+          "description": "Рядом с суммой найдена поддерживаемая валюта",
+          "score_delta": 0.25,
+          "data": {
+            "currency": "USD"
+          }
+        },
+        {
+          "kind": "semantic_context",
+          "description": "По контексту определено предварительное назначение суммы",
+          "score_delta": 0.05,
+          "data": {
+            "role_hint": "principal_amount"
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.09475,
+          "data": {
+            "average_ocr_confidence": 0.9475
+          }
+        }
+      ],
+      "metadata": {
+        "currency": "USD",
+        "amount_word_ids": [
+          "p1-w82",
+          "p1-w83",
+          "p1-w84"
+        ],
+        "currency_word_ids": [
+          "p1-w85"
+        ],
+        "role_hint": "principal_amount",
+        "context_text": "1.1. займодавец передает на условиях настоящего договора в собственность заемщику денежные\nсредства в размере 1 000 000,00 usd (один миллион долларов сша 00 центов), а заемщик\nобязуется в срок до «17» июня 2027 года вернуть указанную сумму займа и уплатить указанные"
+      }
+    },
+    {
+      "id": "candidate-date-p1-w98-100",
+      "entity_type": "date",
+      "value": "2027-06-17",
+      "raw_value": "«17» июня 2027",
+      "page": 1,
+      "bbox": [
+        0.321644,
+        0.262828,
+        0.430472,
+        0.271095
+      ],
+      "word_ids": [
+        "p1-w98",
+        "p1-w99",
+        "p1-w100"
+      ],
+      "confidence": 0.994333,
+      "rule_id": "document.date.patterns.v1",
+      "region": "body",
+      "line_id": "p1-l10",
+      "anchor_word_ids": [],
+      "validation": {
+        "format": "iso_date",
+        "status": "valid",
+        "calendar_valid": true,
+        "day": 17,
+        "month": 6,
+        "year": 2027,
+        "date_format": "textual"
+      },
+      "evidence": [
+        {
+          "kind": "date_pattern",
+          "description": "Найдена календарная дата по текстовому или числовому шаблону",
+          "score_delta": 0.35,
+          "data": {
+            "date_format": "textual"
+          }
+        },
+        {
+          "kind": "calendar_validation",
+          "description": "День, месяц и год образуют корректную календарную дату",
+          "score_delta": 0.3,
+          "data": {
+            "day": 17,
+            "month": 6,
+            "year": 2027
+          }
+        },
+        {
+          "kind": "semantic_context",
+          "description": "По контексту определена предварительная роль даты",
+          "score_delta": 0.05,
+          "data": {
+            "role_hint": "repayment_due_date"
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.094333,
+          "data": {
+            "average_ocr_confidence": 0.943333
+          }
+        }
+      ],
+      "metadata": {
+        "role_hint": "repayment_due_date",
+        "context_text": "средства в размере 1 000 000,00 usd (один миллион долларов сша 00 центов), а заемщик\nобязуется в срок до «17» июня 2027 года вернуть указанную сумму займа и уплатить указанные\nв договоре проценты. договор может быть пролонгирован по обоюдному согласию сторон."
+      }
+    },
+    {
+      "id": "candidate-date-p1-w150-152",
+      "entity_type": "date",
+      "value": "2026-06-25",
+      "raw_value": "25 июня 2026",
+      "page": 1,
+      "bbox": [
+        0.678759,
+        0.323546,
+        0.771866,
+        0.331813
+      ],
+      "word_ids": [
+        "p1-w150",
+        "p1-w151",
+        "p1-w152"
+      ],
+      "confidence": 0.995667,
+      "rule_id": "document.date.patterns.v1",
+      "region": "body",
+      "line_id": "p1-l14",
+      "anchor_word_ids": [],
+      "validation": {
+        "format": "iso_date",
+        "status": "valid",
+        "calendar_valid": true,
+        "day": 25,
+        "month": 6,
+        "year": 2026,
+        "date_format": "textual"
+      },
+      "evidence": [
+        {
+          "kind": "date_pattern",
+          "description": "Найдена календарная дата по текстовому или числовому шаблону",
+          "score_delta": 0.35,
+          "data": {
+            "date_format": "textual"
+          }
+        },
+        {
+          "kind": "calendar_validation",
+          "description": "День, месяц и год образуют корректную календарную дату",
+          "score_delta": 0.3,
+          "data": {
+            "day": 25,
+            "month": 6,
+            "year": 2026
+          }
+        },
+        {
+          "kind": "semantic_context",
+          "description": "По контексту определена предварительная роль даты",
+          "score_delta": 0.05,
+          "data": {
+            "role_hint": "interest_start_date"
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.095667,
+          "data": {
+            "average_ocr_confidence": 0.956667
+          }
+        }
+      ],
+      "metadata": {
+        "role_hint": "interest_start_date",
+        "context_text": "1.2. проценты за пользование займом начисляются на сумму фактически предоставленного займа\nпо ставке, установленной пунктом 2.3 настоящего договора, начиная с 25 июня 2026 года, и\nподлежат уплате заемщиком один раз в шесть месяцев."
+      }
+    },
+    {
+      "id": "candidate-percentage-p1-w283-284",
+      "entity_type": "percentage",
+      "value": "4",
+      "raw_value": "4 %",
+      "page": 1,
+      "bbox": [
+        0.379686,
+        0.56984,
+        0.405079,
+        0.577537
+      ],
+      "word_ids": [
+        "p1-w283",
+        "p1-w284"
+      ],
+      "confidence": 0.891,
+      "rule_id": "document.percentage.patterns.v1",
+      "region": "body",
+      "line_id": "p1-l29",
+      "anchor_word_ids": [],
+      "validation": {
+        "format": "percentage",
+        "status": "valid",
+        "percentage": "4",
+        "unit": "percent"
+      },
+      "evidence": [
+        {
+          "kind": "percentage_pattern",
+          "description": "Найдено число с обозначением процента",
+          "score_delta": 0.4,
+          "data": {
+            "percentage": "4"
+          }
+        },
+        {
+          "kind": "semantic_context",
+          "description": "По контексту определён тип процентного значения",
+          "score_delta": 0.15,
+          "data": {
+            "role_hint": "annual_interest_rate"
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.091,
+          "data": {
+            "average_ocr_confidence": 0.91
+          }
+        }
+      ],
+      "metadata": {
+        "role_hint": "annual_interest_rate",
+        "period": "annual",
+        "context_text": "2.3. на сумму займа, указанного в п. 1.1, начисляются проценты с момента получения заемщиком\nтраншей по займу в размере 4 % годовых в долларах сша.\n2.4. сумма займа, проценты и пеня могут выплачиваться в национальной валюте в сумме,"
+      }
+    },
+    {
+      "id": "candidate-organization-p2-w175-177",
+      "entity_type": "organization",
+      "value": "тоо «тест холдинг»",
+      "raw_value": "тоо «тест холдинг»",
+      "page": 2,
+      "bbox": [
+        0.51189,
+        0.4313,
+        0.655784,
+        0.440137
+      ],
+      "word_ids": [
+        "p2-w175",
+        "p2-w176",
+        "p2-w177"
+      ],
+      "confidence": 0.995667,
+      "rule_id": "legal.organization.legal_form.v2",
+      "region": "right_column",
+      "line_id": "p2-l19",
+      "anchor_word_ids": [
+        "p2-w175"
+      ],
+      "validation": {
+        "format": "legal_entity_name",
+        "status": "context_match",
+        "legal_form": "ТОО",
+        "has_name": true
+      },
+      "evidence": [
+        {
+          "kind": "legal_form",
+          "description": "Найдена организационно-правовая форма юридического лица",
+          "score_delta": 0.4,
+          "data": {
+            "legal_form": "ТОО",
+            "legal_form_word_ids": [
+              "p2-w175"
+            ]
+          }
+        },
+        {
+          "kind": "organization_name",
+          "description": "После правовой формы найдено название",
+          "score_delta": 0.2,
+          "data": {
+            "value": "тоо «тест холдинг»"
+          }
+        },
+        {
+          "kind": "party_context",
+          "description": "По ближайшему контексту определена роль стороны",
+          "score_delta": 0.1,
+          "data": {
+            "role_hint": "borrower"
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.095667,
+          "data": {
+            "average_ocr_confidence": 0.956667
+          }
+        }
+      ],
+      "metadata": {
+        "legal_form": "ТОО",
+        "role_hint": "borrower",
+        "context_text": "заемщик\nтоо «тест холдинг»\n010000, республика казахстан,\nг. астана, пр. тестовый 10/1, 1701"
+      }
+    },
+    {
+      "id": "candidate-organization-p2-w146-148",
+      "entity_type": "organization",
+      "value": "ооо «тестовый завод»",
+      "raw_value": "ооо «тестовый завод»",
+      "page": 2,
+      "bbox": [
+        0.166465,
+        0.431585,
+        0.325675,
+        0.440992
+      ],
+      "word_ids": [
+        "p2-w146",
+        "p2-w147",
+        "p2-w148"
+      ],
+      "confidence": 0.995333,
+      "rule_id": "legal.organization.legal_form.v2",
+      "region": "left_column",
+      "line_id": "p2-l20",
+      "anchor_word_ids": [
+        "p2-w146"
+      ],
+      "validation": {
+        "format": "legal_entity_name",
+        "status": "context_match",
+        "legal_form": "ООО",
+        "has_name": true
+      },
+      "evidence": [
+        {
+          "kind": "legal_form",
+          "description": "Найдена организационно-правовая форма юридического лица",
+          "score_delta": 0.4,
+          "data": {
+            "legal_form": "ООО",
+            "legal_form_word_ids": [
+              "p2-w146"
+            ]
+          }
+        },
+        {
+          "kind": "organization_name",
+          "description": "После правовой формы найдено название",
+          "score_delta": 0.2,
+          "data": {
+            "value": "ооо «тестовый завод»"
+          }
+        },
+        {
+          "kind": "party_context",
+          "description": "По ближайшему контексту определена роль стороны",
+          "score_delta": 0.1,
+          "data": {
+            "role_hint": "lender"
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.095333,
+          "data": {
+            "average_ocr_confidence": 0.953333
+          }
+        }
+      ],
+      "metadata": {
+        "legal_form": "ООО",
+        "role_hint": "lender",
+        "context_text": "займодавец\nооо «тестовый завод»\n720000, г. бишкек, ул. тестовая, 1\nинн 00000000000000"
+      }
+    },
+    {
+      "id": "candidate-address-p2-w178-186",
+      "entity_type": "address",
+      "value": "010000, республика казахстан, г. астана, пр. тестовый 10/1, 1701",
+      "raw_value": "010000, республика казахстан, г. астана, пр. тестовый 10/1, 1701",
+      "page": 2,
+      "bbox": [
+        0.512293,
+        0.443843,
+        0.729141,
+        0.467218
+      ],
+      "word_ids": [
+        "p2-w178",
+        "p2-w179",
+        "p2-w180",
+        "p2-w181",
+        "p2-w182",
+        "p2-w183",
+        "p2-w184",
+        "p2-w185",
+        "p2-w186"
+      ],
+      "confidence": 0.595889,
+      "rule_id": "legal.address.context.v1",
+      "region": "right_column",
+      "line_id": "p2-l21",
+      "anchor_word_ids": [],
+      "validation": {
+        "format": "postal_address",
+        "status": "context_match",
+        "postal_code": "010000",
+        "word_count": 9
+      },
+      "evidence": [
+        {
+          "kind": "address_shape",
+          "description": "Фрагмент содержит признаки адреса",
+          "score_delta": 0.3,
+          "data": {
+            "address_score": 5
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.095889,
+          "data": {
+            "average_ocr_confidence": 0.958889
+          }
+        }
+      ],
+      "metadata": {
+        "role_hint": "address",
+        "line_ids": [
+          "p2-l21",
+          "p2-l23"
+        ],
+        "context_text": "тоо «тест холдинг»\n010000, республика казахстан,\nг. астана, пр. тестовый 10/1, 1701"
+      }
+    },
+    {
+      "id": "candidate-address-p2-w149-154",
+      "entity_type": "address",
+      "value": "720000, г. бишкек, ул. тестовая, 1",
+      "raw_value": "720000, г. бишкек, ул. тестовая, 1",
+      "page": 2,
+      "bbox": [
+        0.166868,
+        0.445553,
+        0.380895,
+        0.45496
+      ],
+      "word_ids": [
+        "p2-w149",
+        "p2-w150",
+        "p2-w151",
+        "p2-w152",
+        "p2-w153",
+        "p2-w154"
+      ],
+      "confidence": 0.535833,
+      "rule_id": "legal.address.context.v1",
+      "region": "left_column",
+      "line_id": "p2-l22",
+      "anchor_word_ids": [],
+      "validation": {
+        "format": "postal_address",
+        "status": "context_match",
+        "postal_code": "720000",
+        "word_count": 6
+      },
+      "evidence": [
+        {
+          "kind": "address_shape",
+          "description": "Фрагмент содержит признаки адреса",
+          "score_delta": 0.24,
+          "data": {
+            "address_score": 4
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.095833,
+          "data": {
+            "average_ocr_confidence": 0.958333
+          }
+        }
+      ],
+      "metadata": {
+        "role_hint": "address",
+        "line_ids": [
+          "p2-l22"
+        ],
+        "context_text": "ооо «тестовый завод»\n720000, г. бишкек, ул. тестовая, 1\nинн 00000000000000"
+      }
+    },
+    {
+      "id": "candidate-inn-p2-w156-156",
+      "entity_type": "inn",
+      "value": "00000000000000",
+      "raw_value": "00000000000000,",
+      "page": 2,
+      "bbox": [
+        0.202741,
+        0.458666,
+        0.311165,
+        0.466933
+      ],
+      "word_ids": [
+        "p2-w156"
+      ],
+      "confidence": 1.0,
+      "rule_id": "tax_id.inn.anchor_right.v1",
+      "region": "left_column",
+      "line_id": "p2-l24",
+      "anchor_word_ids": [
+        "p2-w155"
+      ],
+      "validation": {
+        "format": "tax_identifier",
+        "status": "shape_valid",
+        "shape": true,
+        "digit_count": 14,
+        "valid_lengths": [
+          10,
+          12,
+          14
+        ]
+      },
+      "evidence": [
+        {
+          "kind": "anchor",
+          "description": "Найден якорь ИНН на той же строке, что и значение",
+          "score_delta": 0.3,
+          "data": {
+            "anchor_text": "инн",
+            "anchor_word_id": "p2-w155",
+            "aliases": [
+              "инн"
+            ]
+          }
+        },
+        {
+          "kind": "format",
+          "description": "Числовое значение имеет допустимую длину",
+          "score_delta": 0.25,
+          "data": {
+            "format": "tax_identifier",
+            "digit_count": 14,
+            "valid_lengths": [
+              10,
+              12,
+              14
+            ]
+          }
+        },
+        {
+          "kind": "distance",
+          "description": "Значение расположено справа от ключевого слова",
+          "score_delta": 0.091132,
+          "data": {
+            "horizontal_gap": 0.004434,
+            "max_horizontal_gap": 0.05
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR для слов значения",
+          "score_delta": 0.091,
+          "data": {
+            "average_ocr_confidence": 0.91
+          }
+        },
+        {
+          "kind": "compact_value",
+          "description": "ИНН распознан одним OCR-словом",
+          "score_delta": 0.05,
+          "data": {
+            "word_count": 1
+          }
+        },
+        {
+          "kind": "ocr_value_confirmation",
+          "description": "Значение подтверждено массивом предварительно найденных OCR values",
+          "score_delta": 0.1,
+          "data": {
+            "ocr_value_ids": [
+              "ocr-value-0"
+            ],
+            "ocr_value_types": [
+              "inn"
+            ]
+          }
+        }
+      ],
+      "metadata": {
+        "display_name": "ИНН",
+        "anchor_text": "инн",
+        "anchor_bbox": [
+          0.166868,
+          0.459236,
+          0.198307,
+          0.466363
+        ],
+        "context_text": "ооо «тестовый завод»\n720000, г. бишкек, ул. тестовая, 1\nинн 00000000000000\nокпо 00000000 угнс 999\nбик 000000",
+        "value_word_count": 1,
+        "ocr_value_confirmation": true
+      }
+    },
+    {
+      "id": "candidate-bin-p2-w188-188",
+      "entity_type": "bin",
+      "value": "000000000000",
+      "raw_value": "000000000000,",
+      "page": 2,
+      "bbox": [
+        0.546957,
+        0.471209,
+        0.640064,
+        0.47919
+      ],
+      "word_ids": [
+        "p2-w188"
+      ],
+      "confidence": 1.0,
+      "rule_id": "tax_id.bin.anchor_right.v2",
+      "region": "right_column",
+      "line_id": "p2-l25",
+      "anchor_word_ids": [
+        "p2-w187"
+      ],
+      "validation": {
+        "format": "kz_bin",
+        "status": "shape_valid",
+        "shape": true,
+        "digit_count": 12,
+        "valid_lengths": [
+          12
+        ]
+      },
+      "evidence": [
+        {
+          "kind": "anchor",
+          "description": "Найден якорь БИН на той же строке, что и значение",
+          "score_delta": 0.3,
+          "data": {
+            "anchor_text": "бин",
+            "anchor_word_id": "p2-w187",
+            "aliases": [
+              "бин",
+              "бсн"
+            ]
+          }
+        },
+        {
+          "kind": "format",
+          "description": "Числовое значение имеет допустимую длину",
+          "score_delta": 0.25,
+          "data": {
+            "format": "kz_bin",
+            "digit_count": 12,
+            "valid_lengths": [
+              12
+            ]
+          }
+        },
+        {
+          "kind": "distance",
+          "description": "Значение расположено справа от ключевого слова",
+          "score_delta": 0.08952,
+          "data": {
+            "horizontal_gap": 0.00524,
+            "max_horizontal_gap": 0.05
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR для слов значения",
+          "score_delta": 0.091,
+          "data": {
+            "average_ocr_confidence": 0.91
+          }
+        },
+        {
+          "kind": "compact_value",
+          "description": "БИН распознан одним OCR-словом",
+          "score_delta": 0.05,
+          "data": {
+            "word_count": 1
+          }
+        },
+        {
+          "kind": "ocr_value_confirmation",
+          "description": "Значение подтверждено массивом предварительно найденных OCR values",
+          "score_delta": 0.1,
+          "data": {
+            "ocr_value_ids": [
+              "ocr-value-4"
+            ],
+            "ocr_value_types": [
+              "bin"
+            ]
+          }
+        }
+      ],
+      "metadata": {
+        "display_name": "БИН",
+        "anchor_text": "бин",
+        "anchor_bbox": [
+          0.512696,
+          0.471494,
+          0.541717,
+          0.478335
+        ],
+        "context_text": "010000, республика казахстан,\nг. астана, пр. тестовый 10/1, 1701\nбин 000000000000\nбанк: ао «test bank»\nр/с: kz00test000000000000",
+        "value_word_count": 1,
+        "ocr_value_confirmation": true
+      }
+    },
+    {
+      "id": "candidate-bank_name-p2-w190-192",
+      "entity_type": "bank_name",
+      "value": "ао «test bank»",
+      "raw_value": "ао «test bank»",
+      "page": 2,
+      "bbox": [
+        0.551391,
+        0.484322,
+        0.67231,
+        0.491733
+      ],
+      "word_ids": [
+        "p2-w190",
+        "p2-w191",
+        "p2-w192"
+      ],
+      "confidence": 0.994,
+      "rule_id": "legal.bank_name.context.v2",
+      "region": "right_column",
+      "line_id": "p2-l27",
+      "anchor_word_ids": [
+        "p2-w189"
+      ],
+      "validation": {
+        "format": "bank_name",
+        "status": "context_match",
+        "explicit_anchor": true,
+        "line_count": 1
+      },
+      "evidence": [
+        {
+          "kind": "bank_anchor",
+          "description": "Найден явный банковский ключ",
+          "score_delta": 0.4,
+          "data": {
+            "anchor_word_ids": [
+              "p2-w189"
+            ],
+            "bank_role": "bank"
+          }
+        },
+        {
+          "kind": "bank_name_shape",
+          "description": "Фрагмент соответствует форме названия банка",
+          "score_delta": 0.25,
+          "data": {
+            "value": "ао «test bank»",
+            "line_count": 1
+          }
+        },
+        {
+          "kind": "requisites_region",
+          "description": "Название находится в блоке реквизитов",
+          "score_delta": 0.1,
+          "data": {
+            "region": "right_column"
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.094,
+          "data": {
+            "average_ocr_confidence": 0.94
+          }
+        }
+      ],
+      "metadata": {
+        "context_text": "г. астана, пр. тестовый 10/1, 1701\nбин 000000000000\nбанк: ао «test bank»\nр/с: kz00test000000000000\nбик/swift: testkzkx",
+        "role_hint": "bank",
+        "bank_role": "bank",
+        "line_ids": [
+          "p2-l27"
+        ]
+      }
+    },
+    {
+      "id": "candidate-bik-p2-w162-162",
+      "entity_type": "bik",
+      "value": "000000",
+      "raw_value": "000000",
+      "page": 2,
+      "bbox": [
+        0.199919,
+        0.485462,
+        0.244659,
+        0.492588
+      ],
+      "word_ids": [
+        "p2-w162"
+      ],
+      "confidence": 1.0,
+      "rule_id": "bank.bik.anchor_right.v1",
+      "region": "left_column",
+      "line_id": "p2-l28",
+      "anchor_word_ids": [
+        "p2-w161"
+      ],
+      "validation": {
+        "format": "bank_identifier_code",
+        "status": "shape_valid",
+        "shape": true,
+        "code_length": 6,
+        "character_set": "numeric"
+      },
+      "evidence": [
+        {
+          "kind": "anchor",
+          "description": "Найден якорь БИК на той же строке, что и значение",
+          "score_delta": 0.3,
+          "data": {
+            "anchor_text": "бик",
+            "anchor_word_id": "p2-w161",
+            "aliases": [
+              "bik",
+              "бик",
+              "мфо"
+            ]
+          }
+        },
+        {
+          "kind": "format",
+          "description": "Значение соответствует формату БИК",
+          "score_delta": 0.25,
+          "data": {
+            "code_length": 6,
+            "character_set": "numeric"
+          }
+        },
+        {
+          "kind": "distance",
+          "description": "Значение расположено справа от банковского ключа",
+          "score_delta": 0.092612,
+          "data": {
+            "horizontal_gap": 0.004433,
+            "max_horizontal_gap": 0.06
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR для слов значения",
+          "score_delta": 0.096,
+          "data": {
+            "average_ocr_confidence": 0.96
+          }
+        },
+        {
+          "kind": "compact_value",
+          "description": "Банковский код распознан одним OCR-словом",
+          "score_delta": 0.05,
+          "data": {
+            "word_count": 1
+          }
+        },
+        {
+          "kind": "ocr_value_confirmation",
+          "description": "Значение подтверждено массивом предварительно найденных OCR values",
+          "score_delta": 0.1,
+          "data": {
+            "ocr_value_ids": [
+              "ocr-value-2"
+            ],
+            "ocr_value_types": [
+              "bik"
+            ]
+          }
+        }
+      ],
+      "metadata": {
+        "display_name": "БИК",
+        "anchor_text": "бик",
+        "anchor_bbox": [
+          0.166868,
+          0.485747,
+          0.195486,
+          0.492873
+        ],
+        "context_text": "инн 00000000000000\nокпо 00000000 угнс 999\nбик 000000\nр/счет № test0000000001\nbu® ао «тест банк»",
+        "value_word_count": 1,
+        "ocr_value_confirmation": true
+      }
+    },
+    {
+      "id": "candidate-iban-p2-w194-194",
+      "entity_type": "iban",
+      "value": "KZ00TEST000000000000",
+      "raw_value": "kzootest000000000000",
+      "page": 2,
+      "bbox": [
+        0.543732,
+        0.497434,
+        0.704152,
+        0.504846
+      ],
+      "word_ids": [
+        "p2-w194"
+      ],
+      "confidence": 0.956298,
+      "rule_id": "bank.iban.kz.anchor_right.v1",
+      "region": "right_column",
+      "line_id": "p2-l29",
+      "anchor_word_ids": [
+        "p2-w193"
+      ],
+      "validation": {
+        "format": "kz_iban",
+        "status": "checksum_invalid",
+        "shape": true,
+        "country_code": "KZ",
+        "check_digits": "00",
+        "bban": "TEST000000000000",
+        "code_length": 20,
+        "checksum_valid": false
+      },
+      "evidence": [
+        {
+          "kind": "anchor",
+          "description": "Найден якорь IBAN перед значением",
+          "score_delta": 0.3,
+          "data": {
+            "anchor_text": "р/с",
+            "anchor_word_ids": [
+              "p2-w193"
+            ]
+          }
+        },
+        {
+          "kind": "format",
+          "description": "Значение соответствует формату IBAN",
+          "score_delta": 0.25,
+          "data": {
+            "country_code": "KZ",
+            "check_digits": "00",
+            "bban": "TEST000000000000",
+            "code_length": 20,
+            "checksum_valid": false
+          }
+        },
+        {
+          "kind": "distance",
+          "description": "Значение расположено справа от ключевого слова",
+          "score_delta": 0.095298,
+          "data": {
+            "horizontal_gap": 0.005643,
+            "max_horizontal_gap": 0.12
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR для слов значения",
+          "score_delta": 0.091,
+          "data": {
+            "average_ocr_confidence": 0.91
+          }
+        },
+        {
+          "kind": "compact_value",
+          "description": "Счёт распознан одним OCR-словом",
+          "score_delta": 0.05,
+          "data": {
+            "word_count": 1
+          }
+        },
+        {
+          "kind": "ocr_correction",
+          "description": "При нормализации сохранены исправления OCR",
+          "score_delta": 0.0,
+          "data": {
+            "corrections": [
+              "p2-w194:KZOOTEST000000000000→KZ00TEST000000000000"
+            ]
+          }
+        },
+        {
+          "kind": "ocr_value_confirmation",
+          "description": "Значение подтверждено массивом предварительно найденных OCR values",
+          "score_delta": 0.1,
+          "data": {
+            "ocr_value_ids": [
+              "ocr-value-5"
+            ],
+            "ocr_value_types": [
+              "account"
+            ]
+          }
+        },
+        {
+          "kind": "checksum",
+          "description": "Форма IBAN корректна, но контрольная сумма не прошла проверку",
+          "score_delta": -0.08,
+          "data": {
+            "checksum_valid": false
+          }
+        }
+      ],
+      "metadata": {
+        "display_name": "IBAN",
+        "anchor_text": "р/с",
+        "anchor_bbox": [
+          0.512696,
+          0.498005,
+          0.538089,
+          0.504846
+        ],
+        "context_text": "бин 000000000000\nбанк: ао «test bank»\nр/с: kz00test000000000000\nбик/swift: testkzkx\nбанк корреспондент: the bank of",
+        "value_word_count": 1,
+        "corrections": [
+          "p2-w194:KZOOTEST000000000000→KZ00TEST000000000000"
+        ],
+        "ocr_value_confirmation": true
+      }
+    },
+    {
+      "id": "candidate-bank_account-p2-w165-165",
+      "entity_type": "bank_account",
+      "value": "TEST0000000001",
+      "raw_value": "те$т0000000001",
+      "page": 2,
+      "bbox": [
+        0.227328,
+        0.498575,
+        0.337767,
+        0.505701
+      ],
+      "word_ids": [
+        "p2-w165"
+      ],
+      "confidence": 1.0,
+      "rule_id": "bank.account.anchor_right.v1",
+      "region": "left_column",
+      "line_id": "p2-l30",
+      "anchor_word_ids": [
+        "p2-w163"
+      ],
+      "validation": {
+        "format": "generic_bank_account",
+        "status": "unverified",
+        "shape": true,
+        "code_length": 14,
+        "digit_count": 10,
+        "letter_count": 4,
+        "strict": false,
+        "checksum_valid": null
+      },
+      "evidence": [
+        {
+          "kind": "anchor",
+          "description": "Найден якорь банковский счёт перед значением",
+          "score_delta": 0.3,
+          "data": {
+            "anchor_text": "р/счет",
+            "anchor_word_ids": [
+              "p2-w163"
+            ]
+          }
+        },
+        {
+          "kind": "format",
+          "description": "Значение соответствует формату банковский счёт",
+          "score_delta": 0.25,
+          "data": {
+            "code_length": 14,
+            "digit_count": 10,
+            "letter_count": 4,
+            "strict": false,
+            "checksum_valid": null
+          }
+        },
+        {
+          "kind": "distance",
+          "description": "Значение расположено справа от ключевого слова",
+          "score_delta": 0.081862,
+          "data": {
+            "horizontal_gap": 0.021766,
+            "max_horizontal_gap": 0.12
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR для слов значения",
+          "score_delta": 0.085,
+          "data": {
+            "average_ocr_confidence": 0.85
+          }
+        },
+        {
+          "kind": "compact_value",
+          "description": "Счёт распознан одним OCR-словом",
+          "score_delta": 0.05,
+          "data": {
+            "word_count": 1
+          }
+        },
+        {
+          "kind": "ocr_correction",
+          "description": "При нормализации сохранены исправления OCR",
+          "score_delta": 0.0,
+          "data": {
+            "corrections": [
+              "p2-w165:0000000001→TEST0000000001"
+            ]
+          }
+        },
+        {
+          "kind": "ocr_value_confirmation",
+          "description": "Значение подтверждено массивом предварительно найденных OCR values",
+          "score_delta": 0.1,
+          "data": {
+            "ocr_value_ids": [
+              "ocr-value-3"
+            ],
+            "ocr_value_types": [
+              "account"
+            ]
+          }
+        }
+      ],
+      "metadata": {
+        "display_name": "банковский счёт",
+        "anchor_text": "р/счет",
+        "anchor_bbox": [
+          0.166868,
+          0.499145,
+          0.205562,
+          0.508267
+        ],
+        "context_text": "окпо 00000000 угнс 999\nбик 000000\nр/счет № test0000000001\nbu® ао «тест банк»\nгенеральный директор",
+        "value_word_count": 1,
+        "corrections": [
+          "p2-w165:0000000001→TEST0000000001"
+        ],
+        "ocr_value_confirmation": true
+      }
+    },
+    {
+      "id": "candidate-bic_swift-p2-w196-196",
+      "entity_type": "bic_swift",
+      "value": "TESTKZKX",
+      "raw_value": "testkzkx",
+      "page": 2,
+      "bbox": [
+        0.598549,
+        0.510832,
+        0.67634,
+        0.517959
+      ],
+      "word_ids": [
+        "p2-w196"
+      ],
+      "confidence": 1.0,
+      "rule_id": "bank.bic_swift.anchor_right.v1",
+      "region": "right_column",
+      "line_id": "p2-l31",
+      "anchor_word_ids": [
+        "p2-w195"
+      ],
+      "validation": {
+        "format": "swift_bic",
+        "status": "shape_valid",
+        "shape": true,
+        "code_length": 8,
+        "bank_code": "TEST",
+        "country_code": "KZ",
+        "location_code": "KX",
+        "branch_code": null
+      },
+      "evidence": [
+        {
+          "kind": "anchor",
+          "description": "Найден якорь SWIFT/BIC на той же строке, что и значение",
+          "score_delta": 0.3,
+          "data": {
+            "anchor_text": "бик/swift:",
+            "anchor_word_id": "p2-w195",
+            "aliases": [
+              "bic",
+              "bic/swift",
+              "bik/swift",
+              "swift",
+              "swift/bic",
+              "swift/bik",
+              "swift/бик",
+              "бик/swift"
+            ]
+          }
+        },
+        {
+          "kind": "format",
+          "description": "Значение соответствует формату SWIFT/BIC",
+          "score_delta": 0.25,
+          "data": {
+            "code_length": 8,
+            "bank_code": "TEST",
+            "country_code": "KZ",
+            "location_code": "KX",
+            "branch_code": null
+          }
+        },
+        {
+          "kind": "distance",
+          "description": "Значение расположено справа от банковского ключа",
+          "score_delta": 0.091938,
+          "data": {
+            "horizontal_gap": 0.004837,
+            "max_horizontal_gap": 0.06
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR для слов значения",
+          "score_delta": 0.091,
+          "data": {
+            "average_ocr_confidence": 0.91
+          }
+        },
+        {
+          "kind": "compact_value",
+          "description": "Банковский код распознан одним OCR-словом",
+          "score_delta": 0.05,
+          "data": {
+            "word_count": 1
+          }
+        },
+        {
+          "kind": "ocr_value_confirmation",
+          "description": "Значение подтверждено массивом предварительно найденных OCR values",
+          "score_delta": 0.1,
+          "data": {
+            "ocr_value_ids": [
+              "ocr-value-6"
+            ],
+            "ocr_value_types": [
+              "bic_swift"
+            ]
+          }
+        }
+      ],
+      "metadata": {
+        "display_name": "SWIFT/BIC",
+        "anchor_text": "бик/swift:",
+        "anchor_bbox": [
+          0.512696,
+          0.510832,
+          0.593712,
+          0.518244
+        ],
+        "context_text": "банк: ао «test bank»\nр/с: kz00test000000000000\nбик/swift: testkzkx\nбанк корреспондент: the bank of\nnew york test mellon",
+        "value_word_count": 1,
+        "ocr_value_confirmation": true
+      }
+    },
+    {
+      "id": "candidate-bank_name-p2-w167-169",
+      "entity_type": "bank_name",
+      "value": "ао «тест банк»",
+      "raw_value": "ао «тест банк»",
+      "page": 2,
+      "bbox": [
+        0.201935,
+        0.511973,
+        0.304313,
+        0.519099
+      ],
+      "word_ids": [
+        "p2-w167",
+        "p2-w168",
+        "p2-w169"
+      ],
+      "confidence": 0.941667,
+      "rule_id": "legal.bank_name.context.v2",
+      "region": "left_column",
+      "line_id": "p2-l32",
+      "anchor_word_ids": [],
+      "validation": {
+        "format": "bank_name",
+        "status": "context_match",
+        "explicit_anchor": false,
+        "line_count": 1
+      },
+      "evidence": [
+        {
+          "kind": "bank_legal_form",
+          "description": "Название содержит правовую форму и банковский термин",
+          "score_delta": 0.35,
+          "data": {
+            "bank_role": "bank"
+          }
+        },
+        {
+          "kind": "bank_name_shape",
+          "description": "Фрагмент соответствует форме названия банка",
+          "score_delta": 0.25,
+          "data": {
+            "value": "ао «тест банк»",
+            "line_count": 1
+          }
+        },
+        {
+          "kind": "requisites_region",
+          "description": "Название находится в блоке реквизитов",
+          "score_delta": 0.1,
+          "data": {
+            "region": "left_column"
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.091667,
+          "data": {
+            "average_ocr_confidence": 0.916667
+          }
+        }
+      ],
+      "metadata": {
+        "context_text": "бик 000000\nр/счет № test0000000001\nbu® ао «тест банк»\nгенеральный директор\nиванов и.т.",
+        "role_hint": "bank",
+        "bank_role": "bank",
+        "line_ids": [
+          "p2-l32"
+        ]
+      }
+    },
+    {
+      "id": "candidate-bank_name-p2-w199-205",
+      "entity_type": "bank_name",
+      "value": "the bank of new york test mellon",
+      "raw_value": "the bank of new york test mellon",
+      "page": 2,
+      "bbox": [
+        0.512696,
+        0.52366,
+        0.749295,
+        0.544755
+      ],
+      "word_ids": [
+        "p2-w199",
+        "p2-w200",
+        "p2-w201",
+        "p2-w202",
+        "p2-w203",
+        "p2-w204",
+        "p2-w205"
+      ],
+      "confidence": 0.995571,
+      "rule_id": "legal.bank_name.context.v2",
+      "region": "right_column",
+      "line_id": "p2-l33",
+      "anchor_word_ids": [
+        "p2-w197",
+        "p2-w198"
+      ],
+      "validation": {
+        "format": "bank_name",
+        "status": "context_match",
+        "explicit_anchor": true,
+        "line_count": 2
+      },
+      "evidence": [
+        {
+          "kind": "bank_anchor",
+          "description": "Найден явный банковский ключ",
+          "score_delta": 0.4,
+          "data": {
+            "anchor_word_ids": [
+              "p2-w197",
+              "p2-w198"
+            ],
+            "bank_role": "correspondent_bank"
+          }
+        },
+        {
+          "kind": "bank_name_shape",
+          "description": "Фрагмент соответствует форме названия банка",
+          "score_delta": 0.25,
+          "data": {
+            "value": "the bank of new york test mellon",
+            "line_count": 2
+          }
+        },
+        {
+          "kind": "requisites_region",
+          "description": "Название находится в блоке реквизитов",
+          "score_delta": 0.1,
+          "data": {
+            "region": "right_column"
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.095571,
+          "data": {
+            "average_ocr_confidence": 0.955714
+          }
+        }
+      ],
+      "metadata": {
+        "context_text": "р/с: kz00test000000000000\nбик/swift: testkzkx\nбанк корреспондент: the bank of\nnew york test mellon\nswift: testus33",
+        "role_hint": "bank",
+        "bank_role": "correspondent_bank",
+        "line_ids": [
+          "p2-l33",
+          "p2-l34"
+        ]
+      }
+    },
+    {
+      "id": "candidate-bic_swift-p2-w207-207",
+      "entity_type": "bic_swift",
+      "value": "TESTUS33",
+      "raw_value": "testus33",
+      "page": 2,
+      "bbox": [
+        0.565095,
+        0.550741,
+        0.634825,
+        0.557868
+      ],
+      "word_ids": [
+        "p2-w207"
+      ],
+      "confidence": 1.0,
+      "rule_id": "bank.bic_swift.anchor_right.v1",
+      "region": "right_column",
+      "line_id": "p2-l35",
+      "anchor_word_ids": [
+        "p2-w206"
+      ],
+      "validation": {
+        "format": "swift_bic",
+        "status": "shape_valid",
+        "shape": true,
+        "code_length": 8,
+        "bank_code": "TEST",
+        "country_code": "US",
+        "location_code": "33",
+        "branch_code": null
+      },
+      "evidence": [
+        {
+          "kind": "anchor",
+          "description": "Найден якорь SWIFT/BIC на той же строке, что и значение",
+          "score_delta": 0.3,
+          "data": {
+            "anchor_text": "swift:",
+            "anchor_word_id": "p2-w206",
+            "aliases": [
+              "bic",
+              "bic/swift",
+              "bik/swift",
+              "swift",
+              "swift/bic",
+              "swift/bik",
+              "swift/бик",
+              "бик/swift"
+            ]
+          }
+        },
+        {
+          "kind": "format",
+          "description": "Значение соответствует формату SWIFT/BIC",
+          "score_delta": 0.25,
+          "data": {
+            "code_length": 8,
+            "bank_code": "TEST",
+            "country_code": "US",
+            "location_code": "33",
+            "branch_code": null
+          }
+        },
+        {
+          "kind": "distance",
+          "description": "Значение расположено справа от банковского ключа",
+          "score_delta": 0.091938,
+          "data": {
+            "horizontal_gap": 0.004837,
+            "max_horizontal_gap": 0.06
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR для слов значения",
+          "score_delta": 0.091,
+          "data": {
+            "average_ocr_confidence": 0.91
+          }
+        },
+        {
+          "kind": "compact_value",
+          "description": "Банковский код распознан одним OCR-словом",
+          "score_delta": 0.05,
+          "data": {
+            "word_count": 1
+          }
+        },
+        {
+          "kind": "ocr_value_confirmation",
+          "description": "Значение подтверждено массивом предварительно найденных OCR values",
+          "score_delta": 0.1,
+          "data": {
+            "ocr_value_ids": [
+              "ocr-value-7"
+            ],
+            "ocr_value_types": [
+              "bic_swift"
+            ]
+          }
+        }
+      ],
+      "metadata": {
+        "display_name": "SWIFT/BIC",
+        "anchor_text": "swift:",
+        "anchor_bbox": [
+          0.513503,
+          0.550741,
+          0.560258,
+          0.557868
+        ],
+        "context_text": "банк корреспондент: the bank of\nnew york test mellon\nswift: testus33\naccount: 0000000000\nпредставитель",
+        "value_word_count": 1,
+        "ocr_value_confirmation": true
+      }
+    },
+    {
+      "id": "candidate-bank_account-p2-w209-209",
+      "entity_type": "bank_account",
+      "value": "0000000000",
+      "raw_value": "0000000000",
+      "page": 2,
+      "bbox": [
+        0.57235,
+        0.563854,
+        0.646514,
+        0.570981
+      ],
+      "word_ids": [
+        "p2-w209"
+      ],
+      "confidence": 1.0,
+      "rule_id": "bank.account.anchor_right.v1",
+      "region": "right_column",
+      "line_id": "p2-l36",
+      "anchor_word_ids": [
+        "p2-w208"
+      ],
+      "validation": {
+        "format": "generic_bank_account",
+        "status": "unverified",
+        "shape": true,
+        "code_length": 10,
+        "digit_count": 10,
+        "letter_count": 0,
+        "strict": false,
+        "checksum_valid": null
+      },
+      "evidence": [
+        {
+          "kind": "anchor",
+          "description": "Найден якорь банковский счёт перед значением",
+          "score_delta": 0.3,
+          "data": {
+            "anchor_text": "account",
+            "anchor_word_ids": [
+              "p2-w208"
+            ]
+          }
+        },
+        {
+          "kind": "format",
+          "description": "Значение соответствует формату банковский счёт",
+          "score_delta": 0.25,
+          "data": {
+            "code_length": 10,
+            "digit_count": 10,
+            "letter_count": 0,
+            "strict": false,
+            "checksum_valid": null
+          }
+        },
+        {
+          "kind": "distance",
+          "description": "Значение расположено справа от ключевого слова",
+          "score_delta": 0.095633,
+          "data": {
+            "horizontal_gap": 0.00524,
+            "max_horizontal_gap": 0.12
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR для слов значения",
+          "score_delta": 0.096,
+          "data": {
+            "average_ocr_confidence": 0.96
+          }
+        },
+        {
+          "kind": "compact_value",
+          "description": "Счёт распознан одним OCR-словом",
+          "score_delta": 0.05,
+          "data": {
+            "word_count": 1
+          }
+        },
+        {
+          "kind": "ocr_value_confirmation",
+          "description": "Значение подтверждено массивом предварительно найденных OCR values",
+          "score_delta": 0.1,
+          "data": {
+            "ocr_value_ids": [
+              "ocr-value-8"
+            ],
+            "ocr_value_types": [
+              "account"
+            ]
+          }
+        }
+      ],
+      "metadata": {
+        "display_name": "банковский счёт",
+        "anchor_text": "account",
+        "anchor_bbox": [
+          0.5131,
+          0.564139,
+          0.56711,
+          0.571266
+        ],
+        "context_text": "new york test mellon\nswift: testus33\naccount: 0000000000\nпредставитель\nпетрова а.п.",
+        "value_word_count": 1,
+        "corrections": [],
+        "ocr_value_confirmation": true
+      }
+    },
+    {
+      "id": "candidate-position-p2-w210-210",
+      "entity_type": "position",
+      "value": "представитель",
+      "raw_value": "представитель",
+      "page": 2,
+      "bbox": [
+        0.5131,
+        0.59236,
+        0.608222,
+        0.601482
+      ],
+      "word_ids": [
+        "p2-w210"
+      ],
+      "confidence": 0.846,
+      "rule_id": "legal.position.dictionary.v2",
+      "region": "right_column",
+      "line_id": "p2-l37",
+      "anchor_word_ids": [],
+      "validation": {
+        "format": "position_title",
+        "status": "dictionary_match",
+        "canonical_value": "представитель"
+      },
+      "evidence": [
+        {
+          "kind": "position_dictionary",
+          "description": "Найдена известная должность",
+          "score_delta": 0.5,
+          "data": {
+            "canonical_position": "представитель"
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.096,
+          "data": {
+            "average_ocr_confidence": 0.96
+          }
+        }
+      ],
+      "metadata": {
+        "context_text": "swift: testus33\naccount: 0000000000\nпредставитель\nпетрова а.п.",
+        "role_hint": "representative_position",
+        "party_role_hint": "unknown"
+      }
+    },
+    {
+      "id": "candidate-position-p2-w170-171",
+      "entity_type": "position",
+      "value": "генеральный директор",
+      "raw_value": "генеральный директор",
+      "page": 2,
+      "bbox": [
+        0.167674,
+        0.599772,
+        0.31318,
+        0.609464
+      ],
+      "word_ids": [
+        "p2-w170",
+        "p2-w171"
+      ],
+      "confidence": 0.846,
+      "rule_id": "legal.position.dictionary.v2",
+      "region": "left_column",
+      "line_id": "p2-l38",
+      "anchor_word_ids": [],
+      "validation": {
+        "format": "position_title",
+        "status": "dictionary_match",
+        "canonical_value": "генеральный директор"
+      },
+      "evidence": [
+        {
+          "kind": "position_dictionary",
+          "description": "Найдена известная должность",
+          "score_delta": 0.5,
+          "data": {
+            "canonical_position": "генеральный директор"
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.096,
+          "data": {
+            "average_ocr_confidence": 0.96
+          }
+        }
+      ],
+      "metadata": {
+        "context_text": "р/счет № test0000000001\nbu® ао «тест банк»\nгенеральный директор\nиванов и.т.",
+        "role_hint": "representative_position",
+        "party_role_hint": "unknown"
+      }
+    },
+    {
+      "id": "candidate-person_name-p2-w211-212",
+      "entity_type": "person_name",
+      "value": "петрова а.п",
+      "raw_value": "петрова а.п.",
+      "page": 2,
+      "bbox": [
+        0.652963,
+        0.620011,
+        0.738412,
+        0.629418
+      ],
+      "word_ids": [
+        "p2-w211",
+        "p2-w212"
+      ],
+      "confidence": 0.942,
+      "rule_id": "legal.person_name.context.v2",
+      "region": "right_column",
+      "line_id": "p2-l39",
+      "anchor_word_ids": [
+        "p2-w210"
+      ],
+      "validation": {
+        "format": "person_name",
+        "status": "context_match",
+        "word_count": 2
+      },
+      "evidence": [
+        {
+          "kind": "person_context",
+          "description": "ФИО найдено после юридического контекста в той же или следующей строке",
+          "score_delta": 0.4,
+          "data": {
+            "anchor_word_id": "p2-w210"
+          }
+        },
+        {
+          "kind": "person_name_shape",
+          "description": "Последовательность соответствует ФИО или фамилии с инициалами",
+          "score_delta": 0.25,
+          "data": {
+            "word_count": 2
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.092,
+          "data": {
+            "average_ocr_confidence": 0.92
+          }
+        }
+      ],
+      "metadata": {
+        "context_text": "account: 0000000000\nпредставитель\nпетрова а.п.",
+        "role_hint": "representative",
+        "party_role_hint": "unknown"
+      }
+    },
+    {
+      "id": "candidate-person_name-p2-w172-173",
+      "entity_type": "person_name",
+      "value": "иванов и.т",
+      "raw_value": "иванов и.т.",
+      "page": 2,
+      "bbox": [
+        0.307537,
+        0.627993,
+        0.383313,
+        0.63512
+      ],
+      "word_ids": [
+        "p2-w172",
+        "p2-w173"
+      ],
+      "confidence": 0.934,
+      "rule_id": "legal.person_name.context.v2",
+      "region": "left_column",
+      "line_id": "p2-l40",
+      "anchor_word_ids": [
+        "p2-w171"
+      ],
+      "validation": {
+        "format": "person_name",
+        "status": "context_match",
+        "word_count": 2
+      },
+      "evidence": [
+        {
+          "kind": "person_context",
+          "description": "ФИО найдено после юридического контекста в той же или следующей строке",
+          "score_delta": 0.4,
+          "data": {
+            "anchor_word_id": "p2-w171"
+          }
+        },
+        {
+          "kind": "person_name_shape",
+          "description": "Последовательность соответствует ФИО или фамилии с инициалами",
+          "score_delta": 0.25,
+          "data": {
+            "word_count": 2
+          }
+        },
+        {
+          "kind": "ocr_confidence",
+          "description": "Учтена средняя уверенность OCR",
+          "score_delta": 0.084,
+          "data": {
+            "average_ocr_confidence": 0.84
+          }
+        }
+      ],
+      "metadata": {
+        "context_text": "bu® ао «тест банк»\nгенеральный директор\nиванов и.т.",
+        "role_hint": "representative",
+        "party_role_hint": "unknown"
+      }
+    }
+  ],
+  "unassigned_entities": [],
+  "rejected_candidates": [],
+  "warnings": [
+    "IBAN KZ00TEST000000000000 имеет корректную форму, но не прошёл проверку MOD 97"
+  ],
+  "issues": [],
+  "metadata": {
+    "rule_count": 15,
+    "executed_rule_ids": [
+      "document.date.patterns.v1",
+      "document.money_amount.currency.v1",
+      "document.percentage.patterns.v1",
+      "legal.organization.legal_form.v2",
+      "legal.bank_name.context.v2",
+      "legal.address.context.v1",
+      "legal.position.dictionary.v2",
+      "legal.person_name.context.v2",
+      "tax_id.bin.anchor_right.v2",
+      "tax_id.iin.anchor_right.v1",
+      "tax_id.inn.anchor_right.v1",
+      "bank.bik.anchor_right.v1",
+      "bank.bic_swift.anchor_right.v1",
+      "bank.iban.kz.anchor_right.v1",
+      "bank.account.anchor_right.v1"
+    ],
+    "raw_candidate_count": 31,
+    "resolved_candidate_count": 31,
+    "processing_seconds": {
+      "loading": 0.009888,
+      "layout": 0.046734,
+      "rules": 0.021773,
+      "resolution": 0.001096,
+      "linking": 0.000656,
+      "total": 0.080148
+    }
+  }
+}

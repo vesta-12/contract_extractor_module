@@ -1,0 +1,1108 @@
+{
+  "summary": {
+    "status": "success_with_warnings",
+    "successful": true,
+    "party_count": 2,
+    "entity_count": 31,
+    "unassigned_entity_count": 0,
+    "warning_count": 1
+  },
+  "source": {
+    "path": "data\\input\\test_loan_agreement_ocr.json",
+    "page_count": 2,
+    "word_count": 617,
+    "line_count": 85
+  },
+  "document": {
+    "type": "loan_agreement",
+    "date_entity_id": "candidate-date-p1-w4-6",
+    "principal_amount_entity_id": "candidate-money-p1-w82-85",
+    "annual_interest_rate_entity_id": "candidate-percentage-p1-w283-284",
+    "repayment_due_date_entity_id": "candidate-date-p1-w98-100",
+    "interest_start_date_entity_id": "candidate-date-p1-w150-152"
+  },
+  "parties": [
+    {
+      "id": "party-lender-candidate-organization-p2-w146-148",
+      "role": "lender",
+      "organization_entity_id": "candidate-organization-p2-w146-148",
+      "identifier_entity_ids": [
+        "candidate-inn-p2-w156-156"
+      ],
+      "address_entity_ids": [
+        "candidate-address-p2-w149-154"
+      ],
+      "representatives": [
+        {
+          "name_entity_id": "candidate-person_name-p1-w19-21",
+          "position_entity_id": "candidate-position-p1-w17-18",
+          "name_occurrence_ids": [
+            "candidate-person_name-p1-w19-21",
+            "candidate-person_name-p2-w172-173"
+          ],
+          "position_occurrence_ids": [
+            "candidate-position-p1-w17-18",
+            "candidate-position-p2-w170-171"
+          ],
+          "confidence": 0.919667
+        }
+      ],
+      "bank_details": [
+        {
+          "bank_name_entity_id": "candidate-bank_name-p2-w167-169",
+          "account_entity_ids": [
+            "candidate-bank_account-p2-w165-165"
+          ],
+          "bik_entity_ids": [
+            "candidate-bik-p2-w162-162"
+          ],
+          "swift_entity_ids": [],
+          "confidence": 0.980556
+        }
+      ],
+      "confidence": 0.959217,
+      "warnings": []
+    },
+    {
+      "id": "party-borrower-candidate-organization-p2-w175-177",
+      "role": "borrower",
+      "organization_entity_id": "candidate-organization-p2-w175-177",
+      "identifier_entity_ids": [
+        "candidate-bin-p2-w188-188"
+      ],
+      "address_entity_ids": [
+        "candidate-address-p2-w178-186"
+      ],
+      "representatives": [
+        {
+          "name_entity_id": "candidate-person_name-p1-w37-39",
+          "position_entity_id": "candidate-position-p1-w36-36",
+          "name_occurrence_ids": [
+            "candidate-person_name-p1-w37-39",
+            "candidate-person_name-p2-w211-212"
+          ],
+          "position_occurrence_ids": [
+            "candidate-position-p1-w36-36",
+            "candidate-position-p2-w210-210"
+          ],
+          "confidence": 0.919833
+        }
+      ],
+      "bank_details": [
+        {
+          "bank_name_entity_id": "candidate-bank_name-p2-w190-192",
+          "account_entity_ids": [
+            "candidate-iban-p2-w194-194"
+          ],
+          "bik_entity_ids": [],
+          "swift_entity_ids": [
+            "candidate-bic_swift-p2-w196-196"
+          ],
+          "confidence": 0.983433
+        },
+        {
+          "bank_name_entity_id": "candidate-bank_name-p2-w199-205",
+          "account_entity_ids": [
+            "candidate-bank_account-p2-w209-209"
+          ],
+          "bik_entity_ids": [],
+          "swift_entity_ids": [
+            "candidate-bic_swift-p2-w207-207"
+          ],
+          "confidence": 0.998524
+        }
+      ],
+      "confidence": 0.985776,
+      "warnings": []
+    }
+  ],
+  "entity_registry": {
+    "candidate-date-p1-w4-6": {
+      "id": "candidate-date-p1-w4-6",
+      "type": "date",
+      "value": "2026-06-17",
+      "raw_value": "«17» июня 2026",
+      "page": 1,
+      "bbox": [
+        0.717856,
+        0.096921,
+        0.827489,
+        0.105473
+      ],
+      "word_ids": [
+        "p1-w4",
+        "p1-w5",
+        "p1-w6"
+      ],
+      "anchor_word_ids": [],
+      "confidence": 0.996,
+      "validation": {
+        "format": "iso_date",
+        "status": "valid",
+        "calendar_valid": true,
+        "day": 17,
+        "month": 6,
+        "year": 2026,
+        "date_format": "textual"
+      },
+      "metadata": {
+        "role_hint": "contract_date"
+      }
+    },
+    "candidate-organization-p1-w8-10": {
+      "id": "candidate-organization-p1-w8-10",
+      "type": "organization",
+      "value": "ооо «тестовый завод»",
+      "raw_value": "ооо «тестовый завод»,",
+      "page": 1,
+      "bbox": [
+        0.154776,
+        0.124572,
+        0.321241,
+        0.13512
+      ],
+      "word_ids": [
+        "p1-w8",
+        "p1-w9",
+        "p1-w10"
+      ],
+      "anchor_word_ids": [
+        "p1-w8"
+      ],
+      "confidence": 0.995,
+      "validation": {
+        "format": "legal_entity_name",
+        "status": "context_match",
+        "legal_form": "ООО",
+        "has_name": true
+      },
+      "metadata": {
+        "role_hint": "lender"
+      }
+    },
+    "candidate-position-p1-w17-18": {
+      "id": "candidate-position-p1-w17-18",
+      "type": "position",
+      "value": "генеральный директор",
+      "raw_value": "генерального директора",
+      "page": 1,
+      "bbox": [
+        0.663845,
+        0.125998,
+        0.831923,
+        0.138826
+      ],
+      "word_ids": [
+        "p1-w17",
+        "p1-w18"
+      ],
+      "anchor_word_ids": [],
+      "confidence": 0.846,
+      "validation": {
+        "format": "position_title",
+        "status": "dictionary_match",
+        "canonical_value": "генеральный директор"
+      },
+      "metadata": {
+        "role_hint": "representative_position",
+        "party_role_hint": "lender"
+      }
+    },
+    "candidate-person_name-p1-w19-21": {
+      "id": "candidate-person_name-p1-w19-21",
+      "type": "person_name",
+      "value": "иванова ивана тестовича",
+      "raw_value": "иванова ивана тестовича,",
+      "page": 1,
+      "bbox": [
+        0.154776,
+        0.13854,
+        0.337364,
+        0.148803
+      ],
+      "word_ids": [
+        "p1-w19",
+        "p1-w20",
+        "p1-w21"
+      ],
+      "anchor_word_ids": [
+        "p1-w16"
+      ],
+      "confidence": 0.993333,
+      "validation": {
+        "format": "person_name",
+        "status": "context_match",
+        "word_count": 3
+      },
+      "metadata": {
+        "role_hint": "representative",
+        "party_role_hint": "lender"
+      }
+    },
+    "candidate-organization-p1-w31-33": {
+      "id": "candidate-organization-p1-w31-33",
+      "type": "organization",
+      "value": "тоо «тест холдинг»",
+      "raw_value": "тоо «тест холдинг»",
+      "page": 1,
+      "bbox": [
+        0.154373,
+        0.152794,
+        0.301491,
+        0.163056
+      ],
+      "word_ids": [
+        "p1-w31",
+        "p1-w32",
+        "p1-w33"
+      ],
+      "anchor_word_ids": [
+        "p1-w31"
+      ],
+      "confidence": 0.995667,
+      "validation": {
+        "format": "legal_entity_name",
+        "status": "context_match",
+        "legal_form": "ТОО",
+        "has_name": true
+      },
+      "metadata": {
+        "role_hint": "borrower"
+      }
+    },
+    "candidate-person_name-p1-w37-39": {
+      "id": "candidate-person_name-p1-w37-39",
+      "type": "person_name",
+      "value": "петровой анны примеровны",
+      "raw_value": "петровой анны примеровны,",
+      "page": 1,
+      "bbox": [
+        0.460701,
+        0.153934,
+        0.668682,
+        0.165051
+      ],
+      "word_ids": [
+        "p1-w37",
+        "p1-w38",
+        "p1-w39"
+      ],
+      "anchor_word_ids": [
+        "p1-w35"
+      ],
+      "confidence": 0.993667,
+      "validation": {
+        "format": "person_name",
+        "status": "context_match",
+        "word_count": 3
+      },
+      "metadata": {
+        "role_hint": "representative",
+        "party_role_hint": "borrower"
+      }
+    },
+    "candidate-position-p1-w36-36": {
+      "id": "candidate-position-p1-w36-36",
+      "type": "position",
+      "value": "представитель",
+      "raw_value": "представителя",
+      "page": 1,
+      "bbox": [
+        0.355905,
+        0.155644,
+        0.455462,
+        0.164196
+      ],
+      "word_ids": [
+        "p1-w36"
+      ],
+      "anchor_word_ids": [],
+      "confidence": 0.846,
+      "validation": {
+        "format": "position_title",
+        "status": "dictionary_match",
+        "canonical_value": "представитель"
+      },
+      "metadata": {
+        "role_hint": "representative_position",
+        "party_role_hint": "borrower"
+      }
+    },
+    "candidate-date-p1-w47-47": {
+      "id": "candidate-date-p1-w47-47",
+      "type": "date",
+      "value": "2026-06-17",
+      "raw_value": "17.06.2026",
+      "page": 1,
+      "bbox": [
+        0.386941,
+        0.167902,
+        0.458686,
+        0.176169
+      ],
+      "word_ids": [
+        "p1-w47"
+      ],
+      "anchor_word_ids": [],
+      "confidence": 0.996,
+      "validation": {
+        "format": "iso_date",
+        "status": "valid",
+        "calendar_valid": true,
+        "day": 17,
+        "month": 6,
+        "year": 2026,
+        "date_format": "numeric"
+      },
+      "metadata": {
+        "role_hint": "power_of_attorney_date"
+      }
+    },
+    "candidate-money-p1-w82-85": {
+      "id": "candidate-money-p1-w82-85",
+      "type": "money_amount",
+      "value": "1000000.00",
+      "raw_value": "1 000 000,00 usd",
+      "page": 1,
+      "bbox": [
+        0.317614,
+        0.24886,
+        0.437727,
+        0.258552
+      ],
+      "word_ids": [
+        "p1-w82",
+        "p1-w83",
+        "p1-w84",
+        "p1-w85"
+      ],
+      "anchor_word_ids": [],
+      "confidence": 0.89475,
+      "validation": {
+        "format": "decimal_money",
+        "status": "valid",
+        "amount": "1000000.00",
+        "currency": "USD",
+        "decimal_places": 2
+      },
+      "metadata": {
+        "role_hint": "principal_amount",
+        "currency": "USD"
+      }
+    },
+    "candidate-date-p1-w98-100": {
+      "id": "candidate-date-p1-w98-100",
+      "type": "date",
+      "value": "2027-06-17",
+      "raw_value": "«17» июня 2027",
+      "page": 1,
+      "bbox": [
+        0.321644,
+        0.262828,
+        0.430472,
+        0.271095
+      ],
+      "word_ids": [
+        "p1-w98",
+        "p1-w99",
+        "p1-w100"
+      ],
+      "anchor_word_ids": [],
+      "confidence": 0.994333,
+      "validation": {
+        "format": "iso_date",
+        "status": "valid",
+        "calendar_valid": true,
+        "day": 17,
+        "month": 6,
+        "year": 2027,
+        "date_format": "textual"
+      },
+      "metadata": {
+        "role_hint": "repayment_due_date"
+      }
+    },
+    "candidate-date-p1-w150-152": {
+      "id": "candidate-date-p1-w150-152",
+      "type": "date",
+      "value": "2026-06-25",
+      "raw_value": "25 июня 2026",
+      "page": 1,
+      "bbox": [
+        0.678759,
+        0.323546,
+        0.771866,
+        0.331813
+      ],
+      "word_ids": [
+        "p1-w150",
+        "p1-w151",
+        "p1-w152"
+      ],
+      "anchor_word_ids": [],
+      "confidence": 0.995667,
+      "validation": {
+        "format": "iso_date",
+        "status": "valid",
+        "calendar_valid": true,
+        "day": 25,
+        "month": 6,
+        "year": 2026,
+        "date_format": "textual"
+      },
+      "metadata": {
+        "role_hint": "interest_start_date"
+      }
+    },
+    "candidate-percentage-p1-w283-284": {
+      "id": "candidate-percentage-p1-w283-284",
+      "type": "percentage",
+      "value": "4",
+      "raw_value": "4 %",
+      "page": 1,
+      "bbox": [
+        0.379686,
+        0.56984,
+        0.405079,
+        0.577537
+      ],
+      "word_ids": [
+        "p1-w283",
+        "p1-w284"
+      ],
+      "anchor_word_ids": [],
+      "confidence": 0.891,
+      "validation": {
+        "format": "percentage",
+        "status": "valid",
+        "percentage": "4",
+        "unit": "percent"
+      },
+      "metadata": {
+        "role_hint": "annual_interest_rate",
+        "period": "annual"
+      }
+    },
+    "candidate-organization-p2-w175-177": {
+      "id": "candidate-organization-p2-w175-177",
+      "type": "organization",
+      "value": "тоо «тест холдинг»",
+      "raw_value": "тоо «тест холдинг»",
+      "page": 2,
+      "bbox": [
+        0.51189,
+        0.4313,
+        0.655784,
+        0.440137
+      ],
+      "word_ids": [
+        "p2-w175",
+        "p2-w176",
+        "p2-w177"
+      ],
+      "anchor_word_ids": [
+        "p2-w175"
+      ],
+      "confidence": 0.995667,
+      "validation": {
+        "format": "legal_entity_name",
+        "status": "context_match",
+        "legal_form": "ТОО",
+        "has_name": true
+      },
+      "metadata": {
+        "role_hint": "borrower"
+      }
+    },
+    "candidate-organization-p2-w146-148": {
+      "id": "candidate-organization-p2-w146-148",
+      "type": "organization",
+      "value": "ооо «тестовый завод»",
+      "raw_value": "ооо «тестовый завод»",
+      "page": 2,
+      "bbox": [
+        0.166465,
+        0.431585,
+        0.325675,
+        0.440992
+      ],
+      "word_ids": [
+        "p2-w146",
+        "p2-w147",
+        "p2-w148"
+      ],
+      "anchor_word_ids": [
+        "p2-w146"
+      ],
+      "confidence": 0.995333,
+      "validation": {
+        "format": "legal_entity_name",
+        "status": "context_match",
+        "legal_form": "ООО",
+        "has_name": true
+      },
+      "metadata": {
+        "role_hint": "lender"
+      }
+    },
+    "candidate-address-p2-w178-186": {
+      "id": "candidate-address-p2-w178-186",
+      "type": "address",
+      "value": "010000, республика казахстан, г. астана, пр. тестовый 10/1, 1701",
+      "raw_value": "010000, республика казахстан, г. астана, пр. тестовый 10/1, 1701",
+      "page": 2,
+      "bbox": [
+        0.512293,
+        0.443843,
+        0.729141,
+        0.467218
+      ],
+      "word_ids": [
+        "p2-w178",
+        "p2-w179",
+        "p2-w180",
+        "p2-w181",
+        "p2-w182",
+        "p2-w183",
+        "p2-w184",
+        "p2-w185",
+        "p2-w186"
+      ],
+      "anchor_word_ids": [],
+      "confidence": 0.595889,
+      "validation": {
+        "format": "postal_address",
+        "status": "context_match",
+        "postal_code": "010000",
+        "word_count": 9
+      },
+      "metadata": {
+        "role_hint": "address"
+      }
+    },
+    "candidate-address-p2-w149-154": {
+      "id": "candidate-address-p2-w149-154",
+      "type": "address",
+      "value": "720000, г. бишкек, ул. тестовая, 1",
+      "raw_value": "720000, г. бишкек, ул. тестовая, 1",
+      "page": 2,
+      "bbox": [
+        0.166868,
+        0.445553,
+        0.380895,
+        0.45496
+      ],
+      "word_ids": [
+        "p2-w149",
+        "p2-w150",
+        "p2-w151",
+        "p2-w152",
+        "p2-w153",
+        "p2-w154"
+      ],
+      "anchor_word_ids": [],
+      "confidence": 0.535833,
+      "validation": {
+        "format": "postal_address",
+        "status": "context_match",
+        "postal_code": "720000",
+        "word_count": 6
+      },
+      "metadata": {
+        "role_hint": "address"
+      }
+    },
+    "candidate-inn-p2-w156-156": {
+      "id": "candidate-inn-p2-w156-156",
+      "type": "inn",
+      "value": "00000000000000",
+      "raw_value": "00000000000000,",
+      "page": 2,
+      "bbox": [
+        0.202741,
+        0.458666,
+        0.311165,
+        0.466933
+      ],
+      "word_ids": [
+        "p2-w156"
+      ],
+      "anchor_word_ids": [
+        "p2-w155"
+      ],
+      "confidence": 1.0,
+      "validation": {
+        "format": "tax_identifier",
+        "status": "shape_valid",
+        "shape": true,
+        "digit_count": 14,
+        "valid_lengths": [
+          10,
+          12,
+          14
+        ]
+      },
+      "metadata": {
+        "display_name": "ИНН"
+      }
+    },
+    "candidate-bin-p2-w188-188": {
+      "id": "candidate-bin-p2-w188-188",
+      "type": "bin",
+      "value": "000000000000",
+      "raw_value": "000000000000,",
+      "page": 2,
+      "bbox": [
+        0.546957,
+        0.471209,
+        0.640064,
+        0.47919
+      ],
+      "word_ids": [
+        "p2-w188"
+      ],
+      "anchor_word_ids": [
+        "p2-w187"
+      ],
+      "confidence": 1.0,
+      "validation": {
+        "format": "kz_bin",
+        "status": "shape_valid",
+        "shape": true,
+        "digit_count": 12,
+        "valid_lengths": [
+          12
+        ]
+      },
+      "metadata": {
+        "display_name": "БИН"
+      }
+    },
+    "candidate-bank_name-p2-w190-192": {
+      "id": "candidate-bank_name-p2-w190-192",
+      "type": "bank_name",
+      "value": "ао «test bank»",
+      "raw_value": "ао «test bank»",
+      "page": 2,
+      "bbox": [
+        0.551391,
+        0.484322,
+        0.67231,
+        0.491733
+      ],
+      "word_ids": [
+        "p2-w190",
+        "p2-w191",
+        "p2-w192"
+      ],
+      "anchor_word_ids": [
+        "p2-w189"
+      ],
+      "confidence": 0.994,
+      "validation": {
+        "format": "bank_name",
+        "status": "context_match",
+        "explicit_anchor": true,
+        "line_count": 1
+      },
+      "metadata": {
+        "role_hint": "bank"
+      }
+    },
+    "candidate-bik-p2-w162-162": {
+      "id": "candidate-bik-p2-w162-162",
+      "type": "bik",
+      "value": "000000",
+      "raw_value": "000000",
+      "page": 2,
+      "bbox": [
+        0.199919,
+        0.485462,
+        0.244659,
+        0.492588
+      ],
+      "word_ids": [
+        "p2-w162"
+      ],
+      "anchor_word_ids": [
+        "p2-w161"
+      ],
+      "confidence": 1.0,
+      "validation": {
+        "format": "bank_identifier_code",
+        "status": "shape_valid",
+        "shape": true,
+        "code_length": 6,
+        "character_set": "numeric"
+      },
+      "metadata": {
+        "display_name": "БИК"
+      }
+    },
+    "candidate-iban-p2-w194-194": {
+      "id": "candidate-iban-p2-w194-194",
+      "type": "iban",
+      "value": "KZ00TEST000000000000",
+      "raw_value": "kzootest000000000000",
+      "page": 2,
+      "bbox": [
+        0.543732,
+        0.497434,
+        0.704152,
+        0.504846
+      ],
+      "word_ids": [
+        "p2-w194"
+      ],
+      "anchor_word_ids": [
+        "p2-w193"
+      ],
+      "confidence": 0.956298,
+      "validation": {
+        "format": "kz_iban",
+        "status": "checksum_invalid",
+        "shape": true,
+        "country_code": "KZ",
+        "check_digits": "00",
+        "bban": "TEST000000000000",
+        "code_length": 20,
+        "checksum_valid": false
+      },
+      "metadata": {
+        "display_name": "IBAN",
+        "corrections": [
+          "p2-w194:KZOOTEST000000000000→KZ00TEST000000000000"
+        ]
+      }
+    },
+    "candidate-bank_account-p2-w165-165": {
+      "id": "candidate-bank_account-p2-w165-165",
+      "type": "bank_account",
+      "value": "TEST0000000001",
+      "raw_value": "те$т0000000001",
+      "page": 2,
+      "bbox": [
+        0.227328,
+        0.498575,
+        0.337767,
+        0.505701
+      ],
+      "word_ids": [
+        "p2-w165"
+      ],
+      "anchor_word_ids": [
+        "p2-w163"
+      ],
+      "confidence": 1.0,
+      "validation": {
+        "format": "generic_bank_account",
+        "status": "unverified",
+        "shape": true,
+        "code_length": 14,
+        "digit_count": 10,
+        "letter_count": 4,
+        "strict": false,
+        "checksum_valid": null
+      },
+      "metadata": {
+        "display_name": "банковский счёт",
+        "corrections": [
+          "p2-w165:0000000001→TEST0000000001"
+        ]
+      }
+    },
+    "candidate-bic_swift-p2-w196-196": {
+      "id": "candidate-bic_swift-p2-w196-196",
+      "type": "bic_swift",
+      "value": "TESTKZKX",
+      "raw_value": "testkzkx",
+      "page": 2,
+      "bbox": [
+        0.598549,
+        0.510832,
+        0.67634,
+        0.517959
+      ],
+      "word_ids": [
+        "p2-w196"
+      ],
+      "anchor_word_ids": [
+        "p2-w195"
+      ],
+      "confidence": 1.0,
+      "validation": {
+        "format": "swift_bic",
+        "status": "shape_valid",
+        "shape": true,
+        "code_length": 8,
+        "bank_code": "TEST",
+        "country_code": "KZ",
+        "location_code": "KX",
+        "branch_code": null
+      },
+      "metadata": {
+        "display_name": "SWIFT/BIC"
+      }
+    },
+    "candidate-bank_name-p2-w167-169": {
+      "id": "candidate-bank_name-p2-w167-169",
+      "type": "bank_name",
+      "value": "ао «тест банк»",
+      "raw_value": "ао «тест банк»",
+      "page": 2,
+      "bbox": [
+        0.201935,
+        0.511973,
+        0.304313,
+        0.519099
+      ],
+      "word_ids": [
+        "p2-w167",
+        "p2-w168",
+        "p2-w169"
+      ],
+      "anchor_word_ids": [],
+      "confidence": 0.941667,
+      "validation": {
+        "format": "bank_name",
+        "status": "context_match",
+        "explicit_anchor": false,
+        "line_count": 1
+      },
+      "metadata": {
+        "role_hint": "bank"
+      }
+    },
+    "candidate-bank_name-p2-w199-205": {
+      "id": "candidate-bank_name-p2-w199-205",
+      "type": "bank_name",
+      "value": "the bank of new york test mellon",
+      "raw_value": "the bank of new york test mellon",
+      "page": 2,
+      "bbox": [
+        0.512696,
+        0.52366,
+        0.749295,
+        0.544755
+      ],
+      "word_ids": [
+        "p2-w199",
+        "p2-w200",
+        "p2-w201",
+        "p2-w202",
+        "p2-w203",
+        "p2-w204",
+        "p2-w205"
+      ],
+      "anchor_word_ids": [
+        "p2-w197",
+        "p2-w198"
+      ],
+      "confidence": 0.995571,
+      "validation": {
+        "format": "bank_name",
+        "status": "context_match",
+        "explicit_anchor": true,
+        "line_count": 2
+      },
+      "metadata": {
+        "role_hint": "bank"
+      }
+    },
+    "candidate-bic_swift-p2-w207-207": {
+      "id": "candidate-bic_swift-p2-w207-207",
+      "type": "bic_swift",
+      "value": "TESTUS33",
+      "raw_value": "testus33",
+      "page": 2,
+      "bbox": [
+        0.565095,
+        0.550741,
+        0.634825,
+        0.557868
+      ],
+      "word_ids": [
+        "p2-w207"
+      ],
+      "anchor_word_ids": [
+        "p2-w206"
+      ],
+      "confidence": 1.0,
+      "validation": {
+        "format": "swift_bic",
+        "status": "shape_valid",
+        "shape": true,
+        "code_length": 8,
+        "bank_code": "TEST",
+        "country_code": "US",
+        "location_code": "33",
+        "branch_code": null
+      },
+      "metadata": {
+        "display_name": "SWIFT/BIC"
+      }
+    },
+    "candidate-bank_account-p2-w209-209": {
+      "id": "candidate-bank_account-p2-w209-209",
+      "type": "bank_account",
+      "value": "0000000000",
+      "raw_value": "0000000000",
+      "page": 2,
+      "bbox": [
+        0.57235,
+        0.563854,
+        0.646514,
+        0.570981
+      ],
+      "word_ids": [
+        "p2-w209"
+      ],
+      "anchor_word_ids": [
+        "p2-w208"
+      ],
+      "confidence": 1.0,
+      "validation": {
+        "format": "generic_bank_account",
+        "status": "unverified",
+        "shape": true,
+        "code_length": 10,
+        "digit_count": 10,
+        "letter_count": 0,
+        "strict": false,
+        "checksum_valid": null
+      },
+      "metadata": {
+        "display_name": "банковский счёт"
+      }
+    },
+    "candidate-position-p2-w210-210": {
+      "id": "candidate-position-p2-w210-210",
+      "type": "position",
+      "value": "представитель",
+      "raw_value": "представитель",
+      "page": 2,
+      "bbox": [
+        0.5131,
+        0.59236,
+        0.608222,
+        0.601482
+      ],
+      "word_ids": [
+        "p2-w210"
+      ],
+      "anchor_word_ids": [],
+      "confidence": 0.846,
+      "validation": {
+        "format": "position_title",
+        "status": "dictionary_match",
+        "canonical_value": "представитель"
+      },
+      "metadata": {
+        "role_hint": "representative_position",
+        "party_role_hint": "unknown"
+      }
+    },
+    "candidate-position-p2-w170-171": {
+      "id": "candidate-position-p2-w170-171",
+      "type": "position",
+      "value": "генеральный директор",
+      "raw_value": "генеральный директор",
+      "page": 2,
+      "bbox": [
+        0.167674,
+        0.599772,
+        0.31318,
+        0.609464
+      ],
+      "word_ids": [
+        "p2-w170",
+        "p2-w171"
+      ],
+      "anchor_word_ids": [],
+      "confidence": 0.846,
+      "validation": {
+        "format": "position_title",
+        "status": "dictionary_match",
+        "canonical_value": "генеральный директор"
+      },
+      "metadata": {
+        "role_hint": "representative_position",
+        "party_role_hint": "unknown"
+      }
+    },
+    "candidate-person_name-p2-w211-212": {
+      "id": "candidate-person_name-p2-w211-212",
+      "type": "person_name",
+      "value": "петрова а.п",
+      "raw_value": "петрова а.п.",
+      "page": 2,
+      "bbox": [
+        0.652963,
+        0.620011,
+        0.738412,
+        0.629418
+      ],
+      "word_ids": [
+        "p2-w211",
+        "p2-w212"
+      ],
+      "anchor_word_ids": [
+        "p2-w210"
+      ],
+      "confidence": 0.942,
+      "validation": {
+        "format": "person_name",
+        "status": "context_match",
+        "word_count": 2
+      },
+      "metadata": {
+        "role_hint": "representative",
+        "party_role_hint": "unknown"
+      }
+    },
+    "candidate-person_name-p2-w172-173": {
+      "id": "candidate-person_name-p2-w172-173",
+      "type": "person_name",
+      "value": "иванов и.т",
+      "raw_value": "иванов и.т.",
+      "page": 2,
+      "bbox": [
+        0.307537,
+        0.627993,
+        0.383313,
+        0.63512
+      ],
+      "word_ids": [
+        "p2-w172",
+        "p2-w173"
+      ],
+      "anchor_word_ids": [
+        "p2-w171"
+      ],
+      "confidence": 0.934,
+      "validation": {
+        "format": "person_name",
+        "status": "context_match",
+        "word_count": 2
+      },
+      "metadata": {
+        "role_hint": "representative",
+        "party_role_hint": "unknown"
+      }
+    }
+  },
+  "unassigned_entity_ids": [],
+  "warnings": [
+    "IBAN KZ00TEST000000000000 имеет корректную форму, но не прошёл проверку MOD 97"
+  ],
+  "metadata": {
+    "processing_seconds": {
+      "loading": 0.009888,
+      "layout": 0.046734,
+      "rules": 0.021773,
+      "resolution": 0.001096,
+      "linking": 0.000656,
+      "total": 0.080148
+    }
+  }
+}
