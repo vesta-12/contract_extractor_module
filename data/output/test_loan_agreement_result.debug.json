@@ -10,7 +10,7 @@
     "issue_count": 0
   },
   "source": {
-    "path": "data\\input\\test_loan_agreement_ocr.json",
+    "path": "data\\input\\formatted\\test_loan_agreement_ocr.json",
     "page_count": 2,
     "word_count": 617,
     "line_count": 85
@@ -51,7 +51,7 @@
       "evidence": [
         {
           "kind": "date_pattern",
-          "description": "Найдена календарная дата по текстовому или числовому шаблону",
+          "description": "найдена календарная дата по текстовому или числовому шаблону",
           "score_delta": 0.35,
           "data": {
             "date_format": "textual"
@@ -59,7 +59,7 @@
         },
         {
           "kind": "calendar_validation",
-          "description": "День, месяц и год образуют корректную календарную дату",
+          "description": "день, месяц и год образуют корректную календарную дату",
           "score_delta": 0.3,
           "data": {
             "day": 17,
@@ -69,7 +69,7 @@
         },
         {
           "kind": "semantic_context",
-          "description": "По контексту определена предварительная роль даты",
+          "description": "по контексту определена предварительная роль даты",
           "score_delta": 0.05,
           "data": {
             "role_hint": "contract_date"
@@ -77,7 +77,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.096,
           "data": {
             "average_ocr_confidence": 0.96
@@ -122,7 +122,7 @@
       "evidence": [
         {
           "kind": "amount_format",
-          "description": "Найдена корректная числовая денежная сумма",
+          "description": "найдена корректная числовая денежная сумма",
           "score_delta": 0.3,
           "data": {
             "amount": "1000000.00",
@@ -131,7 +131,7 @@
         },
         {
           "kind": "currency",
-          "description": "Рядом с суммой найдена поддерживаемая валюта",
+          "description": "рядом с суммой найдена поддерживаемая валюта",
           "score_delta": 0.25,
           "data": {
             "currency": "USD"
@@ -139,7 +139,7 @@
         },
         {
           "kind": "semantic_context",
-          "description": "По контексту определено предварительное назначение суммы",
+          "description": "по контексту определено предварительное назначение суммы",
           "score_delta": 0.05,
           "data": {
             "role_hint": "principal_amount"
@@ -147,7 +147,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.09475,
           "data": {
             "average_ocr_confidence": 0.9475
@@ -198,7 +198,7 @@
       "evidence": [
         {
           "kind": "percentage_pattern",
-          "description": "Найдено число с обозначением процента",
+          "description": "найдено число с обозначением процента",
           "score_delta": 0.4,
           "data": {
             "percentage": "4"
@@ -206,7 +206,7 @@
         },
         {
           "kind": "semantic_context",
-          "description": "По контексту определён тип процентного значения",
+          "description": "по контексту определён тип процентного значения",
           "score_delta": 0.15,
           "data": {
             "role_hint": "annual_interest_rate"
@@ -214,7 +214,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.091,
           "data": {
             "average_ocr_confidence": 0.91
@@ -261,7 +261,7 @@
       "evidence": [
         {
           "kind": "date_pattern",
-          "description": "Найдена календарная дата по текстовому или числовому шаблону",
+          "description": "найдена календарная дата по текстовому или числовому шаблону",
           "score_delta": 0.35,
           "data": {
             "date_format": "textual"
@@ -269,7 +269,7 @@
         },
         {
           "kind": "calendar_validation",
-          "description": "День, месяц и год образуют корректную календарную дату",
+          "description": "день, месяц и год образуют корректную календарную дату",
           "score_delta": 0.3,
           "data": {
             "day": 17,
@@ -279,7 +279,7 @@
         },
         {
           "kind": "semantic_context",
-          "description": "По контексту определена предварительная роль даты",
+          "description": "по контексту определена предварительная роль даты",
           "score_delta": 0.05,
           "data": {
             "role_hint": "repayment_due_date"
@@ -287,7 +287,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.094333,
           "data": {
             "average_ocr_confidence": 0.943333
@@ -333,7 +333,7 @@
       "evidence": [
         {
           "kind": "date_pattern",
-          "description": "Найдена календарная дата по текстовому или числовому шаблону",
+          "description": "найдена календарная дата по текстовому или числовому шаблону",
           "score_delta": 0.35,
           "data": {
             "date_format": "textual"
@@ -341,7 +341,7 @@
         },
         {
           "kind": "calendar_validation",
-          "description": "День, месяц и год образуют корректную календарную дату",
+          "description": "день, месяц и год образуют корректную календарную дату",
           "score_delta": 0.3,
           "data": {
             "day": 25,
@@ -351,7 +351,7 @@
         },
         {
           "kind": "semantic_context",
-          "description": "По контексту определена предварительная роль даты",
+          "description": "по контексту определена предварительная роль даты",
           "score_delta": 0.05,
           "data": {
             "role_hint": "interest_start_date"
@@ -359,7 +359,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.095667,
           "data": {
             "average_ocr_confidence": 0.956667
@@ -409,7 +409,7 @@
         "evidence": [
           {
             "kind": "legal_form",
-            "description": "Найдена организационно-правовая форма юридического лица",
+            "description": "найдена организационно-правовая форма юридического лица",
             "score_delta": 0.4,
             "data": {
               "legal_form": "ООО",
@@ -420,7 +420,7 @@
           },
           {
             "kind": "organization_name",
-            "description": "После правовой формы найдено название",
+            "description": "после правовой формы найдено название",
             "score_delta": 0.2,
             "data": {
               "value": "ооо «тестовый завод»"
@@ -428,7 +428,7 @@
           },
           {
             "kind": "party_context",
-            "description": "По ближайшему контексту определена роль стороны",
+            "description": "по ближайшему контексту определена роль стороны",
             "score_delta": 0.1,
             "data": {
               "role_hint": "lender"
@@ -436,7 +436,7 @@
           },
           {
             "kind": "ocr_confidence",
-            "description": "Учтена средняя уверенность OCR",
+            "description": "учтена средняя уверенность OCR",
             "score_delta": 0.095333,
             "data": {
               "average_ocr_confidence": 0.953333
@@ -487,7 +487,7 @@
             "evidence": [
               {
                 "kind": "anchor",
-                "description": "Найден якорь ИНН на той же строке, что и значение",
+                "description": "найден якорь ИНН на той же строке, что и значение",
                 "score_delta": 0.3,
                 "data": {
                   "anchor_text": "инн",
@@ -499,7 +499,7 @@
               },
               {
                 "kind": "format",
-                "description": "Числовое значение имеет допустимую длину",
+                "description": "числовое значение имеет допустимую длину",
                 "score_delta": 0.25,
                 "data": {
                   "format": "tax_identifier",
@@ -513,7 +513,7 @@
               },
               {
                 "kind": "distance",
-                "description": "Значение расположено справа от ключевого слова",
+                "description": "значение расположено справа от ключевого слова",
                 "score_delta": 0.091132,
                 "data": {
                   "horizontal_gap": 0.004434,
@@ -522,7 +522,7 @@
               },
               {
                 "kind": "ocr_confidence",
-                "description": "Учтена средняя уверенность OCR для слов значения",
+                "description": "учтена средняя уверенность OCR для слов значения",
                 "score_delta": 0.091,
                 "data": {
                   "average_ocr_confidence": 0.91
@@ -538,7 +538,7 @@
               },
               {
                 "kind": "ocr_value_confirmation",
-                "description": "Значение подтверждено массивом предварительно найденных OCR values",
+                "description": "значение подтверждено массивом предварительно найденных OCR values",
                 "score_delta": 0.1,
                 "data": {
                   "ocr_value_ids": [
@@ -601,7 +601,7 @@
           "evidence": [
             {
               "kind": "address_shape",
-              "description": "Фрагмент содержит признаки адреса",
+              "description": "фрагмент содержит признаки адреса",
               "score_delta": 0.24,
               "data": {
                 "address_score": 4
@@ -609,7 +609,7 @@
             },
             {
               "kind": "ocr_confidence",
-              "description": "Учтена средняя уверенность OCR",
+              "description": "учтена средняя уверенность OCR",
               "score_delta": 0.095833,
               "data": {
                 "average_ocr_confidence": 0.958333
@@ -667,7 +667,7 @@
               },
               {
                 "kind": "person_name_shape",
-                "description": "Последовательность соответствует ФИО или фамилии с инициалами",
+                "description": "последовательность соответствует ФИО или фамилии с инициалами",
                 "score_delta": 0.25,
                 "data": {
                   "word_count": 3
@@ -675,7 +675,7 @@
               },
               {
                 "kind": "party_context",
-                "description": "Определена сторона представителя",
+                "description": "определена сторона представителя",
                 "score_delta": 0.05,
                 "data": {
                   "party_role_hint": "lender"
@@ -683,7 +683,7 @@
               },
               {
                 "kind": "ocr_confidence",
-                "description": "Учтена средняя уверенность OCR",
+                "description": "учтена средняя уверенность OCR",
                 "score_delta": 0.093333,
                 "data": {
                   "average_ocr_confidence": 0.933333
@@ -725,7 +725,7 @@
             "evidence": [
               {
                 "kind": "position_dictionary",
-                "description": "Найдена известная должность",
+                "description": "найдена известная должность",
                 "score_delta": 0.5,
                 "data": {
                   "canonical_position": "генеральный директор"
@@ -733,7 +733,7 @@
               },
               {
                 "kind": "ocr_confidence",
-                "description": "Учтена средняя уверенность OCR",
+                "description": "учтена средняя уверенность OCR",
                 "score_delta": 0.096,
                 "data": {
                   "average_ocr_confidence": 0.96
@@ -796,7 +796,7 @@
             "evidence": [
               {
                 "kind": "bank_legal_form",
-                "description": "Название содержит правовую форму и банковский термин",
+                "description": "название содержит правовую форму и банковский термин",
                 "score_delta": 0.35,
                 "data": {
                   "bank_role": "bank"
@@ -804,7 +804,7 @@
               },
               {
                 "kind": "bank_name_shape",
-                "description": "Фрагмент соответствует форме названия банка",
+                "description": "фрагмент соответствует форме названия банка",
                 "score_delta": 0.25,
                 "data": {
                   "value": "ао «тест банк»",
@@ -813,7 +813,7 @@
               },
               {
                 "kind": "requisites_region",
-                "description": "Название находится в блоке реквизитов",
+                "description": "название находится в блоке реквизитов",
                 "score_delta": 0.1,
                 "data": {
                   "region": "left_column"
@@ -821,7 +821,7 @@
               },
               {
                 "kind": "ocr_confidence",
-                "description": "Учтена средняя уверенность OCR",
+                "description": "учтена средняя уверенность OCR",
                 "score_delta": 0.091667,
                 "data": {
                   "average_ocr_confidence": 0.916667
@@ -873,7 +873,7 @@
               "evidence": [
                 {
                   "kind": "anchor",
-                  "description": "Найден якорь банковский счёт перед значением",
+                  "description": "найден якорь банковский счёт перед значением",
                   "score_delta": 0.3,
                   "data": {
                     "anchor_text": "р/счет",
@@ -884,7 +884,7 @@
                 },
                 {
                   "kind": "format",
-                  "description": "Значение соответствует формату банковский счёт",
+                  "description": "значение соответствует формату банковский счёт",
                   "score_delta": 0.25,
                   "data": {
                     "code_length": 14,
@@ -896,7 +896,7 @@
                 },
                 {
                   "kind": "distance",
-                  "description": "Значение расположено справа от ключевого слова",
+                  "description": "значение расположено справа от ключевого слова",
                   "score_delta": 0.081862,
                   "data": {
                     "horizontal_gap": 0.021766,
@@ -905,7 +905,7 @@
                 },
                 {
                   "kind": "ocr_confidence",
-                  "description": "Учтена средняя уверенность OCR для слов значения",
+                  "description": "учтена средняя уверенность OCR для слов значения",
                   "score_delta": 0.085,
                   "data": {
                     "average_ocr_confidence": 0.85
@@ -913,7 +913,7 @@
                 },
                 {
                   "kind": "compact_value",
-                  "description": "Счёт распознан одним OCR-словом",
+                  "description": "счёт распознан одним OCR-словом",
                   "score_delta": 0.05,
                   "data": {
                     "word_count": 1
@@ -921,7 +921,7 @@
                 },
                 {
                   "kind": "ocr_correction",
-                  "description": "При нормализации сохранены исправления OCR",
+                  "description": "при нормализации сохранены исправления OCR",
                   "score_delta": 0.0,
                   "data": {
                     "corrections": [
@@ -931,7 +931,7 @@
                 },
                 {
                   "kind": "ocr_value_confirmation",
-                  "description": "Значение подтверждено массивом предварительно найденных OCR values",
+                  "description": "значение подтверждено массивом предварительно найденных OCR values",
                   "score_delta": 0.1,
                   "data": {
                     "ocr_value_ids": [
@@ -994,7 +994,7 @@
               "evidence": [
                 {
                   "kind": "anchor",
-                  "description": "Найден якорь БИК на той же строке, что и значение",
+                  "description": "найден якорь БИК на той же строке, что и значение",
                   "score_delta": 0.3,
                   "data": {
                     "anchor_text": "бик",
@@ -1008,7 +1008,7 @@
                 },
                 {
                   "kind": "format",
-                  "description": "Значение соответствует формату БИК",
+                  "description": "значение соответствует формату БИК",
                   "score_delta": 0.25,
                   "data": {
                     "code_length": 6,
@@ -1017,7 +1017,7 @@
                 },
                 {
                   "kind": "distance",
-                  "description": "Значение расположено справа от банковского ключа",
+                  "description": "значение расположено справа от банковского ключа",
                   "score_delta": 0.092612,
                   "data": {
                     "horizontal_gap": 0.004433,
@@ -1026,7 +1026,7 @@
                 },
                 {
                   "kind": "ocr_confidence",
-                  "description": "Учтена средняя уверенность OCR для слов значения",
+                  "description": "учтена средняя уверенность OCR для слов значения",
                   "score_delta": 0.096,
                   "data": {
                     "average_ocr_confidence": 0.96
@@ -1034,7 +1034,7 @@
                 },
                 {
                   "kind": "compact_value",
-                  "description": "Банковский код распознан одним OCR-словом",
+                  "description": "банковский код распознан одним OCR-словом",
                   "score_delta": 0.05,
                   "data": {
                     "word_count": 1
@@ -1042,7 +1042,7 @@
                 },
                 {
                   "kind": "ocr_value_confirmation",
-                  "description": "Значение подтверждено массивом предварительно найденных OCR values",
+                  "description": "значение подтверждено массивом предварительно найденных OCR values",
                   "score_delta": 0.1,
                   "data": {
                     "ocr_value_ids": [
@@ -1150,7 +1150,7 @@
         "evidence": [
           {
             "kind": "legal_form",
-            "description": "Найдена организационно-правовая форма юридического лица",
+            "description": "найдена организационно-правовая форма юридического лица",
             "score_delta": 0.4,
             "data": {
               "legal_form": "ТОО",
@@ -1161,7 +1161,7 @@
           },
           {
             "kind": "organization_name",
-            "description": "После правовой формы найдено название",
+            "description": "после правовой формы найдено название",
             "score_delta": 0.2,
             "data": {
               "value": "тоо «тест холдинг»"
@@ -1169,7 +1169,7 @@
           },
           {
             "kind": "party_context",
-            "description": "По ближайшему контексту определена роль стороны",
+            "description": "по ближайшему контексту определена роль стороны",
             "score_delta": 0.1,
             "data": {
               "role_hint": "borrower"
@@ -1177,7 +1177,7 @@
           },
           {
             "kind": "ocr_confidence",
-            "description": "Учтена средняя уверенность OCR",
+            "description": "учтена средняя уверенность OCR",
             "score_delta": 0.095667,
             "data": {
               "average_ocr_confidence": 0.956667
@@ -1226,7 +1226,7 @@
             "evidence": [
               {
                 "kind": "anchor",
-                "description": "Найден якорь БИН на той же строке, что и значение",
+                "description": "найден якорь БИН на той же строке, что и значение",
                 "score_delta": 0.3,
                 "data": {
                   "anchor_text": "бин",
@@ -1239,7 +1239,7 @@
               },
               {
                 "kind": "format",
-                "description": "Числовое значение имеет допустимую длину",
+                "description": "числовое значение имеет допустимую длину",
                 "score_delta": 0.25,
                 "data": {
                   "format": "kz_bin",
@@ -1251,7 +1251,7 @@
               },
               {
                 "kind": "distance",
-                "description": "Значение расположено справа от ключевого слова",
+                "description": "значение расположено справа от ключевого слова",
                 "score_delta": 0.08952,
                 "data": {
                   "horizontal_gap": 0.00524,
@@ -1260,7 +1260,7 @@
               },
               {
                 "kind": "ocr_confidence",
-                "description": "Учтена средняя уверенность OCR для слов значения",
+                "description": "учтена средняя уверенность OCR для слов значения",
                 "score_delta": 0.091,
                 "data": {
                   "average_ocr_confidence": 0.91
@@ -1276,7 +1276,7 @@
               },
               {
                 "kind": "ocr_value_confirmation",
-                "description": "Значение подтверждено массивом предварительно найденных OCR values",
+                "description": "значение подтверждено массивом предварительно найденных OCR values",
                 "score_delta": 0.1,
                 "data": {
                   "ocr_value_ids": [
@@ -1342,7 +1342,7 @@
           "evidence": [
             {
               "kind": "address_shape",
-              "description": "Фрагмент содержит признаки адреса",
+              "description": "фрагмент содержит признаки адреса",
               "score_delta": 0.3,
               "data": {
                 "address_score": 5
@@ -1350,7 +1350,7 @@
             },
             {
               "kind": "ocr_confidence",
-              "description": "Учтена средняя уверенность OCR",
+              "description": "учтена средняя уверенность OCR",
               "score_delta": 0.095889,
               "data": {
                 "average_ocr_confidence": 0.958889
@@ -1409,7 +1409,7 @@
               },
               {
                 "kind": "person_name_shape",
-                "description": "Последовательность соответствует ФИО или фамилии с инициалами",
+                "description": "последовательность соответствует ФИО или фамилии с инициалами",
                 "score_delta": 0.25,
                 "data": {
                   "word_count": 3
@@ -1417,7 +1417,7 @@
               },
               {
                 "kind": "party_context",
-                "description": "Определена сторона представителя",
+                "description": "определена сторона представителя",
                 "score_delta": 0.05,
                 "data": {
                   "party_role_hint": "borrower"
@@ -1425,7 +1425,7 @@
               },
               {
                 "kind": "ocr_confidence",
-                "description": "Учтена средняя уверенность OCR",
+                "description": "учтена средняя уверенность OCR",
                 "score_delta": 0.093667,
                 "data": {
                   "average_ocr_confidence": 0.936667
@@ -1466,7 +1466,7 @@
             "evidence": [
               {
                 "kind": "position_dictionary",
-                "description": "Найдена известная должность",
+                "description": "найдена известная должность",
                 "score_delta": 0.5,
                 "data": {
                   "canonical_position": "представитель"
@@ -1474,7 +1474,7 @@
               },
               {
                 "kind": "ocr_confidence",
-                "description": "Учтена средняя уверенность OCR",
+                "description": "учтена средняя уверенность OCR",
                 "score_delta": 0.096,
                 "data": {
                   "average_ocr_confidence": 0.96
@@ -1539,7 +1539,7 @@
             "evidence": [
               {
                 "kind": "bank_anchor",
-                "description": "Найден явный банковский ключ",
+                "description": "найден явный банковский ключ",
                 "score_delta": 0.4,
                 "data": {
                   "anchor_word_ids": [
@@ -1550,7 +1550,7 @@
               },
               {
                 "kind": "bank_name_shape",
-                "description": "Фрагмент соответствует форме названия банка",
+                "description": "фрагмент соответствует форме названия банка",
                 "score_delta": 0.25,
                 "data": {
                   "value": "ао «test bank»",
@@ -1559,7 +1559,7 @@
               },
               {
                 "kind": "requisites_region",
-                "description": "Название находится в блоке реквизитов",
+                "description": "название находится в блоке реквизитов",
                 "score_delta": 0.1,
                 "data": {
                   "region": "right_column"
@@ -1567,7 +1567,7 @@
               },
               {
                 "kind": "ocr_confidence",
-                "description": "Учтена средняя уверенность OCR",
+                "description": "учтена средняя уверенность OCR",
                 "score_delta": 0.094,
                 "data": {
                   "average_ocr_confidence": 0.94
@@ -1619,7 +1619,7 @@
               "evidence": [
                 {
                   "kind": "anchor",
-                  "description": "Найден якорь IBAN перед значением",
+                  "description": "найден якорь IBAN перед значением",
                   "score_delta": 0.3,
                   "data": {
                     "anchor_text": "р/с",
@@ -1630,7 +1630,7 @@
                 },
                 {
                   "kind": "format",
-                  "description": "Значение соответствует формату IBAN",
+                  "description": "значение соответствует формату IBAN",
                   "score_delta": 0.25,
                   "data": {
                     "country_code": "KZ",
@@ -1642,7 +1642,7 @@
                 },
                 {
                   "kind": "distance",
-                  "description": "Значение расположено справа от ключевого слова",
+                  "description": "значение расположено справа от ключевого слова",
                   "score_delta": 0.095298,
                   "data": {
                     "horizontal_gap": 0.005643,
@@ -1651,7 +1651,7 @@
                 },
                 {
                   "kind": "ocr_confidence",
-                  "description": "Учтена средняя уверенность OCR для слов значения",
+                  "description": "учтена средняя уверенность OCR для слов значения",
                   "score_delta": 0.091,
                   "data": {
                     "average_ocr_confidence": 0.91
@@ -1659,7 +1659,7 @@
                 },
                 {
                   "kind": "compact_value",
-                  "description": "Счёт распознан одним OCR-словом",
+                  "description": "счёт распознан одним OCR-словом",
                   "score_delta": 0.05,
                   "data": {
                     "word_count": 1
@@ -1667,7 +1667,7 @@
                 },
                 {
                   "kind": "ocr_correction",
-                  "description": "При нормализации сохранены исправления OCR",
+                  "description": "при нормализации сохранены исправления OCR",
                   "score_delta": 0.0,
                   "data": {
                     "corrections": [
@@ -1677,7 +1677,7 @@
                 },
                 {
                   "kind": "ocr_value_confirmation",
-                  "description": "Значение подтверждено массивом предварительно найденных OCR values",
+                  "description": "значение подтверждено массивом предварительно найденных OCR values",
                   "score_delta": 0.1,
                   "data": {
                     "ocr_value_ids": [
@@ -1690,7 +1690,7 @@
                 },
                 {
                   "kind": "checksum",
-                  "description": "Форма IBAN корректна, но контрольная сумма не прошла проверку",
+                  "description": "форма IBAN корректна, но контрольная сумма не прошла проверку",
                   "score_delta": -0.08,
                   "data": {
                     "checksum_valid": false
@@ -1752,7 +1752,7 @@
               "evidence": [
                 {
                   "kind": "anchor",
-                  "description": "Найден якорь SWIFT/BIC на той же строке, что и значение",
+                  "description": "найден якорь SWIFT/BIC на той же строке, что и значение",
                   "score_delta": 0.3,
                   "data": {
                     "anchor_text": "бик/swift:",
@@ -1771,7 +1771,7 @@
                 },
                 {
                   "kind": "format",
-                  "description": "Значение соответствует формату SWIFT/BIC",
+                  "description": "значение соответствует формату SWIFT/BIC",
                   "score_delta": 0.25,
                   "data": {
                     "code_length": 8,
@@ -1783,7 +1783,7 @@
                 },
                 {
                   "kind": "distance",
-                  "description": "Значение расположено справа от банковского ключа",
+                  "description": "значение расположено справа от банковского ключа",
                   "score_delta": 0.091938,
                   "data": {
                     "horizontal_gap": 0.004837,
@@ -1792,7 +1792,7 @@
                 },
                 {
                   "kind": "ocr_confidence",
-                  "description": "Учтена средняя уверенность OCR для слов значения",
+                  "description": "учтена средняя уверенность OCR для слов значения",
                   "score_delta": 0.091,
                   "data": {
                     "average_ocr_confidence": 0.91
@@ -1800,7 +1800,7 @@
                 },
                 {
                   "kind": "compact_value",
-                  "description": "Банковский код распознан одним OCR-словом",
+                  "description": "банковский код распознан одним OCR-словом",
                   "score_delta": 0.05,
                   "data": {
                     "word_count": 1
@@ -1808,7 +1808,7 @@
                 },
                 {
                   "kind": "ocr_value_confirmation",
-                  "description": "Значение подтверждено массивом предварительно найденных OCR values",
+                  "description": "значение подтверждено массивом предварительно найденных OCR values",
                   "score_delta": 0.1,
                   "data": {
                     "ocr_value_ids": [
@@ -1881,7 +1881,7 @@
             "evidence": [
               {
                 "kind": "bank_anchor",
-                "description": "Найден явный банковский ключ",
+                "description": "найден явный банковский ключ",
                 "score_delta": 0.4,
                 "data": {
                   "anchor_word_ids": [
@@ -1893,7 +1893,7 @@
               },
               {
                 "kind": "bank_name_shape",
-                "description": "Фрагмент соответствует форме названия банка",
+                "description": "фрагмент соответствует форме названия банка",
                 "score_delta": 0.25,
                 "data": {
                   "value": "the bank of new york test mellon",
@@ -1902,7 +1902,7 @@
               },
               {
                 "kind": "requisites_region",
-                "description": "Название находится в блоке реквизитов",
+                "description": "название находится в блоке реквизитов",
                 "score_delta": 0.1,
                 "data": {
                   "region": "right_column"
@@ -1910,7 +1910,7 @@
               },
               {
                 "kind": "ocr_confidence",
-                "description": "Учтена средняя уверенность OCR",
+                "description": "учтена средняя уверенность OCR",
                 "score_delta": 0.095571,
                 "data": {
                   "average_ocr_confidence": 0.955714
@@ -1963,7 +1963,7 @@
               "evidence": [
                 {
                   "kind": "anchor",
-                  "description": "Найден якорь банковский счёт перед значением",
+                  "description": "найден якорь банковский счёт перед значением",
                   "score_delta": 0.3,
                   "data": {
                     "anchor_text": "account",
@@ -1974,7 +1974,7 @@
                 },
                 {
                   "kind": "format",
-                  "description": "Значение соответствует формату банковский счёт",
+                  "description": "значение соответствует формату банковский счёт",
                   "score_delta": 0.25,
                   "data": {
                     "code_length": 10,
@@ -1986,7 +1986,7 @@
                 },
                 {
                   "kind": "distance",
-                  "description": "Значение расположено справа от ключевого слова",
+                  "description": "значение расположено справа от ключевого слова",
                   "score_delta": 0.095633,
                   "data": {
                     "horizontal_gap": 0.00524,
@@ -1995,7 +1995,7 @@
                 },
                 {
                   "kind": "ocr_confidence",
-                  "description": "Учтена средняя уверенность OCR для слов значения",
+                  "description": "учтена средняя уверенность OCR для слов значения",
                   "score_delta": 0.096,
                   "data": {
                     "average_ocr_confidence": 0.96
@@ -2003,7 +2003,7 @@
                 },
                 {
                   "kind": "compact_value",
-                  "description": "Счёт распознан одним OCR-словом",
+                  "description": "счёт распознан одним OCR-словом",
                   "score_delta": 0.05,
                   "data": {
                     "word_count": 1
@@ -2011,7 +2011,7 @@
                 },
                 {
                   "kind": "ocr_value_confirmation",
-                  "description": "Значение подтверждено массивом предварительно найденных OCR values",
+                  "description": "значение подтверждено массивом предварительно найденных OCR values",
                   "score_delta": 0.1,
                   "data": {
                     "ocr_value_ids": [
@@ -2076,7 +2076,7 @@
               "evidence": [
                 {
                   "kind": "anchor",
-                  "description": "Найден якорь SWIFT/BIC на той же строке, что и значение",
+                  "description": "найден якорь SWIFT/BIC на той же строке, что и значение",
                   "score_delta": 0.3,
                   "data": {
                     "anchor_text": "swift:",
@@ -2095,7 +2095,7 @@
                 },
                 {
                   "kind": "format",
-                  "description": "Значение соответствует формату SWIFT/BIC",
+                  "description": "значение соответствует формату SWIFT/BIC",
                   "score_delta": 0.25,
                   "data": {
                     "code_length": 8,
@@ -2107,7 +2107,7 @@
                 },
                 {
                   "kind": "distance",
-                  "description": "Значение расположено справа от банковского ключа",
+                  "description": "значение расположено справа от банковского ключа",
                   "score_delta": 0.091938,
                   "data": {
                     "horizontal_gap": 0.004837,
@@ -2116,7 +2116,7 @@
                 },
                 {
                   "kind": "ocr_confidence",
-                  "description": "Учтена средняя уверенность OCR для слов значения",
+                  "description": "учтена средняя уверенность OCR для слов значения",
                   "score_delta": 0.091,
                   "data": {
                     "average_ocr_confidence": 0.91
@@ -2124,7 +2124,7 @@
                 },
                 {
                   "kind": "compact_value",
-                  "description": "Банковский код распознан одним OCR-словом",
+                  "description": "банковский код распознан одним OCR-словом",
                   "score_delta": 0.05,
                   "data": {
                     "word_count": 1
@@ -2132,7 +2132,7 @@
                 },
                 {
                   "kind": "ocr_value_confirmation",
-                  "description": "Значение подтверждено массивом предварительно найденных OCR values",
+                  "description": "значение подтверждено массивом предварительно найденных OCR values",
                   "score_delta": 0.1,
                   "data": {
                     "ocr_value_ids": [
@@ -2245,7 +2245,7 @@
       "evidence": [
         {
           "kind": "date_pattern",
-          "description": "Найдена календарная дата по текстовому или числовому шаблону",
+          "description": "найдена календарная дата по текстовому или числовому шаблону",
           "score_delta": 0.35,
           "data": {
             "date_format": "textual"
@@ -2253,7 +2253,7 @@
         },
         {
           "kind": "calendar_validation",
-          "description": "День, месяц и год образуют корректную календарную дату",
+          "description": "день, месяц и год образуют корректную календарную дату",
           "score_delta": 0.3,
           "data": {
             "day": 17,
@@ -2263,7 +2263,7 @@
         },
         {
           "kind": "semantic_context",
-          "description": "По контексту определена предварительная роль даты",
+          "description": "по контексту определена предварительная роль даты",
           "score_delta": 0.05,
           "data": {
             "role_hint": "contract_date"
@@ -2271,7 +2271,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.096,
           "data": {
             "average_ocr_confidence": 0.96
@@ -2316,7 +2316,7 @@
       "evidence": [
         {
           "kind": "legal_form",
-          "description": "Найдена организационно-правовая форма юридического лица",
+          "description": "найдена организационно-правовая форма юридического лица",
           "score_delta": 0.4,
           "data": {
             "legal_form": "ООО",
@@ -2327,7 +2327,7 @@
         },
         {
           "kind": "organization_name",
-          "description": "После правовой формы найдено название",
+          "description": "после правовой формы найдено название",
           "score_delta": 0.2,
           "data": {
             "value": "ооо «тестовый завод»"
@@ -2335,7 +2335,7 @@
         },
         {
           "kind": "party_context",
-          "description": "По ближайшему контексту определена роль стороны",
+          "description": "по ближайшему контексту определена роль стороны",
           "score_delta": 0.1,
           "data": {
             "role_hint": "lender"
@@ -2343,7 +2343,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.095,
           "data": {
             "average_ocr_confidence": 0.95
@@ -2385,7 +2385,7 @@
       "evidence": [
         {
           "kind": "position_dictionary",
-          "description": "Найдена известная должность",
+          "description": "найдена известная должность",
           "score_delta": 0.5,
           "data": {
             "canonical_position": "генеральный директор"
@@ -2393,7 +2393,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.096,
           "data": {
             "average_ocr_confidence": 0.96
@@ -2446,7 +2446,7 @@
         },
         {
           "kind": "person_name_shape",
-          "description": "Последовательность соответствует ФИО или фамилии с инициалами",
+          "description": "последовательность соответствует ФИО или фамилии с инициалами",
           "score_delta": 0.25,
           "data": {
             "word_count": 3
@@ -2454,7 +2454,7 @@
         },
         {
           "kind": "party_context",
-          "description": "Определена сторона представителя",
+          "description": "определена сторона представителя",
           "score_delta": 0.05,
           "data": {
             "party_role_hint": "lender"
@@ -2462,7 +2462,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.093333,
           "data": {
             "average_ocr_confidence": 0.933333
@@ -2508,7 +2508,7 @@
       "evidence": [
         {
           "kind": "legal_form",
-          "description": "Найдена организационно-правовая форма юридического лица",
+          "description": "найдена организационно-правовая форма юридического лица",
           "score_delta": 0.4,
           "data": {
             "legal_form": "ТОО",
@@ -2519,7 +2519,7 @@
         },
         {
           "kind": "organization_name",
-          "description": "После правовой формы найдено название",
+          "description": "после правовой формы найдено название",
           "score_delta": 0.2,
           "data": {
             "value": "тоо «тест холдинг»"
@@ -2527,7 +2527,7 @@
         },
         {
           "kind": "party_context",
-          "description": "По ближайшему контексту определена роль стороны",
+          "description": "по ближайшему контексту определена роль стороны",
           "score_delta": 0.1,
           "data": {
             "role_hint": "borrower"
@@ -2535,7 +2535,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.095667,
           "data": {
             "average_ocr_confidence": 0.956667
@@ -2588,7 +2588,7 @@
         },
         {
           "kind": "person_name_shape",
-          "description": "Последовательность соответствует ФИО или фамилии с инициалами",
+          "description": "последовательность соответствует ФИО или фамилии с инициалами",
           "score_delta": 0.25,
           "data": {
             "word_count": 3
@@ -2596,7 +2596,7 @@
         },
         {
           "kind": "party_context",
-          "description": "Определена сторона представителя",
+          "description": "определена сторона представителя",
           "score_delta": 0.05,
           "data": {
             "party_role_hint": "borrower"
@@ -2604,7 +2604,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.093667,
           "data": {
             "average_ocr_confidence": 0.936667
@@ -2645,7 +2645,7 @@
       "evidence": [
         {
           "kind": "position_dictionary",
-          "description": "Найдена известная должность",
+          "description": "найдена известная должность",
           "score_delta": 0.5,
           "data": {
             "canonical_position": "представитель"
@@ -2653,7 +2653,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.096,
           "data": {
             "average_ocr_confidence": 0.96
@@ -2698,7 +2698,7 @@
       "evidence": [
         {
           "kind": "date_pattern",
-          "description": "Найдена календарная дата по текстовому или числовому шаблону",
+          "description": "найдена календарная дата по текстовому или числовому шаблону",
           "score_delta": 0.35,
           "data": {
             "date_format": "numeric"
@@ -2706,7 +2706,7 @@
         },
         {
           "kind": "calendar_validation",
-          "description": "День, месяц и год образуют корректную календарную дату",
+          "description": "день, месяц и год образуют корректную календарную дату",
           "score_delta": 0.3,
           "data": {
             "day": 17,
@@ -2716,7 +2716,7 @@
         },
         {
           "kind": "semantic_context",
-          "description": "По контексту определена предварительная роль даты",
+          "description": "по контексту определена предварительная роль даты",
           "score_delta": 0.05,
           "data": {
             "role_hint": "power_of_attorney_date"
@@ -2724,7 +2724,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.096,
           "data": {
             "average_ocr_confidence": 0.96
@@ -2769,7 +2769,7 @@
       "evidence": [
         {
           "kind": "amount_format",
-          "description": "Найдена корректная числовая денежная сумма",
+          "description": "найдена корректная числовая денежная сумма",
           "score_delta": 0.3,
           "data": {
             "amount": "1000000.00",
@@ -2778,7 +2778,7 @@
         },
         {
           "kind": "currency",
-          "description": "Рядом с суммой найдена поддерживаемая валюта",
+          "description": "рядом с суммой найдена поддерживаемая валюта",
           "score_delta": 0.25,
           "data": {
             "currency": "USD"
@@ -2786,7 +2786,7 @@
         },
         {
           "kind": "semantic_context",
-          "description": "По контексту определено предварительное назначение суммы",
+          "description": "по контексту определено предварительное назначение суммы",
           "score_delta": 0.05,
           "data": {
             "role_hint": "principal_amount"
@@ -2794,7 +2794,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.09475,
           "data": {
             "average_ocr_confidence": 0.9475
@@ -2849,7 +2849,7 @@
       "evidence": [
         {
           "kind": "date_pattern",
-          "description": "Найдена календарная дата по текстовому или числовому шаблону",
+          "description": "найдена календарная дата по текстовому или числовому шаблону",
           "score_delta": 0.35,
           "data": {
             "date_format": "textual"
@@ -2857,7 +2857,7 @@
         },
         {
           "kind": "calendar_validation",
-          "description": "День, месяц и год образуют корректную календарную дату",
+          "description": "день, месяц и год образуют корректную календарную дату",
           "score_delta": 0.3,
           "data": {
             "day": 17,
@@ -2867,7 +2867,7 @@
         },
         {
           "kind": "semantic_context",
-          "description": "По контексту определена предварительная роль даты",
+          "description": "по контексту определена предварительная роль даты",
           "score_delta": 0.05,
           "data": {
             "role_hint": "repayment_due_date"
@@ -2875,7 +2875,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.094333,
           "data": {
             "average_ocr_confidence": 0.943333
@@ -2921,7 +2921,7 @@
       "evidence": [
         {
           "kind": "date_pattern",
-          "description": "Найдена календарная дата по текстовому или числовому шаблону",
+          "description": "найдена календарная дата по текстовому или числовому шаблону",
           "score_delta": 0.35,
           "data": {
             "date_format": "textual"
@@ -2929,7 +2929,7 @@
         },
         {
           "kind": "calendar_validation",
-          "description": "День, месяц и год образуют корректную календарную дату",
+          "description": "день, месяц и год образуют корректную календарную дату",
           "score_delta": 0.3,
           "data": {
             "day": 25,
@@ -2939,7 +2939,7 @@
         },
         {
           "kind": "semantic_context",
-          "description": "По контексту определена предварительная роль даты",
+          "description": "по контексту определена предварительная роль даты",
           "score_delta": 0.05,
           "data": {
             "role_hint": "interest_start_date"
@@ -2947,7 +2947,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.095667,
           "data": {
             "average_ocr_confidence": 0.956667
@@ -2989,7 +2989,7 @@
       "evidence": [
         {
           "kind": "percentage_pattern",
-          "description": "Найдено число с обозначением процента",
+          "description": "найдено число с обозначением процента",
           "score_delta": 0.4,
           "data": {
             "percentage": "4"
@@ -2997,7 +2997,7 @@
         },
         {
           "kind": "semantic_context",
-          "description": "По контексту определён тип процентного значения",
+          "description": "по контексту определён тип процентного значения",
           "score_delta": 0.15,
           "data": {
             "role_hint": "annual_interest_rate"
@@ -3005,7 +3005,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.091,
           "data": {
             "average_ocr_confidence": 0.91
@@ -3051,7 +3051,7 @@
       "evidence": [
         {
           "kind": "legal_form",
-          "description": "Найдена организационно-правовая форма юридического лица",
+          "description": "найдена организационно-правовая форма юридического лица",
           "score_delta": 0.4,
           "data": {
             "legal_form": "ТОО",
@@ -3062,7 +3062,7 @@
         },
         {
           "kind": "organization_name",
-          "description": "После правовой формы найдено название",
+          "description": "после правовой формы найдено название",
           "score_delta": 0.2,
           "data": {
             "value": "тоо «тест холдинг»"
@@ -3070,7 +3070,7 @@
         },
         {
           "kind": "party_context",
-          "description": "По ближайшему контексту определена роль стороны",
+          "description": "по ближайшему контексту определена роль стороны",
           "score_delta": 0.1,
           "data": {
             "role_hint": "borrower"
@@ -3078,7 +3078,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.095667,
           "data": {
             "average_ocr_confidence": 0.956667
@@ -3124,7 +3124,7 @@
       "evidence": [
         {
           "kind": "legal_form",
-          "description": "Найдена организационно-правовая форма юридического лица",
+          "description": "найдена организационно-правовая форма юридического лица",
           "score_delta": 0.4,
           "data": {
             "legal_form": "ООО",
@@ -3135,7 +3135,7 @@
         },
         {
           "kind": "organization_name",
-          "description": "После правовой формы найдено название",
+          "description": "после правовой формы найдено название",
           "score_delta": 0.2,
           "data": {
             "value": "ооо «тестовый завод»"
@@ -3143,7 +3143,7 @@
         },
         {
           "kind": "party_context",
-          "description": "По ближайшему контексту определена роль стороны",
+          "description": "по ближайшему контексту определена роль стороны",
           "score_delta": 0.1,
           "data": {
             "role_hint": "lender"
@@ -3151,7 +3151,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.095333,
           "data": {
             "average_ocr_confidence": 0.953333
@@ -3201,7 +3201,7 @@
       "evidence": [
         {
           "kind": "address_shape",
-          "description": "Фрагмент содержит признаки адреса",
+          "description": "фрагмент содержит признаки адреса",
           "score_delta": 0.3,
           "data": {
             "address_score": 5
@@ -3209,7 +3209,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.095889,
           "data": {
             "average_ocr_confidence": 0.958889
@@ -3259,7 +3259,7 @@
       "evidence": [
         {
           "kind": "address_shape",
-          "description": "Фрагмент содержит признаки адреса",
+          "description": "фрагмент содержит признаки адреса",
           "score_delta": 0.24,
           "data": {
             "address_score": 4
@@ -3267,7 +3267,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.095833,
           "data": {
             "average_ocr_confidence": 0.958333
@@ -3318,7 +3318,7 @@
       "evidence": [
         {
           "kind": "anchor",
-          "description": "Найден якорь ИНН на той же строке, что и значение",
+          "description": "найден якорь ИНН на той же строке, что и значение",
           "score_delta": 0.3,
           "data": {
             "anchor_text": "инн",
@@ -3330,7 +3330,7 @@
         },
         {
           "kind": "format",
-          "description": "Числовое значение имеет допустимую длину",
+          "description": "числовое значение имеет допустимую длину",
           "score_delta": 0.25,
           "data": {
             "format": "tax_identifier",
@@ -3344,7 +3344,7 @@
         },
         {
           "kind": "distance",
-          "description": "Значение расположено справа от ключевого слова",
+          "description": "значение расположено справа от ключевого слова",
           "score_delta": 0.091132,
           "data": {
             "horizontal_gap": 0.004434,
@@ -3353,7 +3353,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR для слов значения",
+          "description": "учтена средняя уверенность OCR для слов значения",
           "score_delta": 0.091,
           "data": {
             "average_ocr_confidence": 0.91
@@ -3369,7 +3369,7 @@
         },
         {
           "kind": "ocr_value_confirmation",
-          "description": "Значение подтверждено массивом предварительно найденных OCR values",
+          "description": "значение подтверждено массивом предварительно найденных OCR values",
           "score_delta": 0.1,
           "data": {
             "ocr_value_ids": [
@@ -3429,7 +3429,7 @@
       "evidence": [
         {
           "kind": "anchor",
-          "description": "Найден якорь БИН на той же строке, что и значение",
+          "description": "найден якорь БИН на той же строке, что и значение",
           "score_delta": 0.3,
           "data": {
             "anchor_text": "бин",
@@ -3442,7 +3442,7 @@
         },
         {
           "kind": "format",
-          "description": "Числовое значение имеет допустимую длину",
+          "description": "числовое значение имеет допустимую длину",
           "score_delta": 0.25,
           "data": {
             "format": "kz_bin",
@@ -3454,7 +3454,7 @@
         },
         {
           "kind": "distance",
-          "description": "Значение расположено справа от ключевого слова",
+          "description": "значение расположено справа от ключевого слова",
           "score_delta": 0.08952,
           "data": {
             "horizontal_gap": 0.00524,
@@ -3463,7 +3463,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR для слов значения",
+          "description": "учтена средняя уверенность OCR для слов значения",
           "score_delta": 0.091,
           "data": {
             "average_ocr_confidence": 0.91
@@ -3479,7 +3479,7 @@
         },
         {
           "kind": "ocr_value_confirmation",
-          "description": "Значение подтверждено массивом предварительно найденных OCR values",
+          "description": "значение подтверждено массивом предварительно найденных OCR values",
           "score_delta": 0.1,
           "data": {
             "ocr_value_ids": [
@@ -3538,7 +3538,7 @@
       "evidence": [
         {
           "kind": "bank_anchor",
-          "description": "Найден явный банковский ключ",
+          "description": "найден явный банковский ключ",
           "score_delta": 0.4,
           "data": {
             "anchor_word_ids": [
@@ -3549,7 +3549,7 @@
         },
         {
           "kind": "bank_name_shape",
-          "description": "Фрагмент соответствует форме названия банка",
+          "description": "фрагмент соответствует форме названия банка",
           "score_delta": 0.25,
           "data": {
             "value": "ао «test bank»",
@@ -3558,7 +3558,7 @@
         },
         {
           "kind": "requisites_region",
-          "description": "Название находится в блоке реквизитов",
+          "description": "название находится в блоке реквизитов",
           "score_delta": 0.1,
           "data": {
             "region": "right_column"
@@ -3566,7 +3566,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.094,
           "data": {
             "average_ocr_confidence": 0.94
@@ -3614,7 +3614,7 @@
       "evidence": [
         {
           "kind": "anchor",
-          "description": "Найден якорь БИК на той же строке, что и значение",
+          "description": "найден якорь БИК на той же строке, что и значение",
           "score_delta": 0.3,
           "data": {
             "anchor_text": "бик",
@@ -3628,7 +3628,7 @@
         },
         {
           "kind": "format",
-          "description": "Значение соответствует формату БИК",
+          "description": "значение соответствует формату БИК",
           "score_delta": 0.25,
           "data": {
             "code_length": 6,
@@ -3637,7 +3637,7 @@
         },
         {
           "kind": "distance",
-          "description": "Значение расположено справа от банковского ключа",
+          "description": "значение расположено справа от банковского ключа",
           "score_delta": 0.092612,
           "data": {
             "horizontal_gap": 0.004433,
@@ -3646,7 +3646,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR для слов значения",
+          "description": "учтена средняя уверенность OCR для слов значения",
           "score_delta": 0.096,
           "data": {
             "average_ocr_confidence": 0.96
@@ -3654,7 +3654,7 @@
         },
         {
           "kind": "compact_value",
-          "description": "Банковский код распознан одним OCR-словом",
+          "description": "банковский код распознан одним OCR-словом",
           "score_delta": 0.05,
           "data": {
             "word_count": 1
@@ -3662,7 +3662,7 @@
         },
         {
           "kind": "ocr_value_confirmation",
-          "description": "Значение подтверждено массивом предварительно найденных OCR values",
+          "description": "значение подтверждено массивом предварительно найденных OCR values",
           "score_delta": 0.1,
           "data": {
             "ocr_value_ids": [
@@ -3723,7 +3723,7 @@
       "evidence": [
         {
           "kind": "anchor",
-          "description": "Найден якорь IBAN перед значением",
+          "description": "найден якорь IBAN перед значением",
           "score_delta": 0.3,
           "data": {
             "anchor_text": "р/с",
@@ -3734,7 +3734,7 @@
         },
         {
           "kind": "format",
-          "description": "Значение соответствует формату IBAN",
+          "description": "значение соответствует формату IBAN",
           "score_delta": 0.25,
           "data": {
             "country_code": "KZ",
@@ -3746,7 +3746,7 @@
         },
         {
           "kind": "distance",
-          "description": "Значение расположено справа от ключевого слова",
+          "description": "значение расположено справа от ключевого слова",
           "score_delta": 0.095298,
           "data": {
             "horizontal_gap": 0.005643,
@@ -3755,7 +3755,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR для слов значения",
+          "description": "учтена средняя уверенность OCR для слов значения",
           "score_delta": 0.091,
           "data": {
             "average_ocr_confidence": 0.91
@@ -3763,7 +3763,7 @@
         },
         {
           "kind": "compact_value",
-          "description": "Счёт распознан одним OCR-словом",
+          "description": "счёт распознан одним OCR-словом",
           "score_delta": 0.05,
           "data": {
             "word_count": 1
@@ -3771,7 +3771,7 @@
         },
         {
           "kind": "ocr_correction",
-          "description": "При нормализации сохранены исправления OCR",
+          "description": "при нормализации сохранены исправления OCR",
           "score_delta": 0.0,
           "data": {
             "corrections": [
@@ -3781,7 +3781,7 @@
         },
         {
           "kind": "ocr_value_confirmation",
-          "description": "Значение подтверждено массивом предварительно найденных OCR values",
+          "description": "значение подтверждено массивом предварительно найденных OCR values",
           "score_delta": 0.1,
           "data": {
             "ocr_value_ids": [
@@ -3794,7 +3794,7 @@
         },
         {
           "kind": "checksum",
-          "description": "Форма IBAN корректна, но контрольная сумма не прошла проверку",
+          "description": "форма IBAN корректна, но контрольная сумма не прошла проверку",
           "score_delta": -0.08,
           "data": {
             "checksum_valid": false
@@ -3853,7 +3853,7 @@
       "evidence": [
         {
           "kind": "anchor",
-          "description": "Найден якорь банковский счёт перед значением",
+          "description": "найден якорь банковский счёт перед значением",
           "score_delta": 0.3,
           "data": {
             "anchor_text": "р/счет",
@@ -3864,7 +3864,7 @@
         },
         {
           "kind": "format",
-          "description": "Значение соответствует формату банковский счёт",
+          "description": "значение соответствует формату банковский счёт",
           "score_delta": 0.25,
           "data": {
             "code_length": 14,
@@ -3876,7 +3876,7 @@
         },
         {
           "kind": "distance",
-          "description": "Значение расположено справа от ключевого слова",
+          "description": "значение расположено справа от ключевого слова",
           "score_delta": 0.081862,
           "data": {
             "horizontal_gap": 0.021766,
@@ -3885,7 +3885,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR для слов значения",
+          "description": "учтена средняя уверенность OCR для слов значения",
           "score_delta": 0.085,
           "data": {
             "average_ocr_confidence": 0.85
@@ -3893,7 +3893,7 @@
         },
         {
           "kind": "compact_value",
-          "description": "Счёт распознан одним OCR-словом",
+          "description": "счёт распознан одним OCR-словом",
           "score_delta": 0.05,
           "data": {
             "word_count": 1
@@ -3901,7 +3901,7 @@
         },
         {
           "kind": "ocr_correction",
-          "description": "При нормализации сохранены исправления OCR",
+          "description": "при нормализации сохранены исправления OCR",
           "score_delta": 0.0,
           "data": {
             "corrections": [
@@ -3911,7 +3911,7 @@
         },
         {
           "kind": "ocr_value_confirmation",
-          "description": "Значение подтверждено массивом предварительно найденных OCR values",
+          "description": "значение подтверждено массивом предварительно найденных OCR values",
           "score_delta": 0.1,
           "data": {
             "ocr_value_ids": [
@@ -3975,7 +3975,7 @@
       "evidence": [
         {
           "kind": "anchor",
-          "description": "Найден якорь SWIFT/BIC на той же строке, что и значение",
+          "description": "найден якорь SWIFT/BIC на той же строке, что и значение",
           "score_delta": 0.3,
           "data": {
             "anchor_text": "бик/swift:",
@@ -3994,7 +3994,7 @@
         },
         {
           "kind": "format",
-          "description": "Значение соответствует формату SWIFT/BIC",
+          "description": "значение соответствует формату SWIFT/BIC",
           "score_delta": 0.25,
           "data": {
             "code_length": 8,
@@ -4006,7 +4006,7 @@
         },
         {
           "kind": "distance",
-          "description": "Значение расположено справа от банковского ключа",
+          "description": "значение расположено справа от банковского ключа",
           "score_delta": 0.091938,
           "data": {
             "horizontal_gap": 0.004837,
@@ -4015,7 +4015,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR для слов значения",
+          "description": "учтена средняя уверенность OCR для слов значения",
           "score_delta": 0.091,
           "data": {
             "average_ocr_confidence": 0.91
@@ -4023,7 +4023,7 @@
         },
         {
           "kind": "compact_value",
-          "description": "Банковский код распознан одним OCR-словом",
+          "description": "банковский код распознан одним OCR-словом",
           "score_delta": 0.05,
           "data": {
             "word_count": 1
@@ -4031,7 +4031,7 @@
         },
         {
           "kind": "ocr_value_confirmation",
-          "description": "Значение подтверждено массивом предварительно найденных OCR values",
+          "description": "значение подтверждено массивом предварительно найденных OCR values",
           "score_delta": 0.1,
           "data": {
             "ocr_value_ids": [
@@ -4088,7 +4088,7 @@
       "evidence": [
         {
           "kind": "bank_legal_form",
-          "description": "Название содержит правовую форму и банковский термин",
+          "description": "название содержит правовую форму и банковский термин",
           "score_delta": 0.35,
           "data": {
             "bank_role": "bank"
@@ -4096,7 +4096,7 @@
         },
         {
           "kind": "bank_name_shape",
-          "description": "Фрагмент соответствует форме названия банка",
+          "description": "фрагмент соответствует форме названия банка",
           "score_delta": 0.25,
           "data": {
             "value": "ао «тест банк»",
@@ -4105,7 +4105,7 @@
         },
         {
           "kind": "requisites_region",
-          "description": "Название находится в блоке реквизитов",
+          "description": "название находится в блоке реквизитов",
           "score_delta": 0.1,
           "data": {
             "region": "left_column"
@@ -4113,7 +4113,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.091667,
           "data": {
             "average_ocr_confidence": 0.916667
@@ -4167,7 +4167,7 @@
       "evidence": [
         {
           "kind": "bank_anchor",
-          "description": "Найден явный банковский ключ",
+          "description": "найден явный банковский ключ",
           "score_delta": 0.4,
           "data": {
             "anchor_word_ids": [
@@ -4179,7 +4179,7 @@
         },
         {
           "kind": "bank_name_shape",
-          "description": "Фрагмент соответствует форме названия банка",
+          "description": "фрагмент соответствует форме названия банка",
           "score_delta": 0.25,
           "data": {
             "value": "the bank of new york test mellon",
@@ -4188,7 +4188,7 @@
         },
         {
           "kind": "requisites_region",
-          "description": "Название находится в блоке реквизитов",
+          "description": "название находится в блоке реквизитов",
           "score_delta": 0.1,
           "data": {
             "region": "right_column"
@@ -4196,7 +4196,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.095571,
           "data": {
             "average_ocr_confidence": 0.955714
@@ -4248,7 +4248,7 @@
       "evidence": [
         {
           "kind": "anchor",
-          "description": "Найден якорь SWIFT/BIC на той же строке, что и значение",
+          "description": "найден якорь SWIFT/BIC на той же строке, что и значение",
           "score_delta": 0.3,
           "data": {
             "anchor_text": "swift:",
@@ -4267,7 +4267,7 @@
         },
         {
           "kind": "format",
-          "description": "Значение соответствует формату SWIFT/BIC",
+          "description": "значение соответствует формату SWIFT/BIC",
           "score_delta": 0.25,
           "data": {
             "code_length": 8,
@@ -4279,7 +4279,7 @@
         },
         {
           "kind": "distance",
-          "description": "Значение расположено справа от банковского ключа",
+          "description": "значение расположено справа от банковского ключа",
           "score_delta": 0.091938,
           "data": {
             "horizontal_gap": 0.004837,
@@ -4288,7 +4288,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR для слов значения",
+          "description": "учтена средняя уверенность OCR для слов значения",
           "score_delta": 0.091,
           "data": {
             "average_ocr_confidence": 0.91
@@ -4296,7 +4296,7 @@
         },
         {
           "kind": "compact_value",
-          "description": "Банковский код распознан одним OCR-словом",
+          "description": "банковский код распознан одним OCR-словом",
           "score_delta": 0.05,
           "data": {
             "word_count": 1
@@ -4304,7 +4304,7 @@
         },
         {
           "kind": "ocr_value_confirmation",
-          "description": "Значение подтверждено массивом предварительно найденных OCR values",
+          "description": "значение подтверждено массивом предварительно найденных OCR values",
           "score_delta": 0.1,
           "data": {
             "ocr_value_ids": [
@@ -4365,7 +4365,7 @@
       "evidence": [
         {
           "kind": "anchor",
-          "description": "Найден якорь банковский счёт перед значением",
+          "description": "найден якорь банковский счёт перед значением",
           "score_delta": 0.3,
           "data": {
             "anchor_text": "account",
@@ -4376,7 +4376,7 @@
         },
         {
           "kind": "format",
-          "description": "Значение соответствует формату банковский счёт",
+          "description": "значение соответствует формату банковский счёт",
           "score_delta": 0.25,
           "data": {
             "code_length": 10,
@@ -4388,7 +4388,7 @@
         },
         {
           "kind": "distance",
-          "description": "Значение расположено справа от ключевого слова",
+          "description": "значение расположено справа от ключевого слова",
           "score_delta": 0.095633,
           "data": {
             "horizontal_gap": 0.00524,
@@ -4397,7 +4397,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR для слов значения",
+          "description": "учтена средняя уверенность OCR для слов значения",
           "score_delta": 0.096,
           "data": {
             "average_ocr_confidence": 0.96
@@ -4405,7 +4405,7 @@
         },
         {
           "kind": "compact_value",
-          "description": "Счёт распознан одним OCR-словом",
+          "description": "счёт распознан одним OCR-словом",
           "score_delta": 0.05,
           "data": {
             "word_count": 1
@@ -4413,7 +4413,7 @@
         },
         {
           "kind": "ocr_value_confirmation",
-          "description": "Значение подтверждено массивом предварительно найденных OCR values",
+          "description": "значение подтверждено массивом предварительно найденных OCR values",
           "score_delta": 0.1,
           "data": {
             "ocr_value_ids": [
@@ -4468,7 +4468,7 @@
       "evidence": [
         {
           "kind": "position_dictionary",
-          "description": "Найдена известная должность",
+          "description": "найдена известная должность",
           "score_delta": 0.5,
           "data": {
             "canonical_position": "представитель"
@@ -4476,7 +4476,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.096,
           "data": {
             "average_ocr_confidence": 0.96
@@ -4518,7 +4518,7 @@
       "evidence": [
         {
           "kind": "position_dictionary",
-          "description": "Найдена известная должность",
+          "description": "найдена известная должность",
           "score_delta": 0.5,
           "data": {
             "canonical_position": "генеральный директор"
@@ -4526,7 +4526,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.096,
           "data": {
             "average_ocr_confidence": 0.96
@@ -4578,7 +4578,7 @@
         },
         {
           "kind": "person_name_shape",
-          "description": "Последовательность соответствует ФИО или фамилии с инициалами",
+          "description": "последовательность соответствует ФИО или фамилии с инициалами",
           "score_delta": 0.25,
           "data": {
             "word_count": 2
@@ -4586,7 +4586,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.092,
           "data": {
             "average_ocr_confidence": 0.92
@@ -4638,7 +4638,7 @@
         },
         {
           "kind": "person_name_shape",
-          "description": "Последовательность соответствует ФИО или фамилии с инициалами",
+          "description": "последовательность соответствует ФИО или фамилии с инициалами",
           "score_delta": 0.25,
           "data": {
             "word_count": 2
@@ -4646,7 +4646,7 @@
         },
         {
           "kind": "ocr_confidence",
-          "description": "Учтена средняя уверенность OCR",
+          "description": "учтена средняя уверенность OCR",
           "score_delta": 0.084,
           "data": {
             "average_ocr_confidence": 0.84
@@ -4688,12 +4688,12 @@
     "raw_candidate_count": 31,
     "resolved_candidate_count": 31,
     "processing_seconds": {
-      "loading": 0.009888,
-      "layout": 0.046734,
-      "rules": 0.021773,
-      "resolution": 0.001096,
-      "linking": 0.000656,
-      "total": 0.080148
+      "loading": 0.016505,
+      "layout": 0.043842,
+      "rules": 0.024808,
+      "resolution": 0.000457,
+      "linking": 0.000711,
+      "total": 0.086323
     }
   }
 }

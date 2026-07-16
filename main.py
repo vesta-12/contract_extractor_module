@@ -3,7 +3,7 @@ from pathlib import Path
 from contract_extractor import extract_contract_data
 
 INPUT_PATH = Path(
-    "data/input/test_loan_agreement_ocr.json"
+    "data/input/formatted/test_loan_agreement_ocr.json"
 )
 
 DEBUG_OUTPUT_PATH = Path(

@@ -8,7 +8,7 @@
     "warning_count": 1
   },
   "source": {
-    "path": "data\\input\\test_loan_agreement_ocr.json",
+    "path": "data\\input\\formatted\\test_loan_agreement_ocr.json",
     "page_count": 2,
     "word_count": 617,
     "line_count": 85
@@ -1097,12 +1097,12 @@
   ],
   "metadata": {
     "processing_seconds": {
-      "loading": 0.009888,
-      "layout": 0.046734,
-      "rules": 0.021773,
-      "resolution": 0.001096,
-      "linking": 0.000656,
-      "total": 0.080148
+      "loading": 0.016505,
+      "layout": 0.043842,
+      "rules": 0.024808,
+      "resolution": 0.000457,
+      "linking": 0.000711,
+      "total": 0.086323
     }
   }
 }

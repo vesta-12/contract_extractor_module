@@ -1,4 +1,5 @@
 import json
+import sys
 from pathlib import Path
 from contract_extractor.visualization import (
     ContractResultVisualizer,
@@ -6,7 +7,7 @@ from contract_extractor.visualization import (
 )
 
 SOURCE_PDF_PATH = Path(
-    "data/input/test_loan_agreement_anonymized.pdf"
+    "data/input/raw/test_loan_agreement_anonymized.pdf"
 )
 
 RESULT_JSON_PATH = Path(
@@ -19,6 +20,8 @@ OUTPUT_DIR = Path(
 
 
 def main() -> None:
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8")
     visualizer = ContractResultVisualizer(
         VisualizationConfig(
             dpi=170,

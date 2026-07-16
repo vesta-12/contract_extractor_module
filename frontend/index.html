@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Локальная обработка договоров: OCR, извлечение реквизитов и PDF с подсветкой."
+    />
+    <title>Обработка договоров</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <div class="eyebrow">Локальная обработка документов</div>
+        <h1>Реквизиты договора — вместе с координатами</h1>
+        <p class="hero-copy">
+          Загрузите PDF. Приложение выполнит OCR, извлечёт важные данные и
+          подготовит документ с подсветкой найденных значений.
+        </p>
+        <div class="health" id="health" role="status" aria-live="polite">
+          <span class="health-dot" aria-hidden="true"></span>
+          <span>Проверяем готовность компонентов…</span>
+        </div>
+      </header>
+
+      <section class="workspace" id="upload-section" aria-labelledby="upload-title">
+        <div class="section-heading">
+          <div>
+            <p class="step">Шаг 1</p>
+            <h2 id="upload-title">Выберите документы</h2>
+          </div>
+          <p class="limits" id="limits">PDF, до 25 МБ на файл</p>
+        </div>
+
+        <label class="drop-zone" id="drop-zone" for="file-input">
+          <input
+            id="file-input"
+            type="file"
+            accept="application/pdf,.pdf"
+            multiple
+          />
+          <span class="drop-mark" aria-hidden="true">＋</span>
+          <strong>Перетащите PDF сюда</strong>
+          <span>или нажмите, чтобы выбрать файлы</span>
+        </label>
+
+        <div class="selection" id="selection" hidden>
+          <div class="selection-title">
+            <h3>Выбрано</h3>
+            <span id="selection-summary"></span>
+          </div>
+          <ul class="selected-files" id="selected-files"></ul>
+        </div>
+
+        <div class="form-error" id="form-error" role="alert" hidden></div>
+
+        <button class="primary-button" id="process-button" type="button" disabled>
+          Запустить обработку
+        </button>
+      </section>
+
+      <section class="workspace results" id="results-section" hidden aria-labelledby="results-title">
+        <div class="section-heading results-heading">
+          <div>
+            <p class="step">Шаг 2</p>
+            <h2 id="results-title">Результаты обработки</h2>
+          </div>
+          <button class="quiet-button" id="new-job-button" type="button">
+            Новая обработка
+          </button>
+        </div>
+
+        <div class="job-progress" aria-live="polite">
+          <div>
+            <span class="job-label">Общий статус</span>
+            <strong id="job-status">В очереди</strong>
+          </div>
+          <div class="progress-track" aria-hidden="true">
+            <span id="progress-value"></span>
+          </div>
+          <span class="job-count" id="job-count"></span>
+        </div>
+
+        <div class="form-error" id="job-error" role="alert" hidden></div>
+
+        <div class="document-results" id="document-results"></div>
+
+        <a class="primary-button download-all" id="download-all" href="#" hidden>
+          Скачать все результаты ZIP
+        </a>
+      </section>
+    </main>
+
+    <footer>
+      Файлы изолируются по заданиям и удаляются согласно локальной политике хранения.
+    </footer>
+    <script src="/app.js" defer></script>
+  </body>
+</html>

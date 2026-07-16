@@ -1,5 +1,5 @@
 {
-  "source_pdf_path": "data\\input\\test_loan_agreement_anonymized.pdf",
+  "source_pdf_path": "data\\input\\raw\\test_loan_agreement_anonymized.pdf",
   "result_json_path": "data\\output\\test_loan_agreement_result.debug.json",
   "output_dir": "data\\output\\visualization",
   "page_count": 2,

@@ -1,8 +1,177 @@
-# Contract Extractor
+# Document Processing Application
 
-Модуль принимает готовый OCR JSON, находит юридические и банковские сущности, связывает их со сторонами договора и сохраняет координаты для подсветки на исходном PDF.
+Локальное веб-приложение принимает один или несколько PDF, запускает существующий Tesseract OCR, передаёт актуальный OCR JSON в `contract_extractor`, сохраняет найденные сущности с координатами и формирует PDF с подсветкой. Для каждого задания доступны отдельный итоговый JSON и общий ZIP.
 
-OCR выполняется вне этого модуля.
+Алгоритмы OCR, восстановления layout, извлечения сущностей, linking и визуализации не переписаны. Новый слой отвечает только за orchestration, хранение, фоновые статусы, HTTP API и пользовательский интерфейс.
+
+## Быстрый запуск
+
+Требования:
+
+- Python 3.12+;
+- Tesseract OCR 5 с языками `rus` и `eng`;
+- системная команда `tesseract` в `PATH` либо `TESSERACT_CMD` в окружении.
+
+Установка и запуск в PowerShell:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+Copy-Item .env.example .env
+$env:PYTHONPATH = "src"
+python -m server
+```
+
+Откройте [http://127.0.0.1:8000](http://127.0.0.1:8000). Статический frontend обслуживается тем же FastAPI-сервером, поэтому отдельный frontend-процесс не нужен.
+
+Вариант с Docker, уже включающий Tesseract `rus+eng`:
+
+```powershell
+docker build -t contract-extractor-app .
+docker run --rm --name contract-extractor -p 8000:8000 contract-extractor-app
+```
+
+Не запускайте одновременно локальный `python -m server` и Docker-контейнер
+на порту `8000`. На Windows локальный процесс, слушающий
+`127.0.0.1:8000`, может перехватить запросы браузера, даже если Docker
+публикует `0.0.0.0:8000`. После запуска проверьте
+`http://127.0.0.1:8000/api/health`: статус должен быть `ready`, а в
+`components.ocr.missing_languages` должен быть пустой список. Если нужны оба
+сервера, опубликуйте контейнер на другом порту, например
+`docker run --rm --name contract-extractor -p 8001:8000 contract-extractor-app`,
+и откройте `http://127.0.0.1:8001`.
+
+Docker-образ уже содержит всё приложение: frontend, FastAPI, OCR и Tesseract.
+Локальный `python -m server` для Docker-варианта запускать не требуется.
+Серверы на разных портах остаются двумя независимыми приложениями: frontend
+использует относительные пути `/api/...` и всегда обращается к тому же порту,
+с которого была открыта страница. Поэтому страница на `8090` использует
+локальный OCR, а не Tesseract из контейнера на `8000`.
+
+## Пайплайн
+
+```text
+upload PDF
+  -> проверка имени, расширения, MIME, заголовка и размера
+  -> изолированный data/jobs/<job_id>/documents/<document_id>/source
+  -> TesseractOCRProcessor -> OCR JSON 3.0-production
+  -> OCRDocumentLoader -> восстановление layout
+  -> RuleEngine -> EntityResolver -> PartyLinker
+  -> production/debug extraction JSON
+  -> ContractResultVisualizer -> PDF с подсветкой
+  -> итоговый result.json -> ZIP задания
+```
+
+`DocumentProcessingService.process_file(path)` выполняет один документ. `process_files(paths)` обрабатывает набор путей последовательно и возвращает независимый результат каждого файла. HTTP-версия использует тот же сервис через `JobManager`.
+
+## Структура приложения
+
+```text
+frontend/                       статический HTML/CSS/JavaScript UI
+src/
+  api/                          FastAPI factory, маршруты и ответы
+  document_processing/
+    config.py                   переменные окружения
+    models.py                   статусы, ошибки, итоговая summary-модель
+    files.py                    безопасные имена и metadata-валидация
+    uploads.py                  потоковое сохранение с лимитом размера
+    storage.py                  файловый JobStore и защита путей
+    jobs.py                     фоновый lifecycle заданий
+    archive.py                  общий ZIP и manifest
+    pipeline.py                 OCR -> extractor -> visualization
+    logging_config.py           console + rotating file log
+  ocr/
+    config.py                   неизменяемые OCR defaults и предел workers
+    service.py                  стабильная обёртка над process_pdf
+    cli.py                      OCR CLI
+    ocr_document.py             существующий OCR-алгоритм
+  contract_extractor/           существующие модели и бизнес-логика
+  server.py                     точка запуска FastAPI/uvicorn
+tests/                          unit, orchestration и API-тесты
+```
+
+Подробное направление зависимостей описано в `ARCHITECTURE.md`, исходное состояние — в `PROJECT_CONTEXT.md`, итог рефакторинга — в `REFACTORING_REPORT.md`.
+
+## Конфигурация
+
+Все доступные параметры перечислены в `.env.example`:
+
+- `APP_DATA_DIR`, `APP_FRONTEND_DIR`;
+- `APP_MAX_FILE_SIZE_MB`, `APP_MAX_FILES`;
+- `APP_ALLOWED_EXTENSIONS`, `APP_ALLOWED_MIME_TYPES`;
+- `APP_JOB_WORKERS`, `APP_RETENTION_HOURS`;
+- `APP_HOST`, `APP_PORT`, `APP_DEVELOPMENT`, `APP_LOG_LEVEL`;
+- `OCR_DPI`, `OCR_LANGUAGE`, `OCR_TIMEOUT_SECONDS`, `OCR_WORKERS`, `OCR_PRETTY_JSON`;
+- опционально `TESSERACT_CMD`.
+
+OCR по-прежнему ограничивает число page-processes значением `4`. `APP_JOB_WORKERS` ограничивает независимую конкуренцию заданий и по умолчанию равен `1`, чтобы несколько заданий не умножали OCR-нагрузку бесконтрольно.
+
+## API
+
+| Метод | Путь | Назначение |
+|---|---|---|
+| `GET` | `/api/health` | готовность OCR/extractor/visualizer и лимиты загрузки |
+| `POST` | `/api/documents/process` | multipart `files`, один или несколько PDF; ответ `202` |
+| `GET` | `/api/jobs/{job_id}` | polling статуса задания и каждого документа |
+| `GET` | `/api/documents/{document_id}/download` | PDF с подсветкой |
+| `GET` | `/api/documents/{document_id}/json` | итоговый JSON с OCR и extraction |
+| `GET` | `/api/jobs/{job_id}/download` | ZIP всех доступных результатов |
+
+Пример:
+
+```bash
+curl -F "files=@contract.pdf;type=application/pdf" \
+  http://127.0.0.1:8000/api/documents/process
+```
+
+Статусы задания и документа: `queued`, `processing`, `completed`, `partially_completed`, `failed`. Ошибка одного файла не отменяет результаты остальных. Если OCR завершился, а extraction или annotation упали, OCR JSON и доступная часть результата сохраняются со статусом `partially_completed`.
+
+Публичный polling-ответ содержит только краткие сущности, статусы, предупреждения и download URL. Полный OCR JSON доступен в скачиваемом `result.json`, но не размножается в каждом polling-ответе.
+
+## Хранение и логи
+
+```text
+data/
+  jobs/<job_id>/
+    manifest.json
+    documents/<document_id>/
+      source/<document_id>.pdf
+      ocr/ocr.json
+      results/result.json
+      results/extraction.debug.json
+      results/extraction.production.json
+      annotated/annotated_document.clean.pdf
+    archive/results.zip
+  logs/application.log
+```
+
+Исходное имя используется только как отображаемое безопасное имя. Физический путь строится из UUID, поэтому одинаковые имена не конфликтуют. При запуске удаляются задания, у которых `updated_at` старше `APP_RETENTION_HOURS`.
+
+Логи содержат job/document ID, этапы и длительность, но не полный текст документа и не содержимое файлов.
+
+## Тесты
+
+```powershell
+$env:PYTHONPATH = "src"
+python -m pytest tests -q
+```
+
+API-тесты используют тестовую реализацию тяжёлого OCR-компонента. Orchestration-тесты передают сохранённый production OCR JSON в реальный extractor и проверяют 31 сущность, отсутствие сущностей, отклонение изображений, частичное сохранение после extraction/annotation errors, безопасные пути, ZIP, одинаковые имена и параллельные запросы.
+
+Полный реальный E2E удобно повторить через Docker: запустить контейнер, загрузить `data/input/raw/test_loan_agreement_anonymized.pdf` в UI или через API и дождаться `completed`. Ожидается 2 страницы, OCR schema `3.0-production`, 31 сущность, итоговый JSON, annotated PDF и ZIP.
+
+## Известные ограничения
+
+- Текущий OCR entrypoint называется `process_pdf` и поддерживает только PDF; изображения намеренно не подключены через фиктивный адаптер.
+- Очередь — локальный `ThreadPoolExecutor`, а manifests — файлы. После аварийного перезапуска готовые результаты остаются, но незавершённые задания автоматически не возобновляются.
+- Приложение рассчитано на локальный доверенный запуск и не содержит аутентификацию или multi-tenant ACL.
+- OCR остаётся CPU-intensive; для production потребуется внешняя очередь и ограничение ресурсов контейнера.
+- `src/ocr/ocr_document.py` остаётся крупным алгоритмическим модулем: его механическое разделение отложено до появления OCR regression fixtures для разных layout-сценариев.
+
+# Внутреннее устройство Contract Extractor
+
+Ниже сохранён подробный справочник исходного extractor-модуля. Он принимает production OCR JSON, находит юридические и банковские сущности, связывает их со сторонами договора и сохраняет координаты для подсветки.
 
 ## 1. Общая логика
 

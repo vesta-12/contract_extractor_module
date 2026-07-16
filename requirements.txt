@@ -1,0 +1,9 @@
+PyMuPDF>=1.26,<2
+pytesseract>=0.3.13,<1
+Pillow>=11,<12
+fastapi>=0.116,<1
+uvicorn>=0.35,<1
+python-multipart>=0.0.20,<1
+python-dotenv>=1.1,<2
+httpx>=0.28,<1
+pytest>=8,<10
