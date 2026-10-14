@@ -1,5 +1,19 @@
 # Document Processing Application
 
+## Engineering overview
+
+A local document-processing application connects **PDF upload → Tesseract OCR → layout recovery → rule-based entity extraction and linking → annotated PDF / JSON / ZIP results**.
+
+The FastAPI layer delegates to a shared processing service. A thread-pool job manager keeps per-document status and errors in a confined filesystem store, so a batch can retain independent outcomes. The browser UI displays processing progress and downloadable results.
+
+**Stack:** Python · FastAPI · Tesseract · PyMuPDF · Docker
+
+[Processing service](src/document_processing/pipeline.py) · [Job orchestration](src/document_processing/jobs.py) · [HTTP routes](src/api/routes.py) · [Tests](tests/)
+
+This is a team project. [ZxZxZ143's implementation contribution](https://github.com/vesta-12/contract_extractor_module/commit/0ac4b588f3cc149464296d19fd4c650e398929c2) connected OCR and the existing extractor to orchestration, storage, HTTP API, UI and Docker packaging; the underlying extraction components are shared team work.
+
+**Status:** local application with synthetic/mocked tests; no production deployment or extraction-accuracy benchmark is claimed. The queue is process-local, not a distributed worker system. The detailed technical reference below is in Russian.
+
 Локальное веб-приложение принимает один или несколько PDF, запускает существующий Tesseract OCR, передаёт актуальный OCR JSON в `contract_extractor`, сохраняет найденные сущности с координатами и формирует PDF с подсветкой. Для каждого задания доступны отдельный итоговый JSON и общий ZIP.
 
 Алгоритмы OCR, восстановления layout, извлечения сущностей, linking и визуализации не переписаны. Новый слой отвечает только за orchestration, хранение, фоновые статусы, HTTP API и пользовательский интерфейс.
